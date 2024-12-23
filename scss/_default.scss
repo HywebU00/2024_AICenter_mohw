@@ -1,0 +1,49 @@
+body{
+  position: relative;margin: 0; padding: 0;
+  font-size: 1em;
+  color: $fontColor;
+  *, *::before, *::after { box-sizing: border-box;}
+
+  a, input, button { outline: none;}
+}
+
+.main{
+  position: relative;
+  background-color: $mainBg;
+}
+
+
+// 首頁區塊標題
+// ---------------------------------------------------------------------- //
+.secHeader{
+  font-size: 1.5em; line-height: 1.2; text-align: center;
+  margin: 0 auto 12px; padding: 0;
+  &::before {
+    content: ''; display: inline-block; vertical-align: top;
+    width: 50px; height: 24px; margin: 2px 0 0;
+    background: url(../images/twoDisks.svg) no-repeat 0 0;
+    background-size: auto 100%;
+  }
+
+  @media screen and (min-width: $wwNormal){
+    text-align: left;
+    font-size: 3em; margin-bottom: 40px;
+    &::before { 
+      margin: .2em 20px 0; height: 40px; width: 64px;
+    }
+  }
+}
+// ---------------------------------------------------------------------- //
+
+
+
+// ---------------------------------------------------------------------- //
+// 表單 form 元件
+button, input, select, textarea { font-size: inherit;}
+button, input[type="button"], input[type="reset"], input[type="submit"], select{
+  cursor: pointer;
+  outline: none;
+}
+
+
+

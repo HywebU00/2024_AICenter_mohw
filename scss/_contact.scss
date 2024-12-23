@@ -1,0 +1,58 @@
+// .main>section:not(.contact){display: none}
+// 聯絡我們
+.contact{
+  @extend %primSecWidth;
+
+  &>ul{
+    list-style: none; margin: 0 auto;padding: 0;
+    max-width: 400px;
+    &>li{
+      text-align: center;
+      margin: 10px 0; padding: 16px;
+      border-radius: 8px;
+      background-color: #eee;
+      img{
+        content: ''; display: block; margin: 0 auto 12px;
+        width: 48px;height: 48px;
+      }
+      .term{ display: none;}
+      .data {
+        display: block;
+      }
+    }
+  }
+
+  @media screen and (min-width: $wwMedium){
+    &>ul{
+      display: flex;gap: 24px;
+      max-width: none;
+      &>li{
+        flex:1 0 calc(33.33% - 16px);
+      }
+    }
+  }
+  
+  @media screen and (min-width: $wwNormal){
+    &>ul{
+      display: flex;gap: 48px;
+      &>li{
+        flex-basis:calc(33.33% - 32px);
+        padding: 32px 48px;
+        text-align: left;
+        img{
+          margin: 0 0 0 auto;
+          float: right;
+        }
+        .term{ 
+          display: block; float: left;
+          font-size: 2em; font-weight: bold;
+        }
+        .data {
+          clear: both;
+          padding: 60px 0 0;
+        }
+      }
+    }
+
+  }
+}

@@ -1,0 +1,108 @@
+// 分頁
+// ------------------------------------------------------ //
+.pagination {
+  --tinge: #{$fontColor};
+  --active: #{$focus};
+  --invert: #{$fontInvert};
+
+  @extend %primSecWidth; 
+  margin: 24px auto 24px; padding: 10px 0;
+  text-align: center; line-height: 1.5;
+  letter-spacing: 0;
+  form{ display: inline-block;}
+  a{text-decoration: none;}
+  em, abbr{
+    display: inline-block; margin: 0 .4em; 
+    font-style: normal; font-weight: bold;
+  }
+  abbr{ text-decoration: none;}
+
+  .items{ 
+    display: inline;
+    a{ 
+      display: inline-block; font-weight: bold; color: $fontColor;
+      height: 1.7em; line-height: 1.7; margin:0 2px;padding: 0 6px;
+      transition: .2s;
+      &:hover, &:focus{box-shadow: var(--active) 0 0 0 2px;}
+      &.active{ 
+        background-color: var(--active); color:var(--invert);
+        &:hover, &:focus{box-shadow:var(--invert) 0 0 0 1px, var(--active) 0 0 0 3px;}
+      }
+    }
+  }
+
+  .page{ 
+    list-style: none; line-height: 1; letter-spacing: 0;
+    display: flex; flex-flow: row wrap; justify-content: center;
+    margin:8px auto; padding: 3px; 
+    &>li{ 
+      flex: 0 0 auto;
+      margin: 3px -1px 3px 0;
+      background-color: $white;
+      border: 1px solid $borderColor;
+
+      &:hover{ border-color: var(--active); z-index: 19;}
+      &:has(>a:focus) {border-color: var(--active);z-index: 19;}
+
+      &:first-child {
+        border-radius: 5px 0 0 5px;
+        overflow: hidden;
+      }
+      &:last-child{ border-radius: 0 5px 5px 0;}
+
+      a{ 
+        display: block; min-width: 46px;height: 46px; line-height: 46px;
+        position: relative; bottom: 0;
+        padding: 0 5px;
+        color: $fontColor; 
+        transition:box-shadow .2s, background .2s;
+        &:hover, &:focus{ box-shadow: var(--active) 0 0 0 1px inset;}
+      }
+      &.active{
+        z-index: 55; font-weight: normal;
+        a{
+          color: $fontInvert; background-color: var(--active);
+          box-shadow: var(--active) 0 0 0 3px;
+          &:hover, &:focus{ box-shadow:$white 0 0 0 1px, var(--active) 0 0 0 4px;}
+        }
+      }
+
+      // 箭頭
+      &.first, &.prev, &.next, &.last{  
+        text-indent: -20em;
+        a{ 
+          position: relative; overflow: hidden; padding: 0;
+          &::after{
+            content: ''; position: absolute; top: 50%;
+            width:10px; height:10px; margin-top: -5px;
+            border: 2px solid var(--tinge); border-top: none; border-right: none;
+            transform: rotate(45deg);
+          }
+          &:hover, &:focus{
+            --tinge: var(--invert);
+            background-color: var(--active);
+          }
+        }
+      }
+      &.first, &.last{
+        a{
+          &::before{
+            content: ''; position: absolute; top: 50%; left: 18px;
+            width: 2px; height: 15px; transform: translateY(-50%);
+            background:var(--tinge);
+          }
+          &::after{ left: 22px; }
+        }
+      }
+
+      &.prev, &.next{
+        a::after{left: 20px;}
+      }
+      &.next, &.last{
+        a{ transform: rotate(180deg);}
+      }
+    }
+  }
+
+}
+// ------------------------------------------------------ //

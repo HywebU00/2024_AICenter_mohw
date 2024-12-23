@@ -1,0 +1,269 @@
+// 首頁：三大 AI 中心
+.aiCenters{
+  outline: 1px dashed #f003;
+  outline-offset: -1px;
+
+  @extend %primSecWidth;
+
+  button{
+    border: none; box-shadow: none;
+    background-color: transparent;
+    font-size: inherit; text-align: left;
+    cursor: pointer;
+  }
+
+  // 模擬下拉選單
+  ul.dropMenuGroup{
+
+    display: flex; gap: 9px;
+    position: relative; margin: 1em 0 0; padding: 0;
+    list-style: none; line-height: 1.5;
+    ul{list-style: none; margin:0; padding: 0;}
+    &>li{
+      --bgc : var(--tabTheme);
+      --color: #fff;
+  
+      flex: 1 0 calc(33.33% - 6px);
+
+      // 北部、中部、南部
+      &>button{
+        position: relative;
+        width: 100%; height: 2.5em; padding: 0 20px 0 12px; margin: 0;
+        border-radius: 8px;
+        background-color: var(--bgc); color: var(--color);
+        &::after {
+          content: ''; position: absolute; right: 12px; top: .9em;
+          width: 6px; height: 6px;rotate: 45deg;
+          border: 2px solid var(--color); border-left: none; border-top: none;
+        }
+      }
+
+      &>ul{
+        display: none;
+        position: absolute;width: 100%;
+        list-style: none; margin:4px 0 0; padding: 12px;
+        background-color: #fff; 
+        border-radius: 8px;
+        &>li{
+          border-bottom: 1px solid #bbb; padding:3px 0; margin: 0;
+          margin: 2px 0;
+          &:last-child{border-bottom: none;}
+          &>button {
+            width: 100%; text-align: left;
+            padding: .6em 0;
+            &:hover, &:focus {
+              //  background-color: #fff;
+            }
+          }
+        }
+      }
+
+      &.active{
+        &>button {
+          --bgc : #fff;
+          --color: #000;
+          &::after {
+            rotate: 225deg; top: 1.15em;
+          }
+        }
+        &>ul{
+          display: block;
+        }
+      }
+
+      
+    }
+  }
+
+  dl.infoCard{
+    // display: none;
+    position: absolute; left: 0;
+    padding:16px 12px; margin: 0;
+    width: 15em;
+    line-height: 1.5;
+    border-radius: 8px;
+    background-color: #fff; color: var(--tabTheme);
+    box-shadow: rgb(0 0 0 / .3) 0 0 16px;
+    dt, dd {margin:.6em 0 0; display: block;}
+    dt{ 
+      font-size: .88em;margin-top: 1.8em;
+      color: #333;
+      &:first-child { 
+        margin-top: 0;
+        &+dd{font-weight: bold;}
+      }
+    }
+  }
+
+
+
+  // 地圖
+  .mapHere{
+    padding: 30px 0 0;
+    img{
+      display: block; margin: 0 auto;
+      width: 54%; height: auto;
+      max-width: 260px;
+    }
+  }
+
+  .contentGroup{
+    position: relative;
+    outline: 1px solid #f008;
+    outline-offset: -1px;
+  
+  }
+  // 三大區塊
+  .content{
+    padding: 16px 12px; margin: 0 0 10px;
+    border-radius: 8px;
+    background-color: var(--tabBgc);
+
+    //<h3>
+    .head {  
+      margin: 0; padding: 0 0 12px; font-size: 1em;
+      button{
+        position: relative;
+        padding: 0; height: 2.4em; width: 100%;
+        font-weight: bold; color: var(--tabTheme);
+        &::after {
+          content: ''; position: absolute; right: 12px; top: .8em;
+          width: 8px; height: 8px;rotate: 45deg;
+          border: 2px solid var(--tabTheme); border-left: none; border-top: none;
+        }
+      }
+
+      &.active{
+        button::after{ rotate: 225deg; top: 1.05em;}
+        &+.tray {display: block;}
+      }
+    }
+
+    .tray{
+      display: none;
+      min-height: 400px;padding: 12px 0;
+      border-top: 1px solid #ccc;
+  
+      .description{ margin: 0;}
+    }
+
+    &:nth-child(1){
+      --tabBgc: #E8F9F7;
+      --tabTheme: #008281;  
+    }
+    &:nth-child(2){
+      --tabBgc: #EEF7FC;
+      --tabTheme: #005FA1;
+    }
+    &:nth-child(3){
+      --tabBgc: #FFF9EE;
+      --tabTheme: #F39A16;
+    }
+  }
+
+  @media screen and (min-width: $wwNormal){
+    .contentGroup{
+      overflow: hidden;
+    }
+    .content{
+      background-color: transparent;
+      .head{
+        float: left; width: 30%;font-size: 1.5em; 
+        margin: 0;padding: 0;
+        button{
+          color: #666;
+          padding: 50px 32px; height: auto;
+          min-height: 200px;
+          &::after { 
+            // display: none;
+            border: none;rotate: 0deg;
+            top: auto;
+            left: 0;right: 0; bottom: 0;
+            width: 100%;
+            height: 1px; 
+            background-color: #ccc;
+          }
+        }
+
+        &.active{
+          background-color: var(--tabBgc);
+          button::after{
+            top: auto;rotate: 0deg;height: 4px;
+            background-color: var(--tabTheme); color: var(--tabTheme);
+          }
+          &+.tray {display: flex; }
+        }
+      }
+      .tray{
+        outline: 1px solid #f008;
+        outline-offset: -1px;
+        position: relative; top: 0; 
+        padding: 0;
+        width: 68%;
+        justify-content: space-between;
+        float: right;
+        .description{display: none;}
+      }
+    }
+
+    ul.dropMenuGroup{
+      display: block; margin: 0 5%;
+      flex: 0 0 50%;
+      &>li{
+        margin-bottom: 2em;
+        &>button{ display: none;}
+        &>ul{
+          position: static;
+          display: block;margin: 0; padding: 0;
+          &>li{
+            border-bottom: none; 
+            &>button{
+              background-color: var(--tabBgc);
+              padding: 1em .8em;
+              border-radius: 8px;
+              &:hover{
+                background-color: var(--tabTheme); color: #fff;
+              }
+            }
+
+            dl.infoCard{
+              width: 100%;
+              background-color: var(--tabTheme); color: #fff;
+              dt{ color: #ccc;}
+            }
+
+            &.active{
+              &>button{
+                display: none;
+              }
+              dl.infoCard{
+                display: block;
+              }
+              
+            }
+          }
+        }
+      }
+    }
+    .mapHere{
+      flex: 0 0 40%; 
+      outline: 1px solid #f008;
+      outline-offset: -1px;
+      img{ width: 100%;max-width:none}
+    }
+  }
+
+
+
+
+
+  // .tabset{}
+
+  // .tabItems{
+  //   display: none;
+  // }
+
+
+
+
+}

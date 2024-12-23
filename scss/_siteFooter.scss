@@ -1,0 +1,154 @@
+.siteFooter{
+  position: relative;
+  margin: 0;padding: 50px 0 0;
+  background-color: $bgc;
+  ul{ list-style: none; margin: 0; padding: 0; }
+  li{ margin: 0; padding: 0; }
+  a{ text-decoration: none; outline: none;}
+
+  .footLogo{
+    display: block; 
+    width: calc(100% - 170px - $marginDocMob*2); max-width: 240px; 
+    margin: 0 auto 30px $marginDocMob;
+  }
+
+  .imageLinks{
+    position: absolute; right: $marginDocMob; top: 45px;
+    display: flex; justify-content: center;
+    &>li{
+       flex: 0 0 auto; margin: 5px;
+      &>a{
+        display: block;border-radius: $radius1; overflow: hidden;
+        width: 44px; height: 44px; 
+        transition: .2s;
+        img{
+          display: block; height: 100%; width: 80%; margin: 0 auto;
+          object-fit: contain;
+        }
+        &:hover{
+          background-color: $white;
+          box-shadow:transparent 0 0 0 0, rgb(0 0 0 / .4) 0 0 9px;
+        }
+        &:focus{
+          background-color: $white;
+          box-shadow: $black 0 0 0 2px, rgb(0 0 0 / .6) 0 0 7px;
+        }
+      }
+    }
+  }
+
+  .siteTree{
+    margin: 0 auto 40px; width: $mobileWidth;
+    padding-top: 10px;
+    &>ul{
+      display: flex; flex-wrap: wrap; gap: 18px;
+      &>li{
+        flex: 0 0 calc(33.33% - 12px);
+        white-space: nowrap;
+        a{
+          position: relative; display: block; padding: 2px 14px 2px 0;
+          text-decoration: none; color: $fontColor;
+          transition: .3s;
+          &::before {
+            content: ''; position: absolute; left: -2px; top: .6em;
+            width: 0; height: 6px;
+            transition: .2s;
+          }
+          &:hover, &:focus {
+            padding-left: 14px; padding-right: 0;
+            &::before { 
+              width: 6px;left: 3px;
+              background-color: $fontColor;
+            }
+          }
+          &:focus-visible { box-shadow: $primaryColor 0 0 0 2px;}
+        }
+      }
+    }
+  }
+
+  .badge{
+    float: left;margin-left: $marginDocMob; margin-bottom: 20px;
+    img{ width: 140px; transition: .2s;}
+    a{
+      display: block;
+      &:hover img { box-shadow:$white 0 0 0 1px, $primaryColor 0 0 0 3px;}
+      &:focus img { box-shadow:$white 0 0 0 1px, $primaryColor 0 0 0 4px;}
+    }
+  }
+  .visiters{
+    text-align: right; line-height: 48px;
+    margin-left: 170px; margin-right: $marginDocMob;
+  }
+
+
+  .base{
+    clear: both; margin:0;
+    background-color: $gray700; color: $fontInvert;
+    ul{
+      text-align: center;padding:10px 12px; line-height: 1;
+      li {
+        display: inline-block; margin: 6px 12px;
+        a{ 
+          position: relative; 
+          display: block; padding: 2px;
+          color: $fontInvert;text-decoration: none;
+          &::after {
+            content: ''; position: absolute; left: 0;right: 0; bottom: -3px;
+            height: 2px; background-color: transparent;
+            transition: .2s;
+          }
+          &:hover {
+            &::after { background-color: $white;bottom: -1px;}
+          }
+          &:focus-visible {
+            box-shadow: $white 0 0 0 2px;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: $wwMedium){
+    .siteTree{
+      &>ul{
+        gap: 20px;
+        &>li{flex-basis: calc(20% - 16px);}
+      }
+    }
+  }
+
+  @media screen and (min-width: $wwNormal){
+
+    .footLogo{ margin-left: $marginDoc; }
+    .imageLinks{ right: $marginDoc;}
+
+    .siteTree{
+      float: left; padding-top: 16px;
+      width: calc($normalWidth - 200px);
+      margin-left: $marginDoc; margin-right: auto;
+      &>ul{ 
+        margin-left: 50px;
+        &>li{max-width: 8em;}
+      }
+    }
+
+    .badge{
+      float: right;margin-right: $marginDoc; margin-left: auto;
+      img{ height: auto; width: 160px;}
+    }
+
+    .visiters{
+      clear: both; float: none; line-height: 2.5;
+      width: $normalWidth; margin: 0 auto;      
+    }
+  }
+
+  @media screen and (min-width: $wwMaximum){
+    .footLogo { margin-left: $marginDocMax;}
+    .imageLinks { right: $marginDocMax;}
+    .badge { margin-right: $marginDocMax;}
+    .siteTree { margin-left: $marginDocMax;width: calc($maximumWidth - 200px);}
+    .visiters { width: $maximumWidth;}
+  }
+}

@@ -1,0 +1,72 @@
+// ------------------------------------------------------ //
+// ---------------------- 項目條列 ---------------------- //
+// ------------------------------------------------------ //
+
+
+.lp {
+  @extend %primSecWidth;
+  margin-top: 16px;margin-bottom: 48px;
+
+  ul{ list-style: none; margin: 0; padding: 0; line-height: 1.6; }
+  li{
+    margin: 0;padding: 0;
+    &>a{ display: block; text-decoration: none; color: $fontColor; }
+  }
+}
+
+// 項目 ul, ol 條列
+// ------------------------------------------------------ //
+.lp .list{
+  --focusOutline: #{$focus};
+  --bdColor: #{$borderColor};
+
+  border-top: 2px solid var(--bdColor);
+  border-bottom: 1px solid var(--bdColor);
+  &>li{
+    padding: 3px 0;
+    border-bottom: 1px solid var(--bdColor);
+    &>a {
+      display: flex; flex-wrap: wrap; align-items: flex-start;
+      padding:12px 4px 11px; transition: .2s;
+      &:hover, &:focus {
+        .title{text-decoration: underline;}
+      }
+      &:focus-visible {box-shadow: var(--focusOutline) 0 0 0 2px inset; border-radius: 8px;}
+    }
+    .number{ 
+      flex: 0 0 auto; text-align: right; margin-left: .3em;
+      &::after {content: '.'; margin-right: -.2em;}
+    }
+    .title{ 
+      flex: 0 0 100%; order: 3; margin: 8px 0 0;
+      font-size: 1.125em; 
+    }
+
+    time{
+      flex: 0 0 7em; margin-left: auto; text-align: right; 
+      color: $fontColorLight; 
+    }
+  }
+
+  @media screen and (min-width: $wwMedium){
+    &>li{
+      &>a{
+        flex-wrap: nowrap;padding:14px 4px 13px; 
+        .number {
+          flex: 0 1 2em;order: 0;
+          width: 2em;margin-right: 1em; margin-left: 0; line-height: 1.8;
+        }
+        .title {
+          margin: 0;
+          flex: 0 1 calc(100% - 9.5em); order: 1;
+        }
+        time{order: 2;}
+      }
+    }
+  }
+
+
+}
+// ------------------------------------------------------ //
+
+
