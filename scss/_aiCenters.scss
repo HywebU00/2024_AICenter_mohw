@@ -75,22 +75,65 @@
     }
   }
 
-  dl.infoCard{
-    // display: none;
+
+  // 負責任 AI 執行中心資料卡
+  .infoCard{
+    display: none;
     position: absolute; left: 0;
-    padding:16px 12px; margin: 0;
+    padding:24px 12px 16px; margin: 0;
     width: 15em;
     line-height: 1.5;
     border-radius: 8px;
-    background-color: #fff; color: var(--tabTheme);
+    background-color: $white; color: $primaryColor;
     box-shadow: rgb(0 0 0 / .3) 0 0 16px;
-    dt, dd {margin:.6em 0 0; display: block;}
-    dt{ 
-      font-size: .88em;margin-top: 1.8em;
-      color: #333;
-      &:first-child { 
-        margin-top: 0;
-        &+dd{font-weight: bold;}
+    .closeThis{
+      position: absolute; right: 0;top: 0;
+      border-radius: 50%;scale: .64;
+      box-shadow: none;
+      transition: .2s;
+      &::before, &::after { background-color: $primaryColor;transition: .2s;}
+      &:hover{background-color: $bgc1;}
+      &:focus{ 
+        background-color: $primaryColor;
+        box-shadow: $primaryColor 0 0 0 2px;
+        &::before, &::after { background-color: $white;}
+      }
+    }
+    &>dl{
+      margin: 0;padding: 0;
+      a{color: $primaryColor;}
+      &>div{
+        &:first-child{
+          dt:first-child{margin-right: 32px;}
+        }
+        &+div{margin-top: 1.2em;}
+      }
+      dt, dd {margin:.5em 0 0; display: block;}
+      dt{ 
+        font-size: .88em;margin-top: 1.5em;color: $fontColor;
+        &:first-child { 
+          margin-top: 0;
+          &+dd{font-weight: bold;}
+        }
+
+      }
+      dd{
+        &>a[target="_blank"]{
+          display: block;
+          position: relative;
+          padding-right: 32px;
+          text-decoration: none;
+          border-bottom: 1px solid $borderColor;
+          &:hover{ border-bottom-color: $primaryColor;}
+          &:focus-visible { outline: $primaryColor 2px solid; border-bottom-color: transparent;}
+          &::after{
+            content: '';
+            position: absolute; right: 0; top: 0;
+            width: 24px; height: 22px;
+            outline: 1px solid #bbb;
+          }
+          
+        }
       }
     }
   }
@@ -109,9 +152,6 @@
 
   .contentGroup{
     position: relative;
-    outline: 1px solid #f008;
-    outline-offset: -1px;
-  
   }
   // 三大區塊
   .content{
@@ -206,23 +246,37 @@
       }
     }
 
+    // 北部、中部、南部
     ul.dropMenuGroup{
-      display: block; margin: 0 5%;
-      flex: 0 0 50%;
+      display: block;flex: 0 0 50%;
+      padding: 8px;  margin: 0 5%;
       &>li{
-        margin-bottom: 2em;
+
+        margin-bottom: 16px;
+        background-color: $bgc1;
+        border-radius:12px 12px $radius1 $radius1;
+        .groupLabel{
+          display: block;
+          border-radius: $radius1 $radius1 0 0;
+          background-color: $primaryColor; color: $white;
+          font-size: 1.125em; line-height: 1; padding: 16px 18px 14px;
+        }
         &>button{ display: none;}
+
+        // 醫院、機構
         &>ul{
           position: static;
-          display: block;margin: 0; padding: 0;
+          display: block;margin: 0; padding:6px 8px;
+          background-color: transparent;
           &>li{
-            border-bottom: none; 
+            padding: 0;margin: 0;border: none; 
             &>button{
-              background-color: var(--tabBgc);
-              padding: 1em .8em;
-              border-radius: 8px;
-              &:hover{
-                background-color: var(--tabTheme); color: #fff;
+              background-color: transparent;
+              padding:.8em; margin:2px 0; border-radius:$radius;
+              transition: .2s;
+              &:hover, &:focus{
+                background-color: $primaryColor; color: $white;
+                box-shadow: rgb(0 0 0 / .4) 0 0 8px inset;
               }
             }
 

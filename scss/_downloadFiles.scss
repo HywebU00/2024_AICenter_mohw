@@ -7,9 +7,9 @@
     a{text-decoration: none;}
   }
   &>ul>li{
-    line-height: 1.6;
+    padding:8px; line-height: 1.6;
     border-bottom: 1px solid $borderColorLight;
-    padding:8px;clear: both;
+    clear: both;overflow: hidden;
     .fileName{font-size: 1.125em;}
     ul.files{
       float: right; font-size: .82em; margin-top: 4px;
