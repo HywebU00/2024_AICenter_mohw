@@ -1,8 +1,5 @@
 // 首頁：三大 AI 中心
 .aiCenters{
-  outline: 1px dashed #f003;
-  outline-offset: -1px;
-
   @extend %primSecWidth;
 
   button{
@@ -12,96 +9,63 @@
     cursor: pointer;
   }
 
-  // 模擬下拉選單
-  ul.dropMenuGroup{
+  .contentGroup{position: relative;}
+  // 三大區塊
+  .content{
+    padding: 16px 12px; margin: 0 0 10px;
+    border-radius: 8px;
+    background-color: var(--tabBgc);
+    &:nth-child(1){--tabBgc: #E8F9F7;--tabTheme: #008281;}
+    &:nth-child(2){--tabBgc: #EEF7FC;--tabTheme: #005FA1;}
+    &:nth-child(3){--tabBgc: #FFF9EE;--tabTheme: #F39A16;}
 
-    display: flex; gap: 9px;
-    position: relative; margin: 1em 0 0; padding: 0;
-    list-style: none; line-height: 1.5;
-    ul{list-style: none; margin:0; padding: 0;}
-    &>li{
-      --bgc : var(--tabTheme);
-      --color: #fff;
-  
-      flex: 1 0 calc(33.33% - 6px);
-
-      // 北部、中部、南部
-      &>button{
-        position: relative;
-        width: 100%; height: 2.5em; padding: 0 20px 0 12px; margin: 0;
-        border-radius: 8px;
-        background-color: var(--bgc); color: var(--color);
-        &::after {
-          content: ''; position: absolute; right: 12px; top: .9em;
-          width: 6px; height: 6px;rotate: 45deg;
-          border: 2px solid var(--color); border-left: none; border-top: none;
-        }
+    // 按鈕、頁籤項目
+    button.head{
+      position: relative; font-size: 1em;
+      margin: 0;padding: 0 40px 0 0; height: 2.4em; line-height: 2.4; width: 100%;
+      font-weight: bold; color: var(--tabTheme);
+      &::after {
+        content: ''; position: absolute; right: 12px; top: .8em;
+        width: 10px; height: 10px;rotate: 45deg;
+        border: 2px solid var(--tabTheme); border-left: none; border-top: none;
+        transition:rotate .3s;
       }
-
-      &>ul{
-        display: none;
-        position: absolute;width: 100%;
-        list-style: none; margin:4px 0 0; padding: 12px;
-        background-color: #fff; 
-        border-radius: 8px;
-        &>li{
-          border-bottom: 1px solid #bbb; padding:3px 0; margin: 0;
-          margin: 2px 0;
-          &:last-child{border-bottom: none;}
-          &>button {
-            width: 100%; text-align: left;
-            padding: .6em 0;
-            &:hover, &:focus {
-              //  background-color: #fff;
-            }
-          }
-        }
-      }
-
       &.active{
-        &>button {
-          --bgc : #fff;
-          --color: #000;
-          &::after {
-            rotate: 225deg; top: 1.15em;
-          }
-        }
-        &>ul{
-          display: block;
-        }
+        &::after{ rotate: 225deg; top: 1.05em;}
       }
+    }
 
-      
+    .tray{
+      display: none;
+      padding: 12px 0; border-top: 1px solid $borderColor;
+      .description{ margin: 0;}
     }
   }
 
 
-  // 負責任 AI 執行中心資料卡
+  // AI 中心資料卡
   .infoCard{
-    display: none;
-    position: absolute; left: 0;
-    padding:24px 12px 16px; margin: 0;
-    width: 15em;
-    line-height: 1.5;
-    border-radius: 8px;
-    background-color: $white; color: $primaryColor;
-    box-shadow: rgb(0 0 0 / .3) 0 0 16px;
+    position: relative;
+    padding:16px 12px 16px; margin: 0;
+    line-height: 1.5; border-radius: $radius1;
+    background-color: $white; color: var(--tabTheme);
+    box-shadow: rgb(0 0 0 / .3) 0 0 8px;
     .closeThis{
-      position: absolute; right: 0;top: 0;
+      position: absolute; right: -5px;top: -5px;
       border-radius: 50%;scale: .64;
       box-shadow: none;
       transition: .2s;
-      &::before, &::after { background-color: $primaryColor;transition: .2s;}
-      &:hover{background-color: $bgc1;}
+      &::before, &::after { background-color: $gray700;transition: .2s;}
+      &:hover{background-color: $gray100;}
       &:focus{ 
-        background-color: $primaryColor;
-        box-shadow: $primaryColor 0 0 0 2px;
+        background-color: $gray700;
+        box-shadow: $gray700 0 0 0 2px;
         &::before, &::after { background-color: $white;}
       }
     }
     &>dl{
       margin: 0;padding: 0;
-      a{color: $primaryColor;}
+      a{color: var(--tabTheme);}
       &>div{
         &:first-child{
           dt:first-child{margin-right: 32px;}
@@ -110,27 +74,24 @@
       }
       dt, dd {margin:.5em 0 0; display: block;}
       dt{ 
-        font-size: .88em;margin-top: 1.5em;color: $fontColor;
-        &:first-child { 
-          margin-top: 0;
-          &+dd{font-weight: bold;}
-        }
-
+        font-size: .88em;margin-top: 1.5em;color: $fontColorLight;
       }
       dd{
+        word-break: break-all;
         &>a[target="_blank"]{
           display: block;
           position: relative;
           padding-right: 32px;
-          text-decoration: none;
+          text-decoration: none;font-weight: bold;
           border-bottom: 1px solid $borderColor;
           &:hover{ border-bottom-color: $primaryColor;}
           &:focus-visible { outline: $primaryColor 2px solid; border-bottom-color: transparent;}
           &::after{
             content: '';
             position: absolute; right: 0; top: 0;
-            width: 24px; height: 22px;
-            outline: 1px solid #bbb;
+            width: 20px; height: 20px;
+            background: url(../images/icon_linkout.png) no-repeat left bottom;
+            background-size: 16px;
           }
           
         }
@@ -138,133 +99,152 @@
     }
   }
 
-
-
   // 地圖
   .mapHere{
-    padding: 30px 0 0;
+    display: flex; align-items: flex-start;
+    padding: 24px 0 0;
+    .infoCard {
+      display: none; 
+      margin-right: 8px;
+      flex: 0 0 12em;
+      &+img{ width: calc(100% - 12em - 8px);}
+    }
     img{
+      flex: 1 1 auto; width: auto; max-width: 200px;
       display: block; margin: 0 auto;
-      width: 54%; height: auto;
-      max-width: 260px;
+      
     }
   }
 
-  .contentGroup{
-    position: relative;
-  }
-  // 三大區塊
-  .content{
-    padding: 16px 12px; margin: 0 0 10px;
-    border-radius: 8px;
-    background-color: var(--tabBgc);
+  // 模擬下拉選單
+  .dropMenuGroup{
+    display: flex; gap: 9px;
+    position: relative; margin: 1em 0 0; padding: 0;
+    line-height: 1.5;
+    ul{list-style: none; margin:0; padding: 0;}
+    li{margin:0; padding: 0;}
 
-    //<h3>
-    .head {  
-      margin: 0; padding: 0 0 12px; font-size: 1em;
-      button{
-        position: relative;
-        padding: 0; height: 2.4em; width: 100%;
-        font-weight: bold; color: var(--tabTheme);
-        &::after {
-          content: ''; position: absolute; right: 12px; top: .8em;
-          width: 8px; height: 8px;rotate: 45deg;
-          border: 2px solid var(--tabTheme); border-left: none; border-top: none;
-        }
-      }
-
-      &.active{
-        button::after{ rotate: 225deg; top: 1.05em;}
-        &+.tray {display: block;}
-      }
-    }
-
-    .tray{
-      display: none;
-      min-height: 400px;padding: 12px 0;
-      border-top: 1px solid #ccc;
+    .dropMenu{
+      --bgc : var(--tabTheme);
+      --color: #fff;
   
-      .description{ margin: 0;}
-    }
+      flex: 1 0 calc(33.33% - 6px);
 
-    &:nth-child(1){
-      --tabBgc: #E8F9F7;
-      --tabTheme: #008281;  
-    }
-    &:nth-child(2){
-      --tabBgc: #EEF7FC;
-      --tabTheme: #005FA1;
-    }
-    &:nth-child(3){
-      --tabBgc: #FFF9EE;
-      --tabTheme: #F39A16;
+      // 北部、中部、南部
+      .groupLabel {display: none;}
+      button.triggler{
+        position: relative;
+        width: 100%; height: 2.8em; padding: 0 20px 0 12px; margin: 0;
+        border-radius: $radius;
+        background-color: var(--bgc); color: var(--color);
+        transition: .2s;
+        &::after {
+          content: ''; position: absolute; right: 12px; top: 1em;
+          width: 8px; height: 8px;rotate: 45deg;
+          border: 2px solid var(--color); border-left: none; border-top: none;
+          transition: .3s;
+        }
+        &.show {
+          --bgc : #fff;
+          --color: #000;
+          &::after {rotate: 225deg; top: 1.2em;}
+        }
+      }
+
+      ul.medList{
+        display: none;
+        position: absolute;width: 100%; top: auto; left: 0;
+        list-style: none; margin:4px 0 0; padding: 12px;
+        background-color: $white; 
+        border-radius: $radius1;
+        &>li{
+          margin: 2px 0;padding:3px 0; margin: 0;
+          border-bottom: 1px solid $borderColor;
+          &:last-child{border-bottom: none;}
+          &>button {text-align: left;width: 100%; padding: .6em 0;}
+        }
+      }
+
+      // 開啟的區域
+      &.show{
+        button.triggler {
+        }
+      }
+
+      
     }
   }
-
+  
   @media screen and (min-width: $wwNormal){
-    .contentGroup{
-      overflow: hidden;
-    }
-    .content{
-      background-color: transparent;
-      .head{
-        float: left; width: 30%;font-size: 1.5em; 
-        margin: 0;padding: 0;
-        button{
-          color: #666;
-          padding: 50px 32px; height: auto;
-          min-height: 200px;
-          &::after { 
-            // display: none;
-            border: none;rotate: 0deg;
-            top: auto;
-            left: 0;right: 0; bottom: 0;
-            width: 100%;
-            height: 1px; 
-            background-color: #ccc;
-          }
-        }
 
+    .contentGroup{overflow: hidden;position: relative;}
+    .content{
+      padding: 0; margin: 0;
+      background-color: transparent;
+      button.head{
+        position: absolute; left: 0; top: 0;
+        padding: 0 30px; height: 200px; width: 320px;
+        font-size: 1.5em; line-height: 1.6;
+        color: $fontColorLight;
+        &::after { 
+          border: none;rotate: 0deg;transition: none;
+          left: 0;right: 0; bottom: 0;top: auto;
+          width: 100%;height: 1px; 
+          background-color: $borderColor;
+        }
         &.active{
-          background-color: var(--tabBgc);
-          button::after{
+          background-color: var(--tabBgc);color: $fontColor;
+          &::after{
             top: auto;rotate: 0deg;height: 4px;
             background-color: var(--tabTheme); color: var(--tabTheme);
           }
-          &+.tray {display: flex; }
+          &+.tray { display: flex;justify-content: space-between; }
         }
+        &:focus-visible {box-shadow: var(--tabTheme) 0 0 0 3px inset;}
       }
+
       .tray{
-        outline: 1px solid #f008;
-        outline-offset: -1px;
-        position: relative; top: 0; 
-        padding: 0;
-        width: 68%;
-        justify-content: space-between;
-        float: right;
+        position: static;border: none; 
+        padding: 0;margin: 0 0 0 320px;width: calc(100% - 320px);
+        min-height: 600px;
         .description{display: none;}
       }
+      &:nth-child(2){button.head{ top: 200px;} }
+      &:nth-child(3){button.head{ top: 400px;} }
     }
 
-    // 北部、中部、南部
-    ul.dropMenuGroup{
-      display: block;flex: 0 0 50%;
-      padding: 8px;  margin: 0 5%;
-      &>li{
+    
+    .mapHere{
+      display: block; position: static;
+      flex: 1 1 50%; width: auto;
+      .infoCard {
+        display: none;
+        position: absolute; left: calc(320px + 5%);
+        width: 20em;
+        &+img{ width: 100%;}
+      }
+      img{ width: 100%;max-width:none}
+    }
 
+    // 模擬下拉選單
+    // 北部、中部、南部
+    .dropMenuGroup{
+      display: block; padding:0;  margin: 0 5%;
+      flex: 1 0 50%;
+      .dropMenu{
         margin-bottom: 16px;
-        background-color: $bgc1;
+        background-color: var(--tabBgc);
         border-radius:12px 12px $radius1 $radius1;
         .groupLabel{
           display: block;
           border-radius: $radius1 $radius1 0 0;
-          background-color: $primaryColor; color: $white;
+          background-color: var(--tabTheme); color: $white;
           font-size: 1.125em; line-height: 1; padding: 16px 18px 14px;
         }
-        &>button{ display: none;}
+        button.triggler{ display: none;}
 
         // 醫院、機構
-        &>ul{
+        ul.medList{
           position: static;
           display: block;margin: 0; padding:6px 8px;
           background-color: transparent;
@@ -272,51 +252,23 @@
             padding: 0;margin: 0;border: none; 
             &>button{
               background-color: transparent;
-              padding:.8em; margin:2px 0; border-radius:$radius;
+              padding:.6em .8em; margin:2px 0; border-radius:$radius;
               transition: .2s;
               &:hover, &:focus{
-                background-color: $primaryColor; color: $white;
-                box-shadow: rgb(0 0 0 / .4) 0 0 8px inset;
+                background-color: $white;
+                box-shadow: var(--tabTheme) 0 0 6px;
               }
             }
-
-            dl.infoCard{
-              width: 100%;
-              background-color: var(--tabTheme); color: #fff;
-              dt{ color: #ccc;}
-            }
-
-            &.active{
-              &>button{
-                display: none;
-              }
-              dl.infoCard{
-                display: block;
-              }
-              
-            }
+            // &.active{
+            //   &>button{ display: none; }
+            //   dl.infoCard{display: block;}
+            // }
           }
         }
       }
     }
-    .mapHere{
-      flex: 0 0 40%; 
-      outline: 1px solid #f008;
-      outline-offset: -1px;
-      img{ width: 100%;max-width:none}
-    }
+
   }
-
-
-
-
-
-  // .tabset{}
-
-  // .tabItems{
-  //   display: none;
-  // }
-
 
 
 

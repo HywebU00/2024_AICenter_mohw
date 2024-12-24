@@ -794,6 +794,96 @@ $(function(){
 
 
 
+  // .aiCenters [三大 AI 中心] 客製化程式
+  // --------------------------------------------------------------- //
+  var _aiCenters = $('.aiCenters').find('.contentGroup');
+  var _aiDrawer = _aiCenters.find('.drawer');
+  var _aiTray = _aiDrawer.find('.tray');
+  var _drawerTriggerBtn = _aiDrawer.find('button.head');
+  var drawerSpeed = 400;
+
+  _drawerTriggerBtn.filter('.active').next('.tray').show();
+
+  _drawerTriggerBtn.on('click', function(){
+    if (ww < wwNormal ) {
+      drawerSpeed = 400;
+    } else {
+      drawerSpeed = 0;
+    }
+
+    let _thisBtn = $(this);
+    let _thisTray = _thisBtn.next('.tray');
+    let _thisDrawer = _thisBtn.parent('.drawer');
+
+    if (_thisTray.is(':hidden')) {
+      _thisBtn.addClass('active');
+      _thisTray.slideDown(drawerSpeed);
+      _aiTray.not(_thisTray).slideUp(drawerSpeed);
+      _drawerTriggerBtn.not(_thisBtn).removeClass('active');
+    } else {
+      if (ww < wwNormal) {
+        _thisBtn.removeClass('active');
+        _thisTray.slideUp(drawerSpeed);
+      }
+    }
+  })
+
+
+  // 北中南下拉選單 // .dropMenuGroup
+  var _dropMenuGroup = $('.dropMenuGroup');
+  _dropMenuGroup.each(function(){
+    let _this = $(this);
+    let _dropMenu = _this.find('.dropMenu');
+    let _btnShowHide = _dropMenu.find('button.triggler');
+    let _medList = _dropMenu.find('.medList');
+
+    _btnShowHide.attr('aria-expanded', false);
+    _btnShowHide.on('click', function(){
+      let _thisBtn = $(this);
+      let _thisList = _thisBtn.next('.medList');
+
+      if ( _thisList.is(':hidden') ) {
+        _btnShowHide.removeClass('show').attr('aria-expanded', false);
+        _thisBtn.addClass('show').attr('aria-expanded', true);
+        _medList.not(_thisList).slideUp();
+        _thisList.slideDown();
+      } else {
+        _thisList.slideUp();
+        _thisBtn.removeClass('show').attr('aria-expanded', false);
+      }
+    })
+    _medList.find('button').on('click', function(){
+      if ( _btnShowHide.is(':visible')) {
+        $(this).parents('.medList').slideUp();
+        _btnShowHide.attr('aria-expanded', false).removeClass('show');
+      }
+    })
+  })
+
+  // --------------------------------------------------------------- //
+
+
+  // AI 中心相關資料卡 // .infoCard 
+  var _infoCard = $('.infoCard');
+  var _hideInfoCard = _infoCard.find('.closeThis');
+
+  // 隱藏資料卡
+  _hideInfoCard.on('click', function(){
+    $(this).parent().fadeOut(200);
+  })
+
+  // 顯示資料卡
+  var _showInfoCard = _dropMenuGroup.find('.medList>li>button');
+  _showInfoCard.on('click', function(){
+    let _this = $(this);
+    $('.infoCard').fadeIn(200);
+    if (ww >= wwNormal) {
+      $('.infoCard').css('top', _this.position().top );
+    }
+  })
+
+
+
 
 
 
@@ -820,13 +910,19 @@ $(function(){
         // 快速查詢
         // _search.removeClass('reveal').removeAttr('style');
         // _searchCtrl.removeClass('closeIt').removeAttr('aria-expanded');
-        
+ 
         // 重設 fixed header
         _siteHeader.removeClass('fixed');
         _body.removeAttr('style');
         hh = _siteHeader.innerHeight();
         fixHeadThreshold =  hh;
         _window.trigger('scroll');
+
+        // [三大 AI 中心] 
+        _drawerTriggerBtn.removeClass('active').eq(0).addClass('active');
+        _aiTray.removeAttr('style').eq(0).show();
+        _dropMenuGroup.find('.dropMenu').removeClass('show');
+        _dropMenuGroup.find('.medList').removeAttr('style');
       }
 
       // 由寬螢幕到小螢幕
@@ -842,6 +938,11 @@ $(function(){
         // 快速查詢
         // _search.hide().removeClass('reveal');
         // _searchCtrl.removeClass('closeIt').attr('aria-expanded', false);
+
+        // [三大 AI 中心] 
+        _drawerTriggerBtn.removeClass('active').eq(0).addClass('active');
+        _aiTray.removeAttr('style').eq(0).show();
+        
       }
       ww = wwNew;
     }, 200);

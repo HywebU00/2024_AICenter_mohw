@@ -99,93 +99,163 @@
     <section class="aiCenters">
       <h2 class="secHeader">三大 AI 中心</h2>
 
-      <section class="contentGroup">
+      <div class="contentGroup">
         <section class="content drawer">
-          <h3 class="head active"><button type="button">負責任 AI 執行中心</button></h3>
+          <button role="tab" class="head active" type="button">負責任 AI 執行中心</button>
           <div class="tray">
             <p class="description">訂定辦法，依循資料科學循環、定期評估，實現 AI Cycle。</p>
-            <ul class="dropMenuGroup" role="menu">
-              <li class="active">
+            <section class="dropMenuGroup">
+              <div class="dropMenu" class="show">
                 <div class="groupLabel">北部</div>
-                <button type="button">北部</button>
-                <ul>
-                  <li>
-                    <button type="button">臺北榮民總醫院</button>
-                    <!-- <section class="infoCard">
-                      <button class="closeThis" aria-label="關閉"></button>
-                      <dl>
-                        <div>
-                          <dt>負責任 AI 執行中心</dt>
-                          <dd><a href="https://www.vghtpe.gov.tw/Index.action" target="_blank">臺北榮民總醫院</a></dd>
-                        </div>
-                        <div>
-                          <dt>聯絡資訊</dt>
-                          <dd aria-label="姓名">王曉明</dd>
-                          <dd aria-label="電話">0900123456</dd>
-                          <dd aria-label="電子郵件">abcdefghr@itri.org.tw</dd>
-                        </div>
-                      </dl>
-                    </section> -->
-                  </li>
+                <button class="triggler" type="button">北部</button>
+                <ul class="medList" role="menu">
+                  <li><button type="button">臺北榮民總醫院</button></li>
                   <li><button type="button">新北市立土城醫院(委託長庚醫療財團法人興建經營)</button></li>
                   <li><button type="button">新北仁康醫院</button></li>
                   <li><button type="button">長庚醫療財團法人林口長庚紀念醫院</button></li>
                   <li><button type="button">聯新國際醫院</button></li>
                 </ul>
-              </li>
-              <li>
+              </div>
+              <div class="dropMenu">
                 <div class="groupLabel">中部</div>
-                <button type="button">中部</button>
-                <ul>
+                <button class="triggler" type="button">中部</button>
+                <ul class="medList" role="menu">
                   <li><button type="button">中國醫藥大學附設醫院</button></li>
                   <li><button type="button">彰化基督教醫療財團法人彰化基督教醫院</button></li>
                 </ul>
-              </li>
-              <li>
+              </div>
+              <div class="dropMenu">
                 <div class="groupLabel">南部</div>
-                <button type="button">南部</button>
-                <ul>
+                <button class="triggler" type="button">南部</button>
+                <ul class="medList" role="menu">
                   <li><button type="button">長庚醫療財團法人嘉義長庚紀念醫院</button></li>
                   <li><button type="button">奇美醫療財團法人奇美醫院</button></li>
                   <li><button type="button">財團法人私立高雄醫學大學附設中和紀念醫院</button></li>
                 </ul>
-              </li>
-
-            </ul>
+              </div>
+            </section>
             <div class="mapHere">
+              <section class="infoCard">
+                <button class="closeThis" aria-label="關閉"></button>
+                <dl>
+                  <div>
+                    <dt>負責任 AI 執行中心</dt>
+                    <dd><a href="https://www.vghtpe.gov.tw/Index.action" target="_blank">臺北榮民總醫院</a></dd>
+                  </div>
+                  <div>
+                    <dt>聯絡資訊</dt>
+                    <dd aria-label="姓名">王曉明</dd>
+                    <dd aria-label="電話">0900123456</dd>
+                    <dd aria-label="電子郵件">abcdefghr@itri.org.tw</dd>
+                  </div>
+                </dl>
+              </section>
               <img src="publicData/mapTW_1.svg" alt="">
             </div>
           </div>
         </section>
         <section class="content drawer">
-          <h3 class="head"><button type="button">臨床 AI 取證驗證中心</button></h3>
+          <button role="tab" class="head" type="button">臨床 AI 取證驗證中心</button>
           <div class="tray">
             <p class="description">以 FHIR 串接跨院資料，同時建立聯邦學習平台，建立互通機制，加速發展 AI 工具。</p>
-            <ul class="dropMenuGroup" role="menu">
-              <li><button type="button">北部</button></li>
-              <li><button type="button">中部</button></li>
-              <li><button type="button">南部</button></li>
-            </ul>
+            <section class="dropMenuGroup">
+              <div class="dropMenu">
+                <div class="groupLabel">北部</div>
+                <button class="triggler" type="button">北部</button>
+                <ul class="medList" role="menu">
+                  <li><button type="button">北部臨床 AI 取證驗證中心</button></li>
+                  <li><button type="button">北部臨床 AI 取證驗證中心</button></li>
+                  <li><button type="button">北部臨床 AI 取證驗證中心</button></li>
+                </ul>
+              </div>
+              <div class="dropMenu">
+                <div class="groupLabel">中部</div>
+                <button class="triggler" type="button">中部</button>
+                <ul class="medList" role="menu">
+                  <li><button type="button">中部臨床 AI 取證驗證中心</button></li>
+                  <li><button type="button">中部臨床 AI 取證驗證中心</button></li>
+                </ul>
+              </div>
+              <div class="dropMenu">
+                <div class="groupLabel">南部</div>
+                <button class="triggler" type="button">南部</button>
+                <ul class="medList" role="menu">
+                  <li><button type="button">南部臨床 AI 取證驗證中心</button></li>
+                  <li><button type="button">南部臨床 AI 取證驗證中心</button></li>
+                </ul>
+              </div>
+            </section>
             <div class="mapHere">
+              <section class="infoCard">
+                <button class="closeThis" aria-label="關閉"></button>
+                <dl>
+                  <div>
+                    <dt>臨床 AI 取證驗證中心</dt>
+                    <dd><a href="https://www.vghtpe.gov.tw/Index.action" target="_blank">臨床 AI 取證驗證中心Ｘ</a></dd>
+                  </div>
+                  <div>
+                    <dt>聯絡資訊</dt>
+                    <dd aria-label="姓名">王曉明</dd>
+                    <dd aria-label="電話">0919456789</dd>
+                    <dd aria-label="電子郵件">poiuyt@itri.org.tw</dd>
+                  </div>
+                </dl>
+              </section>
               <img src="publicData/mapTW_2.svg" alt="">
             </div>
           </div>
         </section>
         <section class="content drawer">
-          <h3 class="head"><button type="button">AI 影響性研究中心</button></h3>
+          <button role="tab" class="head" type="button">AI 影響性研究中心</button>
           <div class="tray">
             <p class="description">跨院臨床效益與成本數據搜集，進行醫療經濟估算與保險定價，加速健保給付落地。</p>
-            <ul class="dropMenuGroup" role="menu">
-              <li><button type="button">北部</button></li>
-              <li><button type="button">中部</button></li>
-              <li><button type="button">南部</button></li>
-            </ul>
+            <section class="dropMenuGroup">
+              <div class="dropMenu">
+                <div class="groupLabel">北部</div>
+                <button class="triggler" type="button">北部</button>
+                <ul class="medList" role="menu">
+                  <li><button type="button">北部 AI 影響性研究中心</button></li>
+                  <li><button type="button">北部 AI 影響性研究中心</button></li>
+                </ul>
+              </div>
+              <div class="dropMenu">
+                <div class="groupLabel">中部</div>
+                <button class="triggler" type="button">中部</button>
+                <ul class="medList" role="menu">
+                  <li><button type="button">中部 AI 影響性研究中心</button></li>
+                  <li><button type="button">中部 AI 影響性研究中心</button></li>
+                </ul>
+              </div>
+              <div class="dropMenu">
+                <div class="groupLabel">南部</div>
+                <button class="triggler" type="button">南部</button>
+                <ul class="medList" role="menu">
+                  <li><button type="button">南部 AI 影響性研究中心</button></li>
+                  <li><button type="button">南部 AI 影響性研究中心</button></li>
+                </ul>
+              </div>
+            </section>
             <div class="mapHere">
+              <section class="infoCard">
+                <button class="closeThis" aria-label="關閉"></button>
+                <dl>
+                  <div>
+                    <dt>AI 影響性研究中心</dt>
+                    <dd><a href="https://www.vghtpe.gov.tw/Index.action" target="_blank">AI 影響性研究中心Ｘ</a></dd>
+                  </div>
+                  <div>
+                    <dt>聯絡資訊</dt>
+                    <dd aria-label="姓名">王曉明</dd>
+                    <dd aria-label="電話">0939789123</dd>
+                    <dd aria-label="電子郵件">zxcvbn@itri.org.tw</dd>
+                  </div>
+                </dl>
+              </section>
               <img src="publicData/mapTW_3.svg" alt="">
             </div>
           </div>
         </section>
-      </section>
+      </div>
     </section>
 
     <!-- 文件下載 -->
