@@ -221,6 +221,13 @@ button.closeThis{
 }
 // ---------------------------------------------------------------------- //
 
+// 圖釘
+.mapPin {
+  display: inline-block; width: 21px; height: 30px;
+  background: url(../images/icon_pin.svg) no-repeat center bottom;
+  background-size: 100% auto;
+}
+
 
 
 // 檔案類型圖示 //

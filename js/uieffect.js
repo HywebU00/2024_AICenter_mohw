@@ -803,7 +803,7 @@ $(function(){
 
   _drawerTriggerBtn.filter('.active').next('.tray').show();
 
-  // 頁籤切換
+  // 行動版 slideDown/slideUp 效果，寬版類似頁籤切換
   _drawerTriggerBtn.on('click', function(){
     if (ww < wwNormal ) {
       drawerSpeed = 400;
@@ -813,13 +813,12 @@ $(function(){
 
     let _thisBtn = $(this);
     let _thisTray = _thisBtn.next('.tray');
-    let _thisDrawer = _thisBtn.parent('.content');
 
     if (_thisTray.is(':hidden')) {
       _thisBtn.addClass('active');
       _thisTray.slideDown(drawerSpeed);
       _aiTray.not(_thisTray).slideUp(drawerSpeed, function(){
-        $(this).find('.infoCard').removeAttr('style');
+        _thisTray.find('.infoCard').find('.closeThis').trigger('click').end().removeAttr('style');
       });
       _drawerTriggerBtn.not(_thisBtn).removeClass('active');
     } else {
@@ -827,7 +826,6 @@ $(function(){
         _thisBtn.removeClass('active');
         _thisTray.find('.triggler.show').trigger('click');
         _thisTray.slideUp(drawerSpeed).find('.infoCard').filter(':visible').find('.closeThis').trigger('click');
-
       }
     }
   })
@@ -872,11 +870,13 @@ $(function(){
     let _thisAIContent = $(this);
     let _infoCard = _thisAIContent.find('.infoCard');
     let _hideInfoCard = _infoCard.find('.closeThis');
+    let _pin = _thisAIContent.find('.mapPin');
   
     // 隱藏資料卡
     _hideInfoCard.on('click', function(){
       _infoCard.fadeOut(200, function(){
         _infoCard.removeAttr('style');
+        _pin.hide()
       });
     })
   
@@ -886,6 +886,7 @@ $(function(){
       let _thisBtn = $(this);
       _infoCard.fadeIn(200);
       _hideInfoCard.trigger('focus');
+      _pin.show();
       if (ww >= wwNormal) {
         _infoCard.css('top', _thisBtn.position().top );
       }
