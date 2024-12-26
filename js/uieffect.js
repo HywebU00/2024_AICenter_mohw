@@ -740,29 +740,6 @@ $(function(){
 
 
 
-	// 頁籤
-  // --------------------------------------------------------------- //
-  var _tabset = $('.tabset');
-  _tabset.each(function(){
-    let _this = $(this);
-    let _tabButton = _this.find('.tabButtons').find('button');
-    let _tabContent = _this.find('.tabContent');
-    let i = _tabButton.filter('.active').index();
-
-    _tabContent.hide().eq(i).show();
-    console.log(i);
-    _tabButton.on( 'click',  function(){
-      $(this).addClass('active').siblings().removeClass('active');
-      i = $(this).index();
-      _tabContent.hide().eq(i).show();
-    })
-  })
-  // --------------------------------------------------------------- //
-
-  
-
-
-
   // 問答列表 展開／收合
   // --------------------------------------------------------------- //
   var _qaItem = $('.qa').children('ul').children('li');
@@ -797,11 +774,11 @@ $(function(){
   // .aiCenters [三大 AI 中心] 客製化程式
   // --------------------------------------------------------------- //
   var _aiContent = $('.aiCenters').find('.contentGroup').find('.content');
-  var _aiTray = _aiContent.find('.tray');
-  var _drawerTriggerBtn = _aiContent.find('button.head');
+  var _aiTray = _aiContent.find('.tabContent');
+  var _drawerTriggerBtn = _aiContent.find('.tabButton');
   var drawerSpeed = 400;
 
-  _drawerTriggerBtn.filter('.active').next('.tray').show();
+  _drawerTriggerBtn.filter('.active').next('.tabContent').show();
 
   // 行動版 slideDown/slideUp 效果，寬版類似頁籤切換
   _drawerTriggerBtn.on('click', function(){
@@ -812,7 +789,7 @@ $(function(){
     }
 
     let _thisBtn = $(this);
-    let _thisTray = _thisBtn.next('.tray');
+    let _thisTray = _thisBtn.next('.tabContent');
 
     if (_thisTray.is(':hidden')) {
       _thisBtn.addClass('active');
@@ -870,13 +847,11 @@ $(function(){
     let _thisAIContent = $(this);
     let _infoCard = _thisAIContent.find('.infoCard');
     let _hideInfoCard = _infoCard.find('.closeThis');
-    let _pin = _thisAIContent.find('.mapPin');
   
     // 隱藏資料卡
     _hideInfoCard.on('click', function(){
       _infoCard.fadeOut(200, function(){
         _infoCard.removeAttr('style');
-        _pin.hide()
       });
     })
   
@@ -886,7 +861,6 @@ $(function(){
       let _thisBtn = $(this);
       _infoCard.fadeIn(200);
       _hideInfoCard.trigger('focus');
-      _pin.show();
       if (ww >= wwNormal) {
         _infoCard.css('top', _thisBtn.position().top );
       }

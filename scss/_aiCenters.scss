@@ -19,8 +19,8 @@
     &:nth-child(2){--tabBgc: #EEF7FC;--tabTheme: #005FA1;}
     &:nth-child(3){--tabBgc: #FFF9EE;--tabTheme: #F39A16;}
 
-    // 按鈕、頁籤項目
-    button.head{
+    // 頁籤按鈕
+    .tabButton{
       position: relative; font-size: 1em;
       margin: 0;padding: 0 40px 0 0; height: 2.4em; line-height: 2.4; width: 100%;
       font-weight: bold; color: var(--tabTheme);
@@ -37,7 +37,7 @@
       .description{display: none;}
     }
 
-    .tray{
+    .tabContent{
       display: none;
       padding: 12px 0; border-top: 1px solid $borderColor;
       .description{ margin: 0;}
@@ -67,6 +67,23 @@
       &>div{
         &:first-child{
           dt:first-child{margin-top: 0; margin-right: 32px;}
+          dd a{
+            display: block;position: relative;
+            padding-right: 32px; padding-top: 2px; font-size: 1.125em;
+            text-decoration: none;font-weight: bold;
+            border-bottom: 1px solid $borderColor;
+            &:hover{ border-bottom-color: $primaryColor;}
+            &:focus-visible { outline: $primaryColor 2px solid; border-bottom-color: transparent;}
+            &::after{
+              content: '';
+              position: absolute; right: 0; bottom: 3px;
+              width: 18px; height: 18px;
+              background: url(../images/icon_linkout.svg) no-repeat 0 0;
+              background-size: 100%;
+              filter: brightness(.5) ;
+
+            }
+          }
         }
         &+div{margin-top: 1.2em;}
       }
@@ -74,44 +91,24 @@
       dt{ font-size: .88em;margin-top: 1.5em;color: $fontColorLight;}
       dd{
         word-break: break-all;
-        &>a[target="_blank"]{
-          display: block;position: relative;
-          padding-right: 32px; font-size: 1.125em;
-          text-decoration: none;font-weight: bold;
-          border-bottom: 1px solid $borderColor;
-          &:hover{ border-bottom-color: $primaryColor;}
-          &:focus-visible { outline: $primaryColor 2px solid; border-bottom-color: transparent;}
-          &::after{
-            content: '';
-            position: absolute; right: 0; top: 0;
-            width: 20px; height: 20px;
-            background: url(../images/icon_linkout.png) no-repeat left bottom;
-            background-size: 16px;
-          }
-          
-        }
       }
     }
   }
 
   // 地圖
   .mapHere{
-    display: flex; align-items: flex-start;
+    display: flex; align-items: flex-start; justify-content: center;
     padding: 24px 0 0;
-    .infoCard {
-      display: none; 
-      margin-right: 8px;
-      flex: 0 0 12em;
-      &+.map{ width: calc(100% - 12em - 8px);}
-    }
     .map{
       position: relative;
-      flex: 1 1 auto; width: auto;margin: 0 auto; max-width: 200px;
+      flex: 1 1 auto; width: auto;margin: 0 auto;max-width: 200px;
       img{display: block; width: 100%;}
-      .mapPin{
-        display: none; position: absolute;
-        translate: -50% -100%;
-      }
+    }
+    .infoCard {
+      display: none;
+      margin-left: auto; margin-right: 8px;
+      flex: 1 0 55%; max-width: 300px;
+      &[style="display:block"]+.map{ margin-right: 0;}
     }
   }
 
@@ -172,7 +169,7 @@
     .content{
       padding: 0; margin: 0;
       background-color: transparent;
-      button.head{
+      .tabButton{
         position: absolute; left: 0; top: 0;
         padding: 0 30px; height: 220px; width: 30%;
         font-size: 1.5em; line-height: 1.6;
@@ -189,7 +186,7 @@
             top: auto;rotate: 0deg;height: 4px;
             background-color: var(--tabTheme); color: var(--tabTheme);
           }
-          &+.tray { display: flex;justify-content: space-between; }
+          &+.tabContent { display: flex;justify-content: space-between; }
         }
         &:focus-visible {box-shadow: var(--tabTheme) 0 0 0 3px inset;}
 
@@ -198,16 +195,27 @@
           font-weight: normal; font-size: .65em;
         }
       }
+
       .infoCard {
-        background-color:var(--tabTheme); color: #fff;
-        a{color: #fff;}
+        background-color:var(--tabTheme); color: $fontInvert;
+        a{color: $fontInvert;}
         .closeThis{
           &::before, &::after { background-color: $white;}
           &:hover, &:focus{background-color: rgb(0 0 0 / .4);}
           &:focus-visible {box-shadow: $gray200 0 0 0 2px;}
         }
-        &>dl dd{
-          &>a[target="_blank"]{ border-bottom-color: #fff;}
+        &>dl{
+          &>div:first-child{
+            dd a{
+              border-bottom-color: #fff;
+              &:hover{ outline: #fff 1px solid;}
+              &:focus { outline: #fff 2px solid; border-bottom-color: transparent;}
+              &::after{
+                width: 22px; height: 22px;
+                filter: brightness(10) ;
+              }
+            }
+          }
         }
       }
       &:nth-child(1){
@@ -225,30 +233,24 @@
           dt{ color: #f2e6d0;}
         }
       }
-  
-  
-
-      .tray{
+      .tabContent{
         position: static;border: none; 
         padding: 0;margin: 0 0 0 30%;width: 70%;
         min-height: 660px;
         .description{display: none;}
       }
-      &:nth-child(2){button.head{ top: 220px;} }
-      &:nth-child(3){button.head{ top: 440px;} }
+      &:nth-child(2){.tabButton{ top: 220px;} }
+      &:nth-child(3){.tabButton{ top: 440px;} }
     }
 
     .mapHere{
       display: block; position: static;
       flex: 1 1 50%; width: auto;
+      .map{width: 100%;max-width:none; margin: 0;}
       .infoCard {
         display: none; z-index: 9;
-        position: absolute; left: 35%;width: 20em;
+        position: absolute; left: 34%;width: 34%; max-width: none;
         box-shadow: rgb(0 0 0 / .4) 0 0 24px;
-        &+.map{ width: 100%;}
-      }
-      .map{width: 100%;max-width:none;
-        .mapPin{width: 27px; height: 40px;}
       }
     }
 
@@ -258,13 +260,16 @@
       flex: 1 0 50%;
       .dropMenu{
         margin-bottom: 16px;
-        background-color: var(--tabBgc);
+        // background-color: var(--tabBgc);
         border-radius:12px 12px $radius1 $radius1;
         .groupLabel{
           display: block;
-          border-radius: $radius1 $radius1 0 0;
-          background-color: var(--tabTheme); color: $white;
-          font-size: 1.125em; line-height: 1; padding: 16px 18px 14px;
+          margin: 0 0 0 1.5em;
+          // border-radius: $radius1 $radius1 0 0;
+          // background-color: var(--tabTheme); color: $white;
+          color: var(--tabTheme);
+          font-size: 1em; font-weight: bold; line-height: 1; 
+          // padding: 16px 18px 14px;
         }
         button.triggler{ display: none;}
 
@@ -274,13 +279,17 @@
           display: block;margin: 0; padding:6px 8px;
           background-color: transparent;
           &>li{
-            padding: 0;margin: 0;border: none; 
+            padding: 0;margin:6px 0;border: none; 
             &>button{
-              background-color: transparent;
-              padding:.6em .9em; margin:2px 0; border-radius:2em;
+              // background-color: transparent;
+              background-color: var(--tabBgc);
+              padding:.65em 1em; margin:0; border-radius:$radius1;
+              font-size: 1.125em;
               transition: .2s;
-              &:hover, &:focus{background-color: $white;}
-              &:focus{box-shadow: var(--tabTheme) 0 0 0 2px;}
+              &:hover, &:focus{box-shadow: var(--tabTheme) 0 0 0 2px inset;}
+              &:focus{
+                background-color: var(--tabTheme); color: $fontInvert;
+              }
             }
           }
         }
@@ -288,7 +297,5 @@
     }
 
   }
-
-
 
 }
