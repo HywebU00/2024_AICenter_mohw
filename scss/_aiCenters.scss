@@ -15,9 +15,9 @@
     padding: 16px 12px; margin: 0 0 10px;
     border-radius: 8px;
     background-color: var(--tabBgc);
-    &:nth-child(1){--tabBgc: #E8F9F7;--tabTheme: #008281;}
+    &:nth-child(1){--tabBgc: #E8F9F7;--tabTheme: #007c7b;}
     &:nth-child(2){--tabBgc: #EEF7FC;--tabTheme: #005FA1;}
-    &:nth-child(3){--tabBgc: #FFF9EE;--tabTheme: #F39A16;}
+    &:nth-child(3){--tabBgc: #FFF9EE;--tabTheme: #A3581A;}
 
     // 頁籤按鈕
     .tabButton{
@@ -53,13 +53,13 @@
     background-color: $white; color: var(--tabTheme);
     box-shadow: rgb(0 0 0 / .3) 0 0 8px;
     .closeThis{
-      position: absolute; right: -4px;top: -4px;
-      border-radius: 50%; scale: .64;
+      position: absolute; right: -2px;top: -2px;
+      border-radius: 50%; scale: .7;
       box-shadow: none;
       transition: .2s;
-      &::before, &::after { background-color: $gray700;transition: .2s;}
-      &:hover, &:focus{background-color: $gray100;}
-      &:focus-visible {box-shadow: $gray700 0 0 0 2px;}
+      &::before, &::after { background-color: $gray700; transition: .2s;}
+      &:hover, &:focus{ background-color: $gray100;}
+      &:focus-visible { box-shadow: $gray700 0 0 0 2px;}
     }
     &>dl{
       margin: 0;padding: 0;
@@ -71,9 +71,9 @@
             display: block;position: relative;
             padding-right: 32px; padding-top: 2px; font-size: 1.125em;
             text-decoration: none;font-weight: bold;
-            border-bottom: 1px solid $borderColor;
-            &:hover{ border-bottom-color: $primaryColor;}
-            &:focus-visible { outline: $primaryColor 2px solid; border-bottom-color: transparent;}
+            border-bottom: 1px dashed var(--tabTheme);
+            &:hover{ border-bottom-style: solid;}
+            &:focus-visible { outline: var(--tabTheme) 2px solid; border-bottom-color: transparent;}
             &::after{
               content: '';
               position: absolute; right: 0; bottom: 3px;
@@ -89,9 +89,7 @@
       }
       dt, dd {margin:.5em 0 0; display: block;}
       dt{ font-size: .88em;margin-top: 1.5em;color: $fontColorLight;}
-      dd{
-        word-break: break-all;
-      }
+      dd{word-break: break-all;}
     }
   }
 
@@ -200,16 +198,16 @@
         background-color:var(--tabTheme); color: $fontInvert;
         a{color: $fontInvert;}
         .closeThis{
-          &::before, &::after { background-color: $white;}
-          &:hover, &:focus{background-color: rgb(0 0 0 / .4);}
-          &:focus-visible {box-shadow: $gray200 0 0 0 2px;}
+          &::before, &::after { background-color:#fff;}
+          &:hover, &:focus{background-color: rgb(0 0 0 / .3);}
+          &:focus-visible {box-shadow:#fff 0 0 0 3px;}
         }
         &>dl{
           &>div:first-child{
             dd a{
-              border-bottom-color: #fff;
-              &:hover{ outline: #fff 1px solid;}
-              &:focus { outline: #fff 2px solid; border-bottom-color: transparent;}
+              border-bottom-color: rgb(255 255 255 / .6);
+              &:hover{ border-bottom-color:#fff;}
+              &:focus { outline:#fff 2px solid; border-bottom-color: transparent;}
               &::after{
                 width: 22px; height: 22px;
                 filter: brightness(10) ;
@@ -260,16 +258,12 @@
       flex: 1 0 50%;
       .dropMenu{
         margin-bottom: 16px;
-        // background-color: var(--tabBgc);
         border-radius:12px 12px $radius1 $radius1;
         .groupLabel{
           display: block;
           margin: 0 0 0 1.5em;
-          // border-radius: $radius1 $radius1 0 0;
-          // background-color: var(--tabTheme); color: $white;
           color: var(--tabTheme);
           font-size: 1em; font-weight: bold; line-height: 1; 
-          // padding: 16px 18px 14px;
         }
         button.triggler{ display: none;}
 
@@ -281,15 +275,12 @@
           &>li{
             padding: 0;margin:6px 0;border: none; 
             &>button{
-              // background-color: transparent;
               background-color: var(--tabBgc);
               padding:.65em 1em; margin:0; border-radius:$radius1;
               font-size: 1.125em;
               transition: .2s;
               &:hover, &:focus{box-shadow: var(--tabTheme) 0 0 0 2px inset;}
-              &:focus{
-                background-color: var(--tabTheme); color: $fontInvert;
-              }
+              &:focus{background-color: var(--tabTheme); color: $fontInvert;}
             }
           }
         }

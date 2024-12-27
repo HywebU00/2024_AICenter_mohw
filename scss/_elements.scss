@@ -130,22 +130,25 @@ kbd {
   border: none; padding: 0;
   width: 48px; height: 48px; border-radius: 50%;
   outline: none;
-  background-color: $primaryColor;
+  background-color: rgb(0 0 0 / .5);
   translate: 0 150%;
-  transition:box-shadow .2s, translate 1s;
+  transition:all .2s, translate 1s;
   &.show{translate: 0 0;}
-  &::before , &::after {
+  &::before {
     content: ''; position: absolute; 
-    left: calc(50% - 6px); 
-    width: 0; height: 0;
-    border-style: solid; border-width: 0 6px 6px 6px;
-    border-color: transparent transparent #fff transparent ;
+    left: calc(50% - 7px); 
+    width: 14px; height: 14px;
+    border-style: solid; border-width: 3px; border-color: #fff;
+    border-right: none; border-bottom: none;
+    rotate: 45deg;
   }
-  &::before{top: calc(50% - 8px);}
-  &::after{top: 50%;}
-  &:hover {box-shadow:#fff 0 0 0 0, $primaryColor 0 0 0 3px;}
-  &:focus {box-shadow:#fff 0 0 0 1px, $primaryColor 0 0 0 4px;}
+  &::before{top: calc(50% - 4px);}
+  &:hover {box-shadow:#fff 0 0 0 0, #000 0 0 0 3px; background-color: #000;}
+  &:focus {box-shadow:#fff 0 0 0 1px, #000 0 0 0 4px;}
 
+  @media screen and (min-width: $wwNormal){
+    width: 56px; height: 56px;
+  }
   @media screen and (min-width: $wwMaximum){
     right: calc( 50vw - $wwMaximum*.5 + 12px);
   }
