@@ -35,17 +35,7 @@
   
   h4{
     font-size: 1.6em; 
-    // &::before{
-    //   content: ''; position: absolute; left: 0; top: .45em;
-    //   width: 30px; 
-    //   height: 1em;
-    //   background: url(../images/twoDisks.svg) no-repeat 0 0;
-    //   background-size: contain;
-    // }
-
-    &+.tbStyle1, &+.tbStyle2{
-      margin-top: 0;
-    }
+    &+.tbStyle1, &+.tbStyle2{margin-top: 0;}
   }
 
   // 主圖

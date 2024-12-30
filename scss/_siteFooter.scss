@@ -56,9 +56,11 @@
             transition: .15s;
           }
           &:hover, &:focus {
-            &::after {background: $fontColor;}
+            &::after {background: $fontColor; bottom: 2px;}
           }
-          &:focus-visible { box-shadow: $fontColor 0 0 0 2px;}
+          &:focus-visible { box-shadow: $fontColor 0 0 0 2px;
+            &::after{display: none;}
+          }
         }
 
 
@@ -176,6 +178,7 @@
     .imageLinks { margin-right: $marginDocMax;}
     .badge { margin-right: $marginDocMax;}
     .siteTree { width: $maximumWidth;}
-    .visiters { width: $maximumWidth;}
+    .badge { margin-left: calc($marginDocMax + 55px);}
+    .visiters { margin-right: calc($marginDocMax + 55px);}
   }
 }
