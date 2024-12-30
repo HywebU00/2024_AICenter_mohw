@@ -7,16 +7,15 @@
   a{ text-decoration: none; outline: none;}
 
   .footLogo{
-    display: block; 
-    width: calc(100% - 170px - $marginDocMob*2); max-width: 240px; 
-    margin: 0 auto 30px $marginDocMob;
+    float: left; max-width: 240px; 
+    margin: 0 auto 5px $marginDocMob;
   }
 
   .imageLinks{
-    position: absolute; right: $marginDocMob; top: 45px;
+    float: right; margin:0 $marginDocMob 10px 30px;
     display: flex; justify-content: center;
     &>li{
-       flex: 0 0 auto; margin: 5px;
+       flex: 0 0 auto; margin:0 5px;
       &>a{
         display: block;border-radius: $radius1; overflow: hidden;
         width: 44px; height: 44px; 
@@ -38,8 +37,8 @@
   }
 
   .siteTree{
-    margin: 0 auto 50px; width: $mobileWidth;
-    padding-top: 10px;
+    clear: both; padding-top: 50px;
+    width: $mobileWidth;margin: 0 auto 50px;
     &>ul{
       display: flex; flex-wrap: wrap; gap: 18px;
       line-height: 1.6;font-size: 1em;
@@ -148,12 +147,10 @@
   @media screen and (min-width: $wwNormal){
 
     .footLogo{ margin-left: $marginDoc; }
-    .imageLinks{ right: $marginDoc;}
+    .imageLinks{ margin-right: $marginDoc;}
 
     .siteTree{
-      padding-top: 16px; width: $normalWidth;
-      // margin-left: $marginDoc; margin-right: $marginDoc; 
-      margin-bottom: 60px;
+      width: $normalWidth;margin-bottom: 60px;
       &>ul{ 
         gap: 20px;
         &>li{
@@ -176,7 +173,7 @@
 
   @media screen and (min-width: $wwMaximum){
     .footLogo { margin-left: $marginDocMax;}
-    .imageLinks { right: $marginDocMax;}
+    .imageLinks { margin-right: $marginDocMax;}
     .badge { margin-right: $marginDocMax;}
     .siteTree { width: $maximumWidth;}
     .visiters { width: $maximumWidth;}
