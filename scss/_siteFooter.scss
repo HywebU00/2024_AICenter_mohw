@@ -52,12 +52,12 @@
           transition: .3s;
           &::after {
             content: ''; position: absolute; left: 0; bottom: 0;
-            width: 100%; height: 0;
-            background: $fontColor;
+            width: 100%; height: 2px;
+            background: transparent;
             transition: .15s;
           }
           &:hover, &:focus {
-            &::after { height: 2px;}
+            &::after {background: $fontColor;}
           }
           &:focus-visible { box-shadow: $fontColor 0 0 0 2px;}
         }
@@ -151,8 +151,9 @@
     .imageLinks{ right: $marginDoc;}
 
     .siteTree{
-      padding-top: 16px;
-      margin-left: $marginDoc; margin-right: auto; margin-bottom: 60px;
+      padding-top: 16px; width: $normalWidth;
+      // margin-left: $marginDoc; margin-right: $marginDoc; 
+      margin-bottom: 60px;
       &>ul{ 
         gap: 20px;
         &>li{
@@ -177,7 +178,7 @@
     .footLogo { margin-left: $marginDocMax;}
     .imageLinks { right: $marginDocMax;}
     .badge { margin-right: $marginDocMax;}
-    .siteTree { margin-left: $marginDocMax;}
+    .siteTree { width: $maximumWidth;}
     .visiters { width: $maximumWidth;}
   }
 }
