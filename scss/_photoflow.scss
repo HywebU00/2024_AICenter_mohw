@@ -1,8 +1,9 @@
 // 自製左右 flow ( .flowBox ) 的箭頭和點點
 // --------------------------------------------------------------- //
 
-// 左右箭頭 button
-button.arrowBtn {
+// 左右箭頭 <button>
+// ---------------------------------------------------------------- //
+.arrowBtn {
   --diameter: 56px; // 直徑、長寬等值
   --color: #fff;
   --btnBg: rgb(0 0 0 / .3);
@@ -48,6 +49,7 @@ button.arrowBtn {
 
 
 // 點點、數字
+// ---------------------------------------------------------------- //
 .flowNav{
   margin: 20px auto 5px; z-index: 19;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -84,8 +86,6 @@ button.arrowBtn {
 
 
 
-
-
 // --------------------------------------------------------------- //
 // --------------------------------------------------------------- //
 // --------------------------------------------------------------- //
@@ -107,9 +107,7 @@ button.arrowBtn {
     padding-bottom: 20px; margin-top: 20px;
 
     // 此元件由 js 產生
-    .flowShow{
-      position: relative; width:100%; overflow: hidden;
-    }
+    .flowShow{position: relative; width:100%; overflow: hidden;}
   }
 
   .flowList{
@@ -157,7 +155,8 @@ button.arrowBtn {
   }
 
   @media screen and (min-width: $wwSlim){
-    .flowList{ // 顯示兩張
+    .flowList{ 
+      // 顯示兩張
       &>li{
         flex-basis: calc( $mobileWidthVW/2 - 5px );
         height: calc( $mobileWidthVW/2 - 5px );

@@ -10,9 +10,9 @@
     li {
       float: left; margin: 4px;
       a {
-        display: block;
-        text-decoration: none; color: $fontColor; padding: .5em .8em;
-        border-radius: 2em;
+        display: block; text-decoration: none; 
+        border-radius: 2em; padding: .5em .8em;
+        color: $fontColor; 
         box-shadow: $borderColor 0 0 0 1px;
         transition: .15s;
         &:hover,  &:focus{

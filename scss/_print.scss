@@ -4,6 +4,7 @@
   .siteHeader, .siteHeader.fixed, .sidebar, .siteFooter, 
   .funcBar, .goTop, .goTop.show,
   .sidebarMask { display: none; }
+  .pagination {display: none;}
 
   // .mainRow{ max-width: none;}
 
@@ -28,6 +29,7 @@
       }
     }
   }
+  
   .pageHeader{
     border-bottom: 4px solid $borderColor;
     padding: 15px 0 5px; margin: 0 auto 10px !important;
@@ -137,6 +139,7 @@
   .photoflow, .fileDownload, .seeAlso{
     h3{border-bottom-color: $borderColorDark;}
   }
+
 
 
   // --------------------------------------------------------------- //

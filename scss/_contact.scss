@@ -1,5 +1,6 @@
 // .main>section:not(.contact){display: none}
-// 聯絡我們
+// 首頁：聯絡我們
+// ------------------------------------------------------------ //
 .contact{
   @extend %primSecWidth;
 
@@ -24,11 +25,8 @@
 
   @media screen and (min-width: $wwMedium){
     &>ul{
-      display: flex;gap: 24px;
-      max-width: none;
-      &>li{
-        flex:1 0 calc(33.33% - 16px);
-      }
+      display: flex;gap: 24px;max-width: none;
+      &>li{flex:1 0 calc(33.33% - 16px);}
     }
   }
   
@@ -37,22 +35,16 @@
       display: flex;gap: 48px;
       &>li{
         flex-basis:calc(33.33% - 32px);
-        padding: 32px 48px;
-        text-align: left;
-        img{
-          margin: 0 0 0 auto;
-          float: right;
-        }
+        padding: 32px 48px; text-align: left;
+        img{margin: 0 0 0 auto;float: right;}
         .term{ 
           display: block; float: left;
           font-size: 2em; font-weight: bold;
         }
-        .data {
-          clear: both;
-          padding: 60px 0 0;
-        }
+        .data {clear: both;padding: 60px 0 0;}
       }
     }
 
   }
 }
+// ------------------------------------------------------------ //

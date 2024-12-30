@@ -33,6 +33,8 @@
 }
 // ------------------------------------------------------ //
 
+
+
 // 內頁標題 //
 // ------------------------------------------------------ //
 .pageHeader{
@@ -46,10 +48,6 @@
   }
 
   .funcBar {float: right; margin: 0 0 0 20px;}
-
-  @media screen and (min-width: $wwNormal){
-  }
-
 }
 // ------------------------------------------------------ //
 
@@ -142,13 +140,8 @@
       
       // 分享
       &.share>ul>li{
-        &>a{
-          text-indent: -15em; overflow: hidden;
-        }
-        img{
-          display: block; width: 100%; height: 100%; 
-          margin: 0 auto;
-        }  
+        &>a{text-indent: -15em; overflow: hidden;}
+        img{display: block; width: 100%; height: 100%; margin: 0 auto;}
       }
       
       &.compound>button{position: relative; z-index: 19;}

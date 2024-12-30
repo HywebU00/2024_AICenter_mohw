@@ -1,9 +1,9 @@
 // 行動版側欄
+// ---------------------------------------------------------------- //
 .sidebar{
   display: none; translate: 100% 0; 
   position: fixed; right: 0;  bottom: 0; z-index: 990;
-  width: 70%; max-width: 360px;
-  overflow-y: auto;
+  width: 70%; max-width: 360px; overflow-y: auto;
   background-color: $primaryColor; color: $fontInvert;
 
   transition: .4s;
@@ -74,23 +74,9 @@
     }
   }
 
-  // 20241220 removed
-  // .loginBtn{
-  //   margin: 32px 24px; width: calc(100% - 48px);
-  //   box-shadow:rgb(255 255 255 / .4) 0 0 0 1px, rgb(255 255 255 / .3) 0 0 0 0;
-  //   transition: .2s;
-
-  //   &:hover{
-  //     box-shadow:rgb(255 255 255 / .6) 0 0 0 1px, rgb(255 255 255 / .3) 0 0 6px 1px;
-  //   }
-  //   &:focus{
-  //     box-shadow:rgb(255 255 255 / 1) 0 0 0 2px, rgb(255 255 255 / .3) 0 0 12px 2px;
-  //   }
-  // }
-
   @media screen and (min-width: $wwNormal){
     display: none;
   }
 
 }
-
+// ---------------------------------------------------------------- //

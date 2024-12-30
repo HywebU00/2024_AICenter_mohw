@@ -1,6 +1,7 @@
 // 燈箱（.lightbox）
 // 燈箱模組：需要燈箱效果的區塊可在原 class name 之後加 lightbox 即可有燈箱效果
 // 原來的 class name 只用來控制樣式
+// ---------------------------------------------------------------- //
 .lightbox{ 
   display: none;
   position:fixed; top:3vw; left:3vw;
@@ -13,10 +14,7 @@
 
   button.closeThis{
     --width:56px;
-  
     position: absolute; right:3px; top: 3px; z-index:99;
-    // &::before, &::after{ border-radius: 2px;}
-    // &:hover, &:focus { --bgc: #a00;}
   }
 
   .header {
@@ -40,11 +38,14 @@
   }
 
 }
+// ---------------------------------------------------------------- //
 
 
-// ---------- 燈箱遮罩
+// 燈箱遮罩
+// ---------------------------------------------------------------- //
 .coverAll{ 
   display: none; z-index: 995;
   position: fixed; left: 0;right: 0;top: 0;bottom: 0;
   background: rgba(0,0,0,.6);
 }
+// ---------------------------------------------------------------- //

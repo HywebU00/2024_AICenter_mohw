@@ -1,19 +1,19 @@
 // 首頁：三大 AI 中心
+// ---------------------------------------------------------------- //
 .aiCenters{
   @extend %primSecWidth;
 
   button{
-    border: none; box-shadow: none;
+    text-align: left; border: none; box-shadow: none;
     background-color: transparent;
-    font-size: inherit; text-align: left;
-    cursor: pointer;
   }
 
   .contentGroup{position: relative;}
+
   // 三大區塊
   .content{
     padding: 16px 12px; margin: 0 0 10px;
-    border-radius: 8px;
+    border-radius:$radius1;
     background-color: var(--tabBgc);
     &:nth-child(1){--tabBgc: #E8F9F7;--tabTheme: #007c7b;}
     &:nth-child(2){--tabBgc: #EEF7FC;--tabTheme: #005FA1;}
@@ -30,10 +30,7 @@
         border: 2px solid var(--tabTheme); border-left: none; border-top: none;
         transition:rotate .3s;
       }
-      &.active{
-        &::after{ rotate: 225deg; top: 1.05em;}
-      }
-
+      &.active::after{ rotate: 225deg; top: 1.05em;}
       .description{display: none;}
     }
 
@@ -47,8 +44,7 @@
 
   // AI 中心資料卡
   .infoCard{
-    position: relative;
-    padding:24px 12px 16px; margin: 0;
+    position: relative;padding:24px 12px 16px; margin: 0;
     line-height: 1.5; border-radius: $radius1;
     background-color: $white; color: var(--tabTheme);
     box-shadow: rgb(0 0 0 / .3) 0 0 8px;
@@ -252,7 +248,7 @@
       }
     }
 
-    // 北部、中部、南部 寬版直接顯示，沒有下拉動作
+    // 北部、中部、南部 寬版直接顯示，沒有 slidedown 效果
     .dropMenuGroup{
       display: block; padding:0;  margin: 0 5%;
       flex: 1 0 50%;
@@ -260,10 +256,9 @@
         margin-bottom: 16px;
         border-radius:12px 12px $radius1 $radius1;
         .groupLabel{
-          display: block;
-          margin: 0 0 0 1.5em;
-          color: var(--tabTheme);
+          display: block;margin: 0 0 0 1.5em;
           font-size: 1em; font-weight: bold; line-height: 1; 
+          color: var(--tabTheme);
         }
         button.triggler{ display: none;}
 
@@ -275,9 +270,9 @@
           &>li{
             padding: 0;margin:6px 0;border: none; 
             &>button{
-              background-color: var(--tabBgc);
               padding:.65em 1em; margin:0; border-radius:$radius1;
               font-size: 1.125em;
+              background-color: var(--tabBgc);
               transition: .2s;
               &:hover, &:focus{box-shadow: var(--tabTheme) 0 0 0 2px inset;}
               &:focus{background-color: var(--tabTheme); color: $fontInvert;}
@@ -286,7 +281,6 @@
         }
       }
     }
-
   }
-
 }
+// ---------------------------------------------------------------- //

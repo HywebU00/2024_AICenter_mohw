@@ -47,7 +47,6 @@
       display: block;padding: 8px 12px 7px;
       font-size: .9em;
     }
-    
   }
 
   // 引言
@@ -66,7 +65,7 @@
     &.center{text-align: center;}
   }
 
-  em{ font-style: normal; }
+  em{ font-style: normal;font-weight: bold; }
   strong{ font-weight: bold;  font-size: 1.2em;}
 
 
@@ -98,11 +97,9 @@
     }
     dl{
       margin: 24px 0 0;
-      div{ margin: 5px 0;}
+      &>div{ margin: 5px 0;}
       dt, dd{ display: inline-block; margin: 0;}
-      dt{
-        &::after{content: '：';}
-      }
+      dt::after{content: '：';}
     }
   }
 
@@ -116,16 +113,13 @@
     &.col2 {
       display: flex; justify-content: space-between;
       figure{
-        flex: 0 0 49%; 
-
-        display: flex; flex-flow: row wrap; 
+        flex: 0 0 49%; display: flex; flex-flow: row wrap; 
         &:last-child{ margin-top: 0;}
         figcaption{align-self: flex-end;}
       }
     }
   }
 }
-
 
 
 
@@ -169,7 +163,6 @@ table.tbStyle2{
   border: 3px solid $borderColor;
   th, td{border: 1px solid $borderColor;}
   tbody{
-    // background-color: var(--tdbg);
     th:first-child, td:first-child{ background-color: $primaryColor; color: $white;}
     th:first-child{ width: 7em;}
     td{ vertical-align: top; }

@@ -7,10 +7,11 @@
 @media screen and (min-width: $wwNormal){
   a.accesskey{ 
     display: block; z-index: 99;
-    position: absolute; left: 0; top: 0;
-    text-decoration: none; padding: 3px;
-    outline: none;
-    &:focus, &:hover { box-shadow: $primaryColor 0 0 0 2px inset;}
+    position: absolute; left: 0; top: 0;padding: 3px;
+    text-decoration: none; outline: none;
+    color: $fontColorLight;
+    
+    &:focus, &:hover { box-shadow: $fontColor 0 0 0 2px inset;color: $fontColor;}
     &:focus-visible { background-color: rgb(255 255 255 / .8);}
   }
 }
@@ -19,8 +20,22 @@
   .main  .accesskey,
   .siteFooter .accesskey {left: calc( 50vw - $wwMaximum*.5 - 20px );}
 }
+// --------------------------------------------------------------- //
+
+
+
+// form 元件
+// --------------------------------------------------------------- //
+button, input[type="button"], input[type="submit"], input[type="rest"] {
+  font-size: inherit;
+  border: none; outline: none;cursor: pointer;
+}
+// --------------------------------------------------------------- //
+
+
 
 // 漢堡圖示
+// --------------------------------------------------------------- //
 .sidebarCtrl{
   --ting: #{$black};
   --bgc: #{$gray100};
@@ -65,6 +80,9 @@
     display: none;
   }
 }
+// --------------------------------------------------------------- //
+
+
 
 // 鍵盤樣式
 // --------------------------------------------------------------- //
@@ -77,7 +95,11 @@ kbd {
   box-shadow: $shadow1 0 2px 0 1px;
   i{font-weight: normal;}
 }
+// --------------------------------------------------------------- //
 
+
+
+// more
 // ---------------------------------------------------------------------- //
 .more {
   margin: 28px 0 0;
@@ -98,7 +120,8 @@ kbd {
 // ---------------------------------------------------------------------- //
 
 
-// 跳至內容區 
+
+// 跳至內容區 <a>
 // --------------------------------------------------------------- //
 .goCenter{
   --bg:#555;
@@ -123,20 +146,19 @@ kbd {
 // --------------------------------------------------------------- //
 
 
-// 回頁頂
+
+// 回頁頂 <button>
 // --------------------------------------------------------------- //
 .goTop {
   position: fixed; right: 8px; bottom: 16px;
-  border: none; padding: 0;
-  width: 48px; height: 48px; border-radius: 50%;
-  outline: none;
+  border: none; outline: none;
+  padding: 0;width: 48px; height: 48px; border-radius: 50%;
   background-color: rgb(0 0 0 / .5);
   translate: 0 150%;
   transition:all .2s, translate 1s;
   &.show{translate: 0 0;}
   &::before {
-    content: ''; position: absolute; 
-    left: calc(50% - 7px); 
+    content: ''; position: absolute; left: calc(50% - 7px); 
     width: 14px; height: 14px;
     border-style: solid; border-width: 3px; border-color: #fff;
     border-right: none; border-bottom: none;
@@ -164,9 +186,9 @@ kbd {
 }
 
 
-// 關閉 「X」
+// 關閉按鈕，呈現「Ｘ」<button>
 // --------------------------------------------------------------- //
-button.closeThis{
+.closeThis{
   --width:48px;
   --bar-length:28px;
   --bar-thick:4px;
@@ -197,7 +219,7 @@ button.closeThis{
 }
 
 
-// a 或 span 模擬 button 元件樣式
+// <div> 或 <span> 呈現 button 元件樣式
 // ---------------------------------------------------------------------- //
 .button{
   display: inline-block;margin: 3px auto;text-align: center;
@@ -216,25 +238,28 @@ button.closeThis{
 }
 .cpArticle{
   .button>a{
-    text-decoration: none;outline: none;
-    color: $white;
+    text-decoration: none;outline: none; color: $white;
     &:hover{box-shadow:transparent 0 0 0 0, $secondaryColor 0 0 0 2px;}
     &:focus {box-shadow:$white 0 0 0 1px, $secondaryColor 0 0 0 4px;}
   }
 }
 // ---------------------------------------------------------------------- //
 
+
+
 // 圖釘
+// ---------------------------------------------------------------------- //
 .mapPin {
   display: inline-block; width: 21px; height: 30px;
   background: url(../images/icon_pin.svg) no-repeat center bottom;
   background-size: 100% auto;
 }
+// ---------------------------------------------------------------------- //
 
 
 
-// 檔案類型圖示 //
-// ------------------------------------------------------ //
+// 檔案類型圖示，下載檔案 //
+// ---------------------------------------------------------------------- //
 .fileType{
   --bg : #aaa;
   --color : #fff;
@@ -275,16 +300,15 @@ a .fileType, .fileType>a{ color: $white; text-decoration: none; }
 a:hover, a:focus{
   .fileType{box-shadow:var(--color) 0 0 0 1px inset, var(--bg) 0 0 0 2px;}
 }
-// ------------------------------------------------------ //
+// ---------------------------------------------------------------------- //
+
 
 
 // ---------------------------------------------------------------------- //
-// slick 套件用元件樣式 ------------------------------------------------- //
+//------------------------- slick 套件用元件 ---------------------------- //
 // ---------------------------------------------------------------------- //
 .slick-slider {
-  position: relative;
-  margin: 0 auto;
-
+  position: relative;margin: 0 auto;
   button {
     border: none;outline: none;box-shadow: none;
     background-color: transparent;
@@ -358,5 +382,4 @@ a:hover, a:focus{
     }
   }
 }
-// ---------------------------------------------------------------------- //
 // ---------------------------------------------------------------------- //

@@ -1,8 +1,7 @@
-// .main>section:not(.qa){display: none}
 // 首頁：常見問題
+// ---------------------------------------------------------------- //
 .qa{
   @extend %primSecWidth;
-  ul{ }
   &>ul{
     list-style: none; margin: 0; padding: 0;
     line-height: 1.6;
@@ -69,9 +68,9 @@
   }
 
 }
+// ---------------------------------------------------------------- //
+
 
 
 // 常見問題條列頁（內頁）
-.pageHeader ~ .qa {
-  margin-top: 24px;
-}
+.pageHeader ~ .qa { margin-top: 24px; }
