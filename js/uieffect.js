@@ -771,7 +771,7 @@ $(function(){
 
 
 
-  // .aiCenters [三大 AI 中心] 客製化程式
+  // .aiCenters [三大 AI 中心] 專用程式
   // --------------------------------------------------------------- //
   var _aiContent = $('.aiCenters').find('.contentGroup').find('.content');
   var _aiTray = _aiContent.find('.tabContent');
@@ -793,9 +793,10 @@ $(function(){
 
     if (_thisTray.is(':hidden')) {
       _thisBtn.addClass('active');
-      _thisTray.slideDown(drawerSpeed);
+      _thisTray.slideDown(drawerSpeed).find('.infoCard').removeAttr('style');
       _aiTray.not(_thisTray).slideUp(drawerSpeed, function(){
-        _thisTray.find('.infoCard').find('.closeThis').trigger('click').end().removeAttr('style');
+        $(this).find('.medList').removeAttr('style');
+        $(this).find('.triggler.show').removeClass('show');
       });
       _drawerTriggerBtn.not(_thisBtn).removeClass('active');
     } else {
@@ -847,24 +848,28 @@ $(function(){
     let _thisAIContent = $(this);
     let _infoCard = _thisAIContent.find('.infoCard');
     let _hideInfoCard = _infoCard.find('.closeThis');
-  
-    // 隱藏資料卡
-    _hideInfoCard.on('click', function(){
-      _infoCard.fadeOut(200, function(){
-        _infoCard.removeAttr('style');
-      });
-    })
+    let _kept;
   
     // 顯示資料卡
     let _showInfoCard = _thisAIContent.find('.medList>li>button');
     _showInfoCard.on('click', function(){
       let _thisBtn = $(this);
+      _kept = _thisBtn;
       _infoCard.fadeIn(200);
       _hideInfoCard.trigger('focus');
       if (ww >= wwNormal) {
         _infoCard.css('top', _thisBtn.position().top );
       }
     })
+
+    // 隱藏資料卡
+    _hideInfoCard.on('click', function(){
+      _infoCard.fadeOut(200, function(){
+        _infoCard.removeAttr('style');
+        _kept.trigger('focus');
+      });
+    })
+
   })
 
 
