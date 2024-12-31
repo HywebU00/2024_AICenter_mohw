@@ -59,7 +59,10 @@
     }
     &>dl{
       margin: 0;padding: 0;
-      a{color: var(--tabTheme);}
+      a{
+        color: var(--tabTheme);
+        &:focus-visible { outline: var(--tabTheme) 2px solid; border-bottom-color: transparent;}
+      }
       &>div{
         &:first-child{
           dt:first-child{margin-top: 0; margin-right: 32px;}
@@ -69,7 +72,7 @@
             text-decoration: none;font-weight: bold;
             border-bottom: 1px dashed var(--tabTheme);
             &:hover{ border-bottom-style: solid;}
-            &:focus-visible { outline: var(--tabTheme) 2px solid; border-bottom-color: transparent;}
+            // &:focus-visible { outline: var(--tabTheme) 2px solid; border-bottom-color: transparent;}
             &::after{
               content: '';
               position: absolute; right: 0; bottom: 3px;
@@ -77,7 +80,6 @@
               background: url(../images/icon_linkout.svg) no-repeat 0 0;
               background-size: 100%;
               filter: brightness(.5) ;
-
             }
           }
         }
@@ -192,7 +194,10 @@
 
       .infoCard {
         background-color:var(--tabTheme); color: $fontInvert;
-        a{color: $fontInvert;}
+        a{
+          color: $fontInvert;
+          &:focus-visible { outline:#fff 2px solid;}
+        }
         .closeThis{
           &::before, &::after { background-color:#fff;}
           &:hover, &:focus{background-color: rgb(0 0 0 / .3);}
@@ -203,11 +208,8 @@
             dd a{
               border-bottom-color: rgb(255 255 255 / .6);
               &:hover{ border-bottom-color:#fff;}
-              &:focus { outline:#fff 2px solid; border-bottom-color: transparent;}
-              &::after{
-                width: 22px; height: 22px;
-                filter: brightness(10) ;
-              }
+              &:focus { border-bottom-color: transparent;}
+              &::after{ width: 22px; height: 22px;filter: brightness(10);}
             }
           }
         }

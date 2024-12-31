@@ -849,6 +849,10 @@ $(function(){
     let _infoCard = _thisAIContent.find('.infoCard');
     let _hideInfoCard = _infoCard.find('.closeThis');
     let _kept;
+
+    // ARIA
+    _infoCard.attr('role', 'dialog').attr('aria-labelledby', 'infoCardTitle')
+      .find('dl>div:first-child>dd').attr('id', 'infoCardTitle');
   
     // 顯示資料卡
     let _showInfoCard = _thisAIContent.find('.medList>li>button');
@@ -868,6 +872,14 @@ $(function(){
         _infoCard.removeAttr('style');
         _kept.trigger('focus');
       });
+    })
+
+    // Tab 鍵操作
+    _infoCard.find('a').last().on('keydown', function(e){
+      if (e.code == 'Tab' && !e.shiftKey) {
+       e.preventDefault();
+        _hideInfoCard.trigger('focus');
+      }
     })
 
   })
