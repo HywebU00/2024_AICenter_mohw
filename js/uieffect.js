@@ -965,7 +965,7 @@ $(function(){
     slidesToScroll: 1,
     autoplaySpeed: 6000,
     speed: 800,
-    autoplay: true,
+    autoplay: false,
     arrows: true,
     dots: true,
     fade: true,
