@@ -81,12 +81,16 @@
     }
   }
   @media screen and (min-width: $wwMaximum){
-    width: $wwMaximum; margin: 0 auto;
+    // width: $wwMaximum;
+    // margin: 0 auto;
     .slickItem{
-      img{width: $wwMaximum; height: $wwMaximum*0.5278; }
+      img {
+        // width: $wwMaximum;
+        // height: $wwMaximum*0.5278;
+      }
       .text{width: $wwMaximum*0.5; }
     }
-    .slick-arrow{ top: calc($wwMaximum*19/72); }
+    // .slick-arrow{ top: calc($wwMaximum*19/72); }
   }
 }
 // ------------------------------------------------------------ //

@@ -169,7 +169,7 @@
         position: absolute; left: 0; top: 0;
         padding: 0 30px; height: 220px; width: 30%;
         font-size: 1.5em; line-height: 1.6;
-        color: $fontColorLight;
+        // color: $fontColorLight;
         &::after { 
           border: none;rotate: 0deg;transition: none;
           left: 0;right: 0; bottom: 0;top: auto;
@@ -177,7 +177,8 @@
           background-color: $borderColor;
         }
         &.active{
-          background-color: var(--tabBgc);color: $fontColor;
+          background-color: var(--tabBgc);
+          // color: $fontColor;
           &::after{
             top: auto;rotate: 0deg;height: 4px;
             background-color: var(--tabTheme); color: var(--tabTheme);
@@ -189,6 +190,7 @@
         .description{
           display: block; margin: 8px 0 0;
           font-weight: normal; font-size: .65em;
+          color: $fontColor;
         }
       }
 
