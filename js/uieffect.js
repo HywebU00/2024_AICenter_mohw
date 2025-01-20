@@ -773,7 +773,7 @@ $(function(){
 
   // .aiCenters [三大 AI 中心] 專用程式
   // --------------------------------------------------------------- //
-  var _aiContent = $('.aiCenters').find('.contentGroup').find('.content');
+  var _aiContent = $('.aiCenters').find('.content');
   var _aiTray = _aiContent.find('.tabContent');
   var _drawerTriggerBtn = _aiContent.find('.tabButton');
   var drawerSpeed = 400;
@@ -915,10 +915,6 @@ $(function(){
         if (_sidebar.hasClass('reveal')) {
           hideSidebar(); // 隱藏側欄
         }
-        
-        // 快速查詢
-        // _search.removeClass('reveal').removeAttr('style');
-        // _searchCtrl.removeClass('closeIt').removeAttr('aria-expanded');
  
         // 重設 fixed header
         _siteHeader.removeClass('fixed');
@@ -932,6 +928,7 @@ $(function(){
         _aiTray.removeAttr('style').eq(0).show();
         _dropMenuGroup.find('.dropMenu').removeClass('show');
         _dropMenuGroup.find('.medList').removeAttr('style');
+        _aiContent.find('.infoCard').removeAttr('style');
       }
 
       // 由寬螢幕到小螢幕
@@ -951,7 +948,8 @@ $(function(){
         // [三大 AI 中心] 
         _drawerTriggerBtn.removeClass('active').eq(0).addClass('active');
         _aiTray.removeAttr('style').eq(0).show();
-        
+        _dropMenuGroup.find('.medList>li').removeAttr('style');
+        _aiContent.find('.infoCard').removeAttr('style');
       }
       ww = wwNew;
     }, 200);
