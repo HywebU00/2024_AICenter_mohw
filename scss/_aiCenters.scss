@@ -23,20 +23,24 @@
     .tabButton{
       position: relative; font-size: 1em;
       margin: 0;padding: 0 40px 0 0; height: 2.4em; line-height: 2.4; width: 100%;
-      font-weight: bold; color: var(--tabTheme);
+      font-weight: bold; color: $fontColor;
+      // color: var(--tabTheme);
       &::after {
         content: ''; position: absolute; right: 12px; top: .8em;
         width: 10px; height: 10px;rotate: 45deg;
-        border: 2px solid var(--tabTheme); border-left: none; border-top: none;
+        border: 2px solid $fontColor; border-left: none; border-top: none;
         transition:rotate .3s;
       }
-      &.active::after{ rotate: 225deg; top: 1.05em;}
+      &.active{
+        color: var(--tabTheme);
+        &::after{ rotate: 225deg; top: 1.05em; border-color: var(--tabTheme);}
+      }
       .description{display: none;}
     }
 
     .tabContent{
       display: none;
-      padding: 12px 0; border-top: 1px solid $borderColor;
+      padding: 12px 0; border-top: 1px solid var(--tabTheme);
       .description{ margin: 0;}
     }
   }
@@ -267,13 +271,14 @@
         }
         button.triggler{ display: none;}
 
-        // 醫院、機構
+        // 醫院、機構 List
         ul.medList{
           position: static;
           display: block;margin: 0; padding:6px 8px;
           background-color: transparent;
           &>li{
             padding: 0;margin:6px 0;border: none; 
+            // transition: margin .3s;
             &>button{
               padding:.65em 1em; margin:0; border-radius:$radius1;
               font-size: 1.125em;

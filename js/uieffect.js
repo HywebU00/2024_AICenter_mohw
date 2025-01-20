@@ -855,15 +855,18 @@ $(function(){
       .find('dl>div:first-child>dd').attr('id', 'infoCardTitle');
   
     // 顯示資料卡
-    let _showInfoCard = _thisAIContent.find('.medList>li>button');
+    let _showInfoCardLi = _thisAIContent.find('.medList>li');
+    let _showInfoCard = _showInfoCardLi.children('button');
     _showInfoCard.on('click', function(){
       let _thisBtn = $(this);
       _kept = _thisBtn;
       _infoCard.fadeIn(200);
-      _hideInfoCard.trigger('focus');
-      if (ww >= wwNormal) {
-        _infoCard.css('top', _thisBtn.position().top );
+      if( ww >= wwNormal ) {
+        _showInfoCardLi.removeAttr('style');
+        _infoCard.css( 'top', _thisBtn.position().top );
+        _thisBtn.parent().css('margin-bottom', _infoCard.height());
       }
+      _hideInfoCard.trigger('focus');
     })
 
     // 隱藏資料卡
@@ -871,6 +874,9 @@ $(function(){
       _infoCard.fadeOut(200, function(){
         _infoCard.removeAttr('style');
         _kept.trigger('focus');
+        if (ww >= wwNormal) {
+          _showInfoCardLi.removeAttr('style');
+        }
       });
     })
 
