@@ -15,9 +15,9 @@
     padding: 16px 12px; margin: 0 0 10px;
     border-radius:$radius1;
     background-color: var(--tabBgc);
-    &:nth-child(1){--tabBgc: #E8F9F7;--tabTheme: #007c7b;--borderColor: rgb(0 124 123 / .2);}
-    &:nth-child(2){--tabBgc: #EEF7FC;--tabTheme: #005FA1;--borderColor: rgb(0 95 161 / .2);}
-    &:nth-child(3){--tabBgc: #FFF9EE;--tabTheme: #A3581A;--borderColor: rgb(163 88 26 / .2);}
+    &:nth-child(1){--tabBgc: #E8F9F7; --tabTheme: #007c7b; --borderColor: rgb(0 124 123 / .2);}
+    &:nth-child(2){--tabBgc: #EEF7FC; --tabTheme: #005FA1; --borderColor: rgb(0 95 161 / .2);}
+    &:nth-child(3){--tabBgc: #FFF9EE; --tabTheme: #A3581A; --borderColor: rgb(163 88 26 / .2);}
 
     // 頁籤按鈕
     .tabButton{
