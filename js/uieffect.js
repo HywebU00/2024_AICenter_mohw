@@ -851,9 +851,9 @@ $(function(){
     let _kept;
 
     // ARIA
-    _infoCard.attr('role', 'dialog').attr('aria-labelledby', 'infoCardTitle')
-      .find('dl>div:first-child>dd').attr('id', 'infoCardTitle');
-  
+    _infoCard.attr('role', 'dialog').find('dl>div:first-child>dd').attr('id', 'infoCardTitle');
+    _infoCard.attr('aria-labelledby', 'infoCardTitle');
+
     // 顯示資料卡
     let _showInfoCardLi = _thisAIContent.find('.medList>li');
     let _showInfoCard = _showInfoCardLi.children('button');
