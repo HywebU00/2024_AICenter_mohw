@@ -32,10 +32,10 @@
   .loginBtn{display: none;}
 
   @media screen and (min-width: $wwNormal){
-    padding: 14px $marginDoc;
+    padding: 16px $marginDoc;
     display: flex; justify-content: space-between; align-items: center;
     h1{
-      img{max-width: none;}
+      img{height: 68px; width: auto; max-width: none;}
     }
 
     &.fixed {padding-top: 6px;padding-bottom: 6px;}

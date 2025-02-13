@@ -2,52 +2,25 @@
 // ---------------------------------------------------------------- //
 .siteFooter{
   position: relative;
-  margin: 0;padding: 50px 0 0;
+  margin: 0;padding: 40px 0 0;
   background-color: $bgc;
   ul{ list-style: none; margin: 0; padding: 0; }
   li{ margin: 0; padding: 0; }
   a{ text-decoration: none; outline: none;}
 
   .footLogo{
-    float: left; max-width: 240px; 
-    margin: 0 auto 5px $marginDocMob;
+    margin: 0 $marginDocMob 20px;
     a{ display: block;}
-    img{ display: block; width: 100%;}
+    img{ display: block; width: 60px;}
   }
 
-  .imageLinks{
-    float: right; margin:0 $marginDocMob 10px 30px;
-    display: flex; justify-content: center;
-    &>li{
-       flex: 0 0 auto; margin:0 5px;
-      &>a{
-        display: block;border-radius: $radius1; overflow: hidden;
-        width: 44px; height: 44px; 
-        transition: .2s;
-        img{
-          display: block; height: 100%; width: 80%; margin: 0 auto;
-          object-fit: contain;
-        }
-        &:hover{
-          background-color: $white;
-          box-shadow:transparent 0 0 0 0, rgb(0 0 0 / .4) 0 0 9px;
-        }
-        &:focus{
-          background-color: $white;
-          box-shadow: $black 0 0 0 2px, rgb(0 0 0 / .6) 0 0 7px;
-        }
-      }
-    }
-  }
 
   .siteTree{
-    clear: both; padding-top: 50px;
-    width: $mobileWidth;margin: 0 auto 50px;
+    width: $mobileWidth; margin: 24px auto 40px;
     &>ul{
-      display: flex; flex-wrap: wrap; gap: 18px;
-      line-height: 1.6;font-size: 1em;
+      line-height: 1.6;font-size: 1em; 
+      li{margin: 0 0 14px;}
       &>li{
-        flex: 0 0 calc(50% - 9px);
         &>a{
           position: relative; display: block; padding: 2px 0 2px 0;
           text-decoration: none; color: $fontColor; 
@@ -69,11 +42,10 @@
 
 
         // 第二層
-        &>ul{ margin-top: 1em; font-size: .9375em;}
+        &>ul {/* font-size: .9375em; */ margin-top: 14px; margin-bottom: 16px;}
         ul ul{ font-size: inherit;}
 
         li{
-          margin: 0 0 1em;
           &>a{
             position: relative; display: block; padding: 0 12px 0 0;
             text-decoration: none; color: $fontColor; 
@@ -99,31 +71,54 @@
     }
   }
 
-  .badge{
-    float: left;margin-left: $marginDocMob; margin-bottom: 20px;
-    img{ display: block; width: 140px; transition: .2s;}
-    a{
-      display: block;
-      &:hover img { box-shadow:$white 0 0 0 1px, $primaryColor 0 0 0 3px;}
-      &:focus img { box-shadow:$white 0 0 0 1px, $primaryColor 0 0 0 4px;}
+  .imageLinks{
+    margin:20px auto; width: $mobileWidth;
+    display: flex;
+    &>li{
+       flex: 0 0 auto; margin:0 5px 0 0;
+      &>a{
+        display: block;border-radius: $radius1; overflow: hidden;
+        width: 44px; height: 44px; 
+        transition: .2s;
+        img{
+          display: block; height: 100%; width: 80%; margin: 0 auto;
+          object-fit: contain;
+        }
+        &:hover{
+          background-color: $white;
+          box-shadow:transparent 0 0 0 0, rgb(0 0 0 / .4) 0 0 9px;
+        }
+        &:focus{
+          background-color: $white;
+          box-shadow: $black 0 0 0 2px, rgb(0 0 0 / .6) 0 0 7px;
+        }
+      }
     }
   }
-  .visiters{
-    text-align: right; line-height: 48px;
-    margin-left: 170px; margin-right: $marginDocMob;
+
+  .visiters{margin:20px auto 40px; width: $mobileWidth;}
+
+  .badge{
+    width: 88px;
+    img{ display: block; width: 100%; height: 31px; object-fit: cover; transition: .2s;}
+    a{
+      display: block;
+      &:hover, &:focus {
+        img{ box-shadow:$white 0 0 0 2px; }
+      }
+    }
   }
 
-
   .base{
-    clear: both; margin:0;
-    background-color: $gray700; color: $fontInvert;
+    margin:0; padding: 20px $marginDocMob;
+    background-color: #004A4A; color: $fontInvert;
     ul{
-      text-align: center;padding:10px 12px; line-height: 1;
+      line-height: 1; margin: 0 auto;
       li {
-        display: inline-block; margin: 6px 12px;
+        margin: .2em 0 1.2em; padding: 0;
         a{ 
           position: relative; 
-          display: block; padding: 2px;
+          display: inline-block; padding: 2px;
           color: $fontInvert;text-decoration: none;
           &::after {
             content: ''; position: absolute; left: 0;right: 0; bottom: -3px;
@@ -133,9 +128,7 @@
           &:hover {
             &::after { background-color: $white;bottom: -1px;}
           }
-          &:focus-visible {
-            box-shadow: $white 0 0 0 2px;
-          }
+          &:focus-visible {box-shadow: $white 0 0 0 2px;}
         }
       }
     }
@@ -144,8 +137,8 @@
   @media screen and (min-width: $wwMedium){
     .siteTree{
       &>ul{
-        margin-left: 55px;
-        &>li{flex-basis: calc(33.33% - 12px);}
+        display: flex; flex-wrap: wrap; gap: 18px;
+        &>li{flex:0 0 calc(33.33% - 12px);}
       }
     }
   }
@@ -153,37 +146,42 @@
   @media screen and (min-width: $wwNormal){
 
     .footLogo{ margin-left: $marginDoc; }
-    .imageLinks{ margin-right: $marginDoc;}
 
     .siteTree{
-      width: $normalWidth;margin-bottom: 60px;
+      width: $normalWidth; margin-bottom: 40px;
+      max-width: $maximumWidth;
       &>ul{ 
         gap: 20px;
         &>li{
-          flex: 1 1 auto;min-width: 6em;
-          li{ max-width: 10em; min-width: 100%;}
+          flex: 0 1 auto; min-width: 7em;
+          li{ max-width: 12em; min-width: 100%;}
         }
       }
     }
-
-    .badge{
-      margin-left: calc($marginDoc + 55px);
-      img{ height: auto; width: 160px;}
-    }
+    .imageLinks{
+      width: $normalWidth; max-width: $maximumWidth;
+      justify-content: flex-end;
+      li{ margin: 0 0 0 5px;}
+    }  
 
     .visiters{
-      float: right;  line-height: 2.5;
-      width: auto; margin: 8px $marginDoc 0 0;    
+      width: $normalWidth; max-width: $maximumWidth;
+      text-align: right; padding-right: 10px;
     }
+
+    .base{
+      display: flex; justify-content: center;
+      ul{
+        margin: .4em 2em 0 0; width: auto;
+        &>li{display: inline-block; margin: 0 2em;}
+      }
+    }
+
   }
 
   @media screen and (min-width: $wwMaximum){
     .footLogo { margin-left: $marginDocMax;}
-    .imageLinks { margin-right: $marginDocMax;}
-    .badge { margin-right: $marginDocMax;}
-    .siteTree { width: $maximumWidth;}
-    .badge { margin-left: calc($marginDocMax + 55px);}
-    .visiters { margin-right: calc($marginDocMax + 55px);}
+    .base{ padding-left: $marginDocMob; padding-right: $marginDocMob;}
   }
 }
 // ---------------------------------------------------------------- //
