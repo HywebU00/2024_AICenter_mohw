@@ -65,3 +65,90 @@
   
 }
 // ---------------------------------------------------------------- //
+
+
+
+// 表格條列, RWD 表格 20250217
+// ------------------------------------------------------ //
+.listTb{
+  margin:20px auto;
+  &>table { 
+    width: 100%; margin: 0; line-height: 1.6; 
+    border-collapse: collapse; 
+    border: 2px solid $borderColor;
+    
+    caption{padding: 0 0 .4em;}
+    
+    thead{
+      background-color: $primaryColor; color: $white;
+      th{ white-space: nowrap; font-weight: normal; }
+    }
+  
+    tbody{
+      tr{
+        transition: background-color .2s;
+        &:hover{ background-color: $gray100;}
+      }
+    }
+  
+    th, td{padding:16px 15px 15px; border: 1px solid $borderColor;}
+  
+    td{
+      text-align: left; word-break: break-all;
+      a{
+        color: $fontColor; text-decoration: underline; transition: .2s;
+        &:hover, &:focus{text-decoration: none;}
+        &:focus{ outline: 1px solid $linkColor;}
+      }
+  
+      .button>a{ white-space: nowrap;}
+    }
+  }
+
+  @media screen and (max-width: calc($wwMedium + 1px)){
+  
+    margin: 0 auto;
+    &>table {
+      &.rwdTable{
+        border: none;
+        thead{ display: none;}
+        tbody{ border: none;
+          tr{
+            &:hover{
+              background-color: $white;
+              box-shadow: $borderColorDark 0 0 0 2px, $shadow1 0 0 14px;
+            }  
+          }
+        }
+        tr, th, td{ display: block;}
+        tr{ 
+          position: relative; overflow: hidden;
+          padding: .5em 8px .4em; margin:0 0 10px;
+          box-shadow: $borderColor 0 0 0 1px;
+          transition: .2s;
+        }
+        th, td{
+          position: static; padding: 0;margin: 0; text-align: left;
+          border: none;
+        }
+        td{
+          padding:.35em 0; text-align: left !important;
+          border-bottom: 1px dotted $borderColor;
+          &:last-child{ border: none;}
+          &::before {
+            content: attr(data-th); display: inline-block; margin-right: .5em;
+            line-height: 1.7; height: 1.6em;
+            vertical-align: top;
+            background-color: $primaryColor; color: $white;
+            padding: 0 .6em 1px 5px; border-radius: 3px 1em 1em 3px
+          }
+          &>a{ 
+            text-decoration: underline; text-underline-offset: 3px;
+            &:hover{text-decoration: none; color: $linkColor;}
+          }
+        }
+      }
+    }
+
+  }
+}
