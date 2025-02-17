@@ -782,21 +782,25 @@ $(function(){
 
   // 行動版 slideDown/slideUp 效果，寬版類似頁籤切換
   _drawerTriggerBtn.on('click', function(){
-    if (ww < wwNormal ) {
-      drawerSpeed = 400;
-    } else {
-      drawerSpeed = 0;
-    }
 
     let _thisBtn = $(this);
     let _thisTray = _thisBtn.next('.tabContent');
+    let _otherTray = _aiTray.not(_thisTray);
+    
+    if (ww < wwNormal ) {
+      drawerSpeed = 400;
+    } 
+    if (ww >= wwNormal ){
+      drawerSpeed = 0;
+    }
 
     if (_thisTray.is(':hidden')) {
       _thisBtn.addClass('active');
-      _thisTray.slideDown(drawerSpeed).find('.infoCard').removeAttr('style');
-      _aiTray.not(_thisTray).slideUp(drawerSpeed, function(){
-        $(this).find('.medList').removeAttr('style');
-        $(this).find('.triggler.show').removeClass('show');
+      _thisTray.slideDown(drawerSpeed);
+      _otherTray.slideUp(drawerSpeed, function(){
+        _otherTray.find('.infoCard').removeAttr('style')
+        _otherTray.find('.medList').removeAttr('style').find('button').removeAttr('style');
+        _otherTray.find('.triggler.show').removeClass('show').end().find('.dim').removeClass('dim');
       });
       _drawerTriggerBtn.not(_thisBtn).removeClass('active');
     } else {
@@ -806,6 +810,22 @@ $(function(){
         _thisTray.slideUp(drawerSpeed).find('.infoCard').filter(':visible').find('.closeThis').trigger('click');
       }
     }
+
+    // if (_thisTray.is(':hidden')) {
+    //   _thisBtn.addClass('active');
+    //   _thisTray.slideDown(drawerSpeed).find('.infoCard').removeAttr('style');
+    //   _aiTray.not(_thisTray).slideUp(drawerSpeed, function(){
+    //     $(this).find('.medList').removeAttr('style').find('button').removeAttr('style');
+    //     $(this).find('.triggler.show').removeClass('show').end().find('.dim').removeClass('dim');
+    //   });
+    //   _drawerTriggerBtn.not(_thisBtn).removeClass('active');
+    // } else {
+    //   if (ww < wwNormal) {
+    //     _thisBtn.removeClass('active');
+    //     _thisTray.find('.triggler.show').trigger('click');
+    //     _thisTray.slideUp(drawerSpeed).find('.infoCard').filter(':visible').find('.closeThis').trigger('click');
+    //   }
+    // }
   })
   
   // 北中南下拉選單 // .dropMenuGroup
@@ -815,6 +835,10 @@ $(function(){
     let _dropMenu = _this.find('.dropMenu');
     let _btnShowHide = _dropMenu.find('button.triggler');
     let _medList = _dropMenu.find('.medList');
+    let _medListBtn = _medList.children('li').children('button');
+    let _mobileMaps = _this.next('.mapHere').find('.mobileMaps');
+    let _mapAreaImgs = _mobileMaps.find('img');
+    let _tempInfocard;
 
     _btnShowHide.attr('aria-expanded', false);
     _btnShowHide.on('click', function(){
@@ -835,12 +859,36 @@ $(function(){
         _thisBtn.removeClass('show').attr('aria-expanded', false);
       }
     })
-    _medList.find('button').on('click', function(){
-      if ( _btnShowHide.is(':visible')) {
-        $(this).parents('.medList').slideUp();
-        _btnShowHide.attr('aria-expanded', false).removeClass('show');
+
+    _medListBtn.on('click', function(){
+
+      if ( ww < wwNormal) {
+        let _thisBtn = $(this);
+        let whichArea = _thisBtn.attr('dada-maparea');
+        let _mapArea0 = _mapAreaImgs.eq(0);
+
+        // 顯示所在縣市地圖
+        _mapAreaImgs.hide().filter( function(){
+          return $(this).attr('data-maparea') == whichArea;
+        }).show();
+
+        // 顯示相對應資料卡
+        _thisBtn.parents('.medList').prev().trigger('click');
+        _mobileMaps.find('.infoCard').remove();
+        _thisBtn.next().clone().prependTo( _mobileMaps );
+  
+        _tempInfocard = _mobileMaps.find('.infoCard');
+  
+        _tempInfocard.find('.closeThis').on('click', function(){
+          $(this).parent().remove();
+          _mapAreaImgs.hide()
+          _mapArea0.show();
+        })
       }
+
     })
+
+
   })
 
   // AI 中心相關資料卡 顯示/隱藏 // .infoCard 
@@ -848,37 +896,49 @@ $(function(){
     let _thisAIContent = $(this);
     let _infoCard = _thisAIContent.find('.infoCard');
     let _hideInfoCard = _infoCard.find('.closeThis');
+    let _pins = _thisAIContent.find('.pins').find('li');
+    const speed = 300;
     let _kept;
 
     // ARIA
-    _infoCard.attr('role', 'dialog').find('dl>div:first-child>dd').attr('id', 'infoCardTitle');
-    _infoCard.attr('aria-labelledby', 'infoCardTitle');
+    _infoCard.attr('role', 'dialog');
 
     // 顯示資料卡
-    let _showInfoCardLi = _thisAIContent.find('.medList>li');
-    let _showInfoCard = _showInfoCardLi.children('button');
+    let _showInfoCard = _thisAIContent.find('.medList>li').children('button');
     _showInfoCard.on('click', function(){
       let _thisBtn = $(this);
+      let hName = _thisBtn.text();
       _kept = _thisBtn;
-      _infoCard.fadeIn(200);
       if( ww >= wwNormal ) {
-        _showInfoCardLi.removeAttr('style');
-        _infoCard.css( 'top', _thisBtn.position().top );
-        _thisBtn.parent().css('margin-bottom', _infoCard.height());
+        _infoCard.filter(':visible').slideUp(speed);
+        _showInfoCard.filter(':hidden').show();
+        _thisBtn.hide().next().slideDown(speed, function(){
+          $(this).find('.closeThis').trigger('focus');
+        });
+        _pins.removeClass('dim').filter( function(){
+          return $(this).attr('data-name') === hName;
+        }).siblings().addClass('dim');
+      } else {
+        // 行動版 infoCard 顯示程式
       }
-      _hideInfoCard.trigger('focus');
     })
 
     // 隱藏資料卡
     _hideInfoCard.on('click', function(){
-      _infoCard.fadeOut(200, function(){
-        _infoCard.removeAttr('style');
-        _kept.trigger('focus');
-        if (ww >= wwNormal) {
-          _showInfoCardLi.removeAttr('style');
-        }
-      });
+      let _this = $(this);
+      if (ww >= wwNormal) {
+        _pins.removeClass('dim');
+        _this.parent().slideUp(speed, function(){
+          _kept.show().trigger('focus');
+        });
+      } else {
+        // 行動版 infoCard 顯示程式
+      }
+
     })
+
+
+
 
     // Tab 鍵操作
     _infoCard.find('a').last().on('keydown', function(e){
@@ -887,6 +947,8 @@ $(function(){
         _hideInfoCard.trigger('focus');
       }
     })
+
+
 
   })
 

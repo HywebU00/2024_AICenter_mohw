@@ -97,19 +97,23 @@
 
   // 地圖
   .mapHere{
-    display: flex; align-items: flex-start; justify-content: center;
-    padding: 24px 0 0;
-    .map{
-      position: relative;
-      flex: 1 1 auto; width: auto;margin: 0 auto;max-width: 200px;
-      img{display: block; width: 100%;}
+    // display: flex; align-items: flex-start; justify-content: center;
+    padding: 24px 0 0; margin-left: $marginDocMob;
+
+    .mobileMaps {
+      display: flex; align-items: flex-start; justify-content: center;
+      img{
+        display: block;margin: 0 auto; 
+        width: 55%; max-width: 220px;
+      }
+      .infoCard{ 
+        flex: 1 0 55%; max-width: 300px;
+        & ~ img{
+          flex: 1 1 auto; margin:150px 0 0 -6%;
+        }
+      }
     }
-    .infoCard {
-      display: none;
-      margin-left: auto; margin-right: 8px;
-      flex: 1 0 55%; max-width: 300px;
-      &[style="display:block"]+.map{ margin-right: 0;}
-    }
+    .map {display: none;}
   }
 
   // 模擬下拉選單
@@ -151,14 +155,17 @@
         display: none;
         position: absolute;width: 100%; top: auto; left: 0;
         list-style: none; margin:4px 0 0; padding: 12px;
-        background-color: $white; 
         border-radius: $radius1;
+        background-color: $white; 
+        box-shadow: $shadow2 0 0 12px;
         &>li{
           margin: 2px 0;padding:3px 0; margin: 0;
           border-bottom: 1px solid $borderColor;
           &:last-child{border-bottom: none;}
           &>button {text-align: left;width: 100%; padding: .6em 0;}
         }
+
+        .infoCard {display: none;}
       }      
     }
   }
@@ -182,13 +189,12 @@
         }
         &.active{
           background-color: var(--tabBgc); color: var(--tabTheme);
-          // color: $fontColor;
           &::after{
             top: auto;rotate: 0deg;height: 4px;
             background-color: var(--tabTheme); color: var(--tabTheme);
           }
           .description {display: block;}
-          &+.tabContent { display: flex;justify-content: space-between; }
+          &+.tabContent { display: block; }
         }
         &:focus-visible {box-shadow: var(--tabTheme) 0 0 0 3px inset;}
 
@@ -237,8 +243,8 @@
         }
       }
       .tabContent{
-        position: static;border: none; 
-        padding: 0;margin: 0 0 0 30%;width: 70%;
+        position: relative;
+        padding: 0;margin: 0 0 0 35%;border: none; 
         min-height: 660px;
         .description{display: none;}
       }
@@ -246,24 +252,57 @@
       &:nth-child(3){.tabButton{ top: 440px;} }
     }
 
+    // 地圖
     .mapHere{
-      display: block; position: static;
-      flex: 1 1 50%; width: auto;
-      .map{width: 100%;max-width:none; margin: 0;}
-      .infoCard {
-        display: none; z-index: 9;
-        position: absolute; left: 34%;width: 34%; max-width: none;
-        box-shadow: rgb(0 0 0 / .4) 0 0 24px;
+      display: block;
+      position: absolute; top: 0; left: 35%;
+      width: 30%; margin: 0; padding: 0;
+
+      .mobileMaps { display: none;}
+      .map{
+        display: block;
+        position: relative;width: 100%;max-width:none; margin: 0;
+        img{display: block; width: 100%;}
       }
+
+      .pins{
+        display: block;
+        list-style: none; margin: 0; padding: 0;
+        li{
+          position: absolute; z-index: 9;
+          margin: 0;padding: 0;
+          width: 18px;height: 26px; 
+          background: url(../images/icon_pin1.svg) no-repeat center bottom;
+          transition: opacity .2s;
+          &.dim{opacity: .3; z-index: 0;}
+        }
+        &.style2 li{
+          background-image: url(../images/icon_pin2.svg);
+        }
+        &.style3 li{
+          background-image: url(../images/icon_pin3.svg);
+        }
+      }
+    }
+
+    // AI 中心資料卡
+    .infoCard {
+      // display: none; 
+      z-index: 9;
+      width: 100%;
+      // position: absolute; left: 34%;width: 34%; max-width: none;
+      box-shadow: rgb(0 0 0 / .4) 0 0 24px;
     }
 
     // 北部、中部、南部 寬版直接顯示，沒有 slidedown 效果
     .dropMenuGroup{
-      display: block; padding:0;  margin: 0 5%;
-      flex: 1 0 50%;
+      display: block; padding:0;  margin:0;
+      // flex: 1 0 50%;
+      // display: flex; flex-flow: row nowrap; justify-content: space-between;
       .dropMenu{
         margin-bottom: 16px;
         border-radius:12px 12px $radius1 $radius1;
+        width: 30%;
         .groupLabel{
           display: block;margin: 0 0 0 1.5em;
           font-size: 1em; font-weight: bold; line-height: 1; 
@@ -275,8 +314,9 @@
         ul.medList{
           position: static;
           display: block;margin: 0; padding:6px 8px;
-          background-color: transparent;
+          background-color: transparent; box-shadow: none;
           &>li{
+            position: relative;
             padding: 0;margin:6px 0;border: none; 
             // transition: margin .3s;
             &>button{
@@ -287,8 +327,13 @@
               &:hover, &:focus{box-shadow: var(--tabTheme) 0 0 0 2px inset;}
               &:focus{background-color: var(--tabTheme); color: $fontInvert;}
             }
+            // .infoCard{
+            //   display: none;
+            // }
           }
         }
+        &:nth-child(1){ float: left;}
+        &:nth-child(2), &:nth-child(3) {margin-left: 70%;}
       }
     }
   }
