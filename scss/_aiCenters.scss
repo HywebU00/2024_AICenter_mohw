@@ -97,9 +97,7 @@
 
   // 地圖
   .mapHere{
-    // display: flex; align-items: flex-start; justify-content: center;
-    padding: 24px 0 0; margin-left: $marginDocMob;
-
+    padding: 24px 0 0;
     .mobileMaps {
       display: flex; align-items: flex-start; justify-content: center;
       img{
@@ -108,9 +106,7 @@
       }
       .infoCard{ 
         flex: 1 0 55%; max-width: 300px;
-        & ~ img{
-          flex: 1 1 auto; margin:150px 0 0 -6%;
-        }
+        & ~ img{flex: 1 1 auto; margin:150px 0 0 -6%;}
       }
     }
     .map {display: none;}
