@@ -297,6 +297,28 @@ $(function(){
   // --------------------------------------------------------------- //
 
 
+  // --------------------------------------------------------------- //
+  // ----------------- 外掛套件 slick 參數設定 --------------------- //
+  // --------------------------------------------------------------- //
+
+  // 首頁大圖輪播
+  // --------------------------------------------------------------- //
+  $('.bigBanner').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplaySpeed: 6000,
+    speed: 800,
+    autoplay: false,
+    arrows: true,
+    dots: true,
+    fade: true,
+    infinite: true,
+    zIndex:8
+  });
+
+  // --------------------------------------------------------------- //
+  // --------------- 外掛套件 slick 參數設定 END ------------------- //
+  // --------------------------------------------------------------- //
 
 
 
@@ -786,13 +808,8 @@ $(function(){
     let _thisBtn = $(this);
     let _thisTray = _thisBtn.next('.tabContent');
     let _otherTray = _aiTray.not(_thisTray);
-    
-    if (ww < wwNormal ) {
-      drawerSpeed = 400;
-    } 
-    if (ww >= wwNormal ){
-      drawerSpeed = 0;
-    }
+
+    ww < wwNormal ? drawerSpeed = 400 : drawerSpeed = 0;
 
     if (_thisTray.is(':hidden')) {
       _thisBtn.addClass('active');
@@ -807,25 +824,11 @@ $(function(){
       if (ww < wwNormal) {
         _thisBtn.removeClass('active');
         _thisTray.find('.triggler.show').trigger('click');
-        _thisTray.slideUp(drawerSpeed).find('.infoCard').filter(':visible').find('.closeThis').trigger('click');
+        // _thisTray.slideUp(drawerSpeed).find('.infoCard').filter(':visible').find('.closeThis').trigger('click');
+        _thisTray.slideUp(drawerSpeed);
       }
     }
 
-    // if (_thisTray.is(':hidden')) {
-    //   _thisBtn.addClass('active');
-    //   _thisTray.slideDown(drawerSpeed).find('.infoCard').removeAttr('style');
-    //   _aiTray.not(_thisTray).slideUp(drawerSpeed, function(){
-    //     $(this).find('.medList').removeAttr('style').find('button').removeAttr('style');
-    //     $(this).find('.triggler.show').removeClass('show').end().find('.dim').removeClass('dim');
-    //   });
-    //   _drawerTriggerBtn.not(_thisBtn).removeClass('active');
-    // } else {
-    //   if (ww < wwNormal) {
-    //     _thisBtn.removeClass('active');
-    //     _thisTray.find('.triggler.show').trigger('click');
-    //     _thisTray.slideUp(drawerSpeed).find('.infoCard').filter(':visible').find('.closeThis').trigger('click');
-    //   }
-    // }
   })
   
   // 北中南下拉選單 // .dropMenuGroup
@@ -848,12 +851,12 @@ $(function(){
       if ( _thisList.is(':hidden') ) {
         _btnShowHide.removeClass('show').attr('aria-expanded', false);
         _thisBtn.addClass('show').attr('aria-expanded', true);
-        _medList.not(_thisList).slideUp(400, function(){
+        _medList.not(_thisList).slideUp(200, function(){
           $(this).removeAttr('style');
         });
-        _thisList.slideDown();
+        _thisList.slideDown(250);
       } else {
-        _thisList.slideUp(400, function(){
+        _thisList.slideUp(200, function(){
           $(this).removeAttr('style');
         });
         _thisBtn.removeClass('show').attr('aria-expanded', false);
@@ -864,7 +867,7 @@ $(function(){
 
       if ( ww < wwNormal) {
         let _thisBtn = $(this);
-        let whichArea = _thisBtn.attr('dada-maparea');
+        let whichArea = _thisBtn.attr('data-maparea');
         let _mapArea0 = _mapAreaImgs.eq(0);
 
         // 顯示所在縣市地圖
@@ -875,14 +878,14 @@ $(function(){
         // 顯示相對應資料卡
         _thisBtn.parents('.medList').prev().trigger('click');
         _mobileMaps.find('.infoCard').remove();
-        _thisBtn.next().clone().prependTo( _mobileMaps );
+        _thisBtn.next().clone().prependTo( _mobileMaps ).hide().fadeIn(360);
   
         _tempInfocard = _mobileMaps.find('.infoCard');
   
         _tempInfocard.find('.closeThis').on('click', function(){
           $(this).parent().remove();
           _mapAreaImgs.hide()
-          _mapArea0.show();
+          _mapArea0.fadeIn(360);
         })
       }
 
@@ -986,8 +989,11 @@ $(function(){
         _window.trigger('scroll');
 
         // [三大 AI 中心] 
-        _drawerTriggerBtn.removeClass('active').eq(0).addClass('active');
-        _aiTray.removeAttr('style').eq(0).show();
+        if ( _drawerTriggerBtn.filter('.active').length == 0 ) {
+          _aiTray.eq(0).show().prev().addClass('active');
+        } else {
+          _drawerTriggerBtn.filter('.active').next('.tabContent').show();
+        }
         _dropMenuGroup.find('.dropMenu').removeClass('show');
         _dropMenuGroup.find('.medList').removeAttr('style');
         _aiContent.find('.infoCard').removeAttr('style');
@@ -1003,15 +1009,10 @@ $(function(){
         hh = _siteHeader.innerHeight();
         _window.trigger('scroll');
         
-        // 快速查詢
-        // _search.hide().removeClass('reveal');
-        // _searchCtrl.removeClass('closeIt').attr('aria-expanded', false);
-
         // [三大 AI 中心] 
-        _drawerTriggerBtn.removeClass('active').eq(0).addClass('active');
-        _aiTray.removeAttr('style').eq(0).show();
-        _dropMenuGroup.find('.medList>li').removeAttr('style');
-        _aiContent.find('.infoCard').removeAttr('style');
+        _drawerTriggerBtn.filter('.active').next('.tabContent').show();
+        _dropMenuGroup.find('.medList>li').removeAttr('style').children('button').removeAttr('style');
+        _aiContent.find('.infoCard').removeAttr('style').end().find('.dim').removeClass('dim');
       }
       ww = wwNew;
     }, 200);
@@ -1020,30 +1021,6 @@ $(function(){
   
 
 
-  // --------------------------------------------------------------- //
-  // ----------------- 外掛套件 slick 參數設定 --------------------- //
-  // --------------------------------------------------------------- //
-
-  // 首頁大圖輪播
-  // --------------------------------------------------------------- //
-  $('.bigBanner').slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplaySpeed: 6000,
-    speed: 800,
-    autoplay: false,
-    arrows: true,
-    dots: true,
-    fade: true,
-    infinite: true,
-    zIndex:8
-  });
-
-
-  
-  // --------------------------------------------------------------- //
-  // --------------- 外掛套件 slick 參數設定 END ------------------- //
-  // --------------------------------------------------------------- //
 
 
 

@@ -24,7 +24,6 @@
       position: relative; font-size: 1em;
       margin: 0;padding: 0 40px 0 0; height: 2.4em; line-height: 2.4; width: 100%;
       font-weight: bold; color: $fontColor;
-      // color: var(--tabTheme);
       &::after {
         content: ''; position: absolute; right: 12px; top: .8em;
         width: 10px; height: 10px;rotate: 45deg;
@@ -76,7 +75,6 @@
             text-decoration: none;font-weight: bold;
             border-bottom: 1px dashed var(--tabTheme);
             &:hover{ border-bottom-style: solid;}
-            // &:focus-visible { outline: var(--tabTheme) 2px solid; border-bottom-color: transparent;}
             &::after{
               content: '';
               position: absolute; right: 0; bottom: 3px;
@@ -283,18 +281,13 @@
 
     // AI 中心資料卡
     .infoCard {
-      // display: none; 
-      z-index: 9;
-      width: 100%;
-      // position: absolute; left: 34%;width: 34%; max-width: none;
+      width: 100%; z-index: 9;
       box-shadow: rgb(0 0 0 / .4) 0 0 24px;
     }
 
     // 北部、中部、南部 寬版直接顯示，沒有 slidedown 效果
     .dropMenuGroup{
       display: block; padding:0;  margin:0;
-      // flex: 1 0 50%;
-      // display: flex; flex-flow: row nowrap; justify-content: space-between;
       .dropMenu{
         margin-bottom: 16px;
         border-radius:12px 12px $radius1 $radius1;
@@ -314,7 +307,6 @@
           &>li{
             position: relative;
             padding: 0;margin:6px 0;border: none; 
-            // transition: margin .3s;
             &>button{
               padding:.65em 1em; margin:0; border-radius:$radius1;
               font-size: 1.125em;
@@ -323,9 +315,6 @@
               &:hover, &:focus{box-shadow: var(--tabTheme) 0 0 0 2px inset;}
               &:focus{background-color: var(--tabTheme); color: $fontInvert;}
             }
-            // .infoCard{
-            //   display: none;
-            // }
           }
         }
         &:nth-child(1){ float: left;}
