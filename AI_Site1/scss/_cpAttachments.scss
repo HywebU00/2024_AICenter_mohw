@@ -1,0 +1,115 @@
+// 相關檔案, 相關連結 , 相關圖檔 共用區塊標題樣式
+// ---------------------------------------------------------------- //
+.photoflow, .fileDownload, .seeAlso{
+  h3{
+    position: relative;padding:0 0 3px 20px; margin: 0;
+    font-size: 1.5em;  line-height: 1.2;
+    border-bottom: 3px solid $primaryColor;
+    &::before {
+      content: '';position: absolute; left: 0; top: 2px;
+      width: 10px; height: 1em; border-radius: 5px;
+      background-color: $primaryColor;
+    }
+  }
+
+}
+// ---------------------------------------------------------------- //
+
+
+
+// 相關檔案, 相關連結 
+// ---------------------------------------------------------------- //
+.fileDownload, .seeAlso{
+  clear: both; margin: 60px 0; 
+  ul{list-style: none;  padding: 0; margin: 0;}
+  &>ul, &>ol{
+    line-height: 1.6;
+    &>li{ margin:3px 0 0; padding: 0;
+      a{ text-decoration: none; color: $fontColor; }
+    }
+  }
+
+  @media screen and (min-width: $wwNormal){
+    margin: 90px 0;
+  }
+}
+// ---------------------------------------------------------------- //
+
+
+// 相關連結 
+// ---------------------------------------------------------------- //
+.seeAlso{
+  &>ol{ 
+    padding-left: 2em;margin: 12px 0 0;
+    font-size: 1.1em;
+    &>li{
+      a{ position: relative; display: block; padding: .8em 0 .5em .7em;
+        &::after{
+          content: '';
+          position: absolute; left: -2em; bottom: 0; right: 0;
+          height: 1px;
+          background-color: $borderColorLight;
+          transition: .15s;
+        }
+        &:hover, &:focus{
+          &::after{background-color: $primaryColor;}
+        }
+        &:focus{
+          &::after{height: 2px;}
+        }
+        &:focus-visible { box-shadow: $focus 0 0 0 2px inset;
+          &::after{display: none;}
+        }
+      }
+    }
+  }
+}
+// ---------------------------------------------------------------- //
+
+
+// 相關檔案 （附件下載）
+// ---------------------------------------------------------------- //
+.fileDownload{
+  &>ol{
+    margin: 12px 0 0; padding-left: 2em; list-style-type: decimal;
+    font-size: 1.1em;
+    &>li{
+      position: relative; margin: 0;
+      padding: .8em 2px .5em .7em;
+      &::after{
+        content: ''; display: block; clear: both;
+        margin: 0 0 0 -2.8em; height: 1px;
+        background-color: $borderColorLight;
+        transition: .15s;
+      }
+    }
+  }
+
+  .fileName{ display: block;}
+
+  .files{
+    font-size: .82em; margin: 5px 0 8px;
+    text-align: right;
+    li{
+      display: inline-block;
+      margin:0 0 0 4px; padding:0;
+    }
+    a{
+      padding: 5px 16px;display: block;outline: none;
+      border-radius: 2em;
+      box-shadow: $borderColor 0 0 0 1px;
+      &:hover, &:focus {
+        box-shadow: $gray700 0 0 0 2px;
+      }
+    }
+    .fileType{ display: inline-block; vertical-align: middle; margin-right: 4px;}
+  }
+
+  @media screen and (min-width: $wwNormal){
+
+    .fileName{ display: inline-block; padding-top: .3em; }
+    .files{ padding-left: 1em;}
+  }
+
+}
+// ---------------------------------------------------------------- //

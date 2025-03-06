@@ -1,0 +1,45 @@
+// 首頁：活動訊息
+// ---------------------------------------------------------------- //
+.news{
+  @extend %primSecWidth;
+  &>ul{
+    list-style: none; margin: 0; padding: 0;line-height: 1.6;
+    &>li{
+      &>a{
+        display: flex; flex-flow: row wrap;
+        padding: 8px 16px;
+        color: $fontColor;text-decoration: none;
+        border-bottom: 1px solid $borderColorLight;
+        &:hover, &:focus {
+          border-bottom-color: $primaryColor;
+          &::before {width: 8px;}
+        }
+        &:focus-visible {outline: 2px solid $focus;}
+      }
+      .title{flex: 0 0 100%;order: 2;}
+      time{flex: 0 0 100%;color: $fontColorLight;}
+    }
+  }
+
+  @media screen and (min-width: $wwNormal){
+    &>ul{
+      &>li{
+        &>a{
+          position: relative; 
+          padding: 24px 40px;justify-content: space-between;
+          &::before {
+            content: ''; position: absolute;left: 0; top: 0; bottom: 0;width: 0;
+            background-color: $primaryColor;
+            transition: .2s;
+          }
+          &:hover, &:focus {
+            &::before {width: 8px;}
+          }
+        }
+        .title{ order: 0; flex: 0 0 calc(100% - 8em);font-size: 1.125em;}
+        time{ flex: 0 0 auto;}
+      }
+    }
+  }
+}
+// ---------------------------------------------------------------- //

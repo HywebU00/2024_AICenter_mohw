@@ -1,0 +1,68 @@
+// 全站 <header>
+// ---------------------------------------------------------------- //
+.siteHeader{
+  position: relative;z-index: 991;
+  padding: 8px $marginDocMob; margin: 0 auto;
+  background-color: $mainBg;
+
+  h1{
+    margin: 0;padding: 0;
+    img{
+      display: block; height: 41px;width: auto;
+      max-width: calc(100vw - 50px);
+      outline: 2px solid transparent;
+    }
+    a{
+      &:focus-visible {
+        img{ outline-color: $focus;}
+      }
+    }
+  }
+
+  &.fixed {
+    position: fixed; top: 0; left: 0; right: 0;
+    box-shadow: rgb(0 0 0 / .4) 0 0 8px;
+
+    animation: fixHeaderAni .4s  ease-out 1;
+  }
+
+
+  .menu{ display: none;}
+  .sidebarCtrl{ top: calc(50% - 22px); right: $marginDocMob; }
+  .loginBtn{display: none;}
+
+  @media screen and (min-width: $wwNormal){
+    padding: 16px $marginDoc;
+    display: flex; justify-content: space-between; align-items: center;
+    h1{
+      img{height: 48px; width: auto; max-width: none;}
+      outline: 1px dashed #00f6;
+    }
+
+    &.fixed {padding-top: 6px;padding-bottom: 6px;}
+
+    .loginBtn{display: block;}
+    .sidebarCtrl{display: none;}
+  }
+
+  @media screen and (min-width: $wwMaximum){
+    padding-left: $marginDocMax; padding-right: $marginDocMax;
+  }
+
+}
+// ---------------------------------------------------------------- //
+
+
+
+
+// 登入按鈕
+.loginBtn{
+  height: 2.8em; padding: 0 1.5em;
+  border: none;border-radius: $radius;
+  background-color: $primaryColor; color: $fontInvert;
+}
+
+@keyframes fixHeaderAni {
+  0% { translate: 0 -120%;}
+  100% {translate: 0 0;}
+}

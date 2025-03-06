@@ -9,11 +9,12 @@
 			{
 				"format": "compressed",
 				"extensionName": ".css",
-				"savePath": "/css"
+				"savePath": "~/../css"
 			}
 		],
 		"liveSassCompile.settings.includeItems": [
-			"/scss/style.scss"
+			"/scss/style.scss",
+			"/AI_Site1/scss/style.scss"
 		],
 		"liveSassCompile.settings.showOutputWindowOn": "Warning",
 		"liveServer.settings.port": 5501,

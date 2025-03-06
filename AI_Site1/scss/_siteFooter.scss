@@ -1,0 +1,187 @@
+// 全站 <footer>
+// ---------------------------------------------------------------- //
+.siteFooter{
+  position: relative;
+  margin: 0;padding: 40px 0 0;
+  background-color: $bgc;
+  ul{ list-style: none; margin: 0; padding: 0; }
+  li{ margin: 0; padding: 0; }
+  a{ text-decoration: none; outline: none;}
+
+  .footLogo{
+    margin: 0 $marginDocMob 20px;
+    a{ display: block;}
+    img{ display: block; width: 60px;}
+  }
+
+
+  .siteTree{
+    width: $mobileWidth; margin: 24px auto 40px;
+    &>ul{
+      line-height: 1.6;font-size: 1em; 
+      li{margin: 0 0 14px;}
+      &>li{
+        &>a{
+          position: relative; display: block; padding: 2px 0 2px 0;
+          text-decoration: none; color: $fontColor; 
+          font-weight: bold;
+          transition: .3s;
+          &::after {
+            content: ''; position: absolute; left: 0; bottom: 0;
+            width: 100%; height: 2px;
+            background: transparent;
+            transition: .15s;
+          }
+          &:hover, &:focus {
+            &::after {background: $fontColor; bottom: 2px;}
+          }
+          &:focus-visible { box-shadow: $fontColor 0 0 0 2px;
+            &::after{display: none;}
+          }
+        }
+
+
+        // 第二層
+        &>ul {/* font-size: .9375em; */ margin-top: 14px; margin-bottom: 16px;}
+        ul ul{ font-size: inherit;}
+
+        li{
+          &>a{
+            position: relative; display: block; padding: 0 12px 0 0;
+            text-decoration: none; color: $fontColor; 
+            border-bottom: 1px solid transparent;
+            overflow: hidden;
+            transition: .3s;
+            &::before {
+              content: ''; position: absolute; left: -5px; top: .7em;
+              width: 5px; height: 5px;background-color: $gray500;
+              transition: .2s;
+            }
+            &:hover, &:focus {
+              padding-left: 12px; padding-right: 0;
+              border-bottom-color: $fontColor;
+              &::before { 
+                left: 3px;
+              }
+            }
+            &:focus-visible { box-shadow: $fontColor 0 0 0 2px;}
+          }
+        }
+      }
+    }
+  }
+
+  .imageLinks{
+    margin:20px auto; width: $mobileWidth;
+    display: flex;
+    &>li{
+       flex: 0 0 auto; margin:0 5px 0 0;
+      &>a{
+        display: block;border-radius: $radius1; overflow: hidden;
+        width: 44px; height: 44px; 
+        transition: .2s;
+        img{
+          display: block; height: 100%; width: 80%; margin: 0 auto;
+          object-fit: contain;
+        }
+        &:hover{
+          background-color: $white;
+          box-shadow:transparent 0 0 0 0, rgb(0 0 0 / .4) 0 0 9px;
+        }
+        &:focus{
+          background-color: $white;
+          box-shadow: $black 0 0 0 2px, rgb(0 0 0 / .6) 0 0 7px;
+        }
+      }
+    }
+  }
+
+  .visiters{margin:20px auto 40px; width: $mobileWidth;}
+
+  .badge{
+    width: 88px;
+    img{ display: block; width: 100%; height: 31px; object-fit: cover; transition: .2s;}
+    a{
+      display: block;
+      &:hover, &:focus {
+        img{ box-shadow:$white 0 0 0 2px; }
+      }
+    }
+  }
+
+  .base{
+    margin:0; padding: 20px $marginDocMob;
+    background-color: #004A4A; color: $fontInvert;
+    ul{
+      line-height: 1; margin: 0 auto;
+      li {
+        margin: .2em 0 1.2em; padding: 0;
+        a{ 
+          position: relative; 
+          display: inline-block; padding: 2px;
+          color: $fontInvert;text-decoration: none;
+          &::after {
+            content: ''; position: absolute; left: 0;right: 0; bottom: -3px;
+            height: 2px; background-color: transparent;
+            transition: .2s;
+          }
+          &:hover {
+            &::after { background-color: $white;bottom: -1px;}
+          }
+          &:focus-visible {box-shadow: $white 0 0 0 2px;}
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: $wwMedium){
+    .siteTree{
+      &>ul{
+        display: flex; flex-wrap: wrap; gap: 18px;
+        &>li{flex:0 0 calc(33.33% - 12px);}
+      }
+    }
+  }
+
+  @media screen and (min-width: $wwNormal){
+
+    .footLogo{ margin-left: $marginDoc; }
+
+    .siteTree{
+      width: $normalWidth; margin-bottom: 40px;
+      max-width: $maximumWidth;
+      &>ul{ 
+        gap: 20px;
+        &>li{
+          flex: 0 1 auto; min-width: 7em;
+          li{ max-width: 12em; min-width: 100%;}
+        }
+      }
+    }
+    .imageLinks{
+      width: $normalWidth; max-width: $maximumWidth;
+      justify-content: flex-end;
+      li{ margin: 0 0 0 5px;}
+    }  
+
+    .visiters{
+      width: $normalWidth; max-width: $maximumWidth;
+      text-align: right; padding-right: 10px;
+    }
+
+    .base{
+      display: flex; justify-content: center;
+      ul{
+        margin: .4em 2em 0 0; width: auto;
+        &>li{display: inline-block; margin: 0 2em;}
+      }
+    }
+
+  }
+
+  @media screen and (min-width: $wwMaximum){
+    .footLogo { margin-left: $marginDocMax;}
+    .base{ padding-left: $marginDocMob; padding-right: $marginDocMob;}
+  }
+}
+// ---------------------------------------------------------------- //

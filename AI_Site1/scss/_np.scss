@@ -1,0 +1,36 @@
+// 節點頁
+// ------------------------------------------------------ //
+.np{
+  @extend %primSecWidth; margin-top: 24px;
+
+  ul{ list-style: none; margin: 0; padding: 0; }
+  &>ul>li{
+    margin: 0 0 12px; padding: 0;
+    font-size: 1.125em; line-height: 1.6;
+    &>a{
+      display: block; padding: 1em; height: 100%;
+      border: $borderColor solid 1px; border-radius: 8px;
+      color: $fontColor; background-color: $white;
+      text-decoration: none;
+      transition: .2s;
+      &:hover, &:focus {border-color: $white;}
+      &:hover {box-shadow:$borderColorDark 0 0 0 1px, $shadow1 0 0 20px;}
+      &:focus {box-shadow:$focus 0 0 0 2px, $shadow1 0 0 20px;}
+    }
+  }
+
+  @media screen and (min-width: $wwMedium){
+    &>ul{
+      display: flex; flex-flow: row wrap;
+      &>li {
+        flex: 0 0 calc(50% - 6px); margin: 0 12px 12px 0;
+        &:nth-child(even) {margin-right: 0;}
+      }
+    }
+  }
+
+  @media screen and (min-width: $wwNormal){
+  }
+
+}
+// ------------------------------------------------------ //

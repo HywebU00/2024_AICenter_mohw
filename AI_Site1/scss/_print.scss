@@ -1,0 +1,153 @@
+@media print {
+  body{ background: none; position: static !important;}
+
+  .siteHeader, .siteHeader.fixed, .sidebar, .siteFooter, 
+  .funcBar, .goTop, .goTop.show,
+  .sidebarMask { display: none; }
+  .pagination {display: none;}
+
+  // .mainRow{ max-width: none;}
+
+  // --------------------------------------------------------------- //
+
+  .breadcrumb {
+    padding-left: 0; background: none; width: 100%; display: block;
+    ul, li{ list-style: none; margin: 0;padding: 0;}
+    ul{line-height: 1.2; overflow: hidden;}
+    li{
+      float: left; margin-right: 8px;
+      &::after{content: '>'; display: inline-block; margin-left: 6px;}
+      &:last-child {
+        font-weight: bold; color: #333;
+        &::after{display: none;}
+        a{ color: #000;}
+      }
+      a{
+        display: inline-block; 
+        text-decoration: none; color: #333;
+        transition: .2s;
+      }
+    }
+  }
+  
+  .pageHeader{
+    border-bottom: 4px solid $borderColor;
+    padding: 15px 0 5px; margin: 0 auto 10px !important;
+    h2{ 
+      padding: 0; margin: 0; color: #000;
+      &::before {display: none;}
+    } 
+  }
+
+
+  // --------------------------------------------------------------- //
+  // ----------------------------- cp ------------------------------ //
+  // --------------------------------------------------------------- //
+  .cp{margin-top: 15px;}
+
+  .poInfo{
+    padding:0; margin: 10px 0 50px;
+    background: none;
+    ul{ display: block;}
+    li{ display: inline-block; margin-left: 0; margin-right: 1.5em;}
+  }
+
+  .cpArticle{
+    h3, h4 {
+      background: none; padding-left: 0;
+      color: #000;
+      &::before { display: none;}
+      &.style1 { 
+        color: #000; background-color: #fff; padding: 0 0 5px;
+        border-radius: 0;
+        border-bottom: 2px dotted $borderColorDark;
+      }
+    }
+  
+    .button a{
+      background-color: #fff; color: $fontColor !important;
+      border: 1px solid $borderColorDark;
+      height: 2.7em;
+    }
+  
+    blockquote{
+      border-color: #888; background-color: transparent;
+      &::before {display: none;}
+    }
+  
+    figure {
+      border: 1px solid $borderColor; background-color: #fff;
+    }
+  
+    table{
+      &.tbStyle1, &.tbStyle2 {
+        tbody, thead{
+          th{ background-color: #ddd; color: #000;}
+        }
+      }
+    }
+
+    .imageRow.col2{
+      display: block; text-align: center;
+      figure{
+        display: inline-block; width: 48%; margin: 0 .5%;
+        vertical-align: top;
+      }
+      
+    }
+  
+  }
+
+  .seeAlso, .photoflow, .fileDownload {
+    h3{
+      padding-left: 0;
+      &::before {display: none;}
+    }
+  }
+
+  // 相關圖片
+  .photoflow {
+    .flowNav, button.arrowBtn{ display: none !important;}
+
+    .flowList{
+      display: block;
+      &>li{ 
+        // display: block; width: 100%; height: auto ; margin: 0 0 12px;
+        display: inline-block; width: 23.5%; height: auto; margin: 0 0 20px 1%;
+        vertical-align: top;
+        &:nth-child(4n+1) {margin-left: 0;}
+        &>a{ 
+          height: auto !important;
+          &::before{
+            box-shadow: $borderColorDark 0 0 0 1px inset; 
+          }
+        }
+        img{ width: 100%; height: auto !important; transform: none; 
+          
+        }
+        p{
+          position: static; display: block;
+          background: none; color: $fontColor;
+          transform: none;
+        }
+      
+      }
+    }
+  }
+
+  // 相關檔案, 相關連結 , 相關圖檔 共用區塊標題樣式
+  .photoflow, .fileDownload, .seeAlso{
+    h3{border-bottom-color: $borderColorDark;}
+  }
+
+
+
+  // --------------------------------------------------------------- //
+  // ------------------------------- lp ---------------------------- //
+  // --------------------------------------------------------------- //
+  .listTb>table.stickyHead thead {
+    position: static !important;
+  }
+  
+}
+
