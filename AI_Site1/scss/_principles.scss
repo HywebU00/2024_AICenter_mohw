@@ -1,0 +1,88 @@
+// 首頁：人工智慧發展七大原則
+// ---------------------------------------------------------------- //
+.principles{
+  @extend %primSecWidth;
+  .description{
+    margin: 40px 0;
+    font-size: 1.125em; line-height: 1.5; text-align: center;
+  }
+  .contentGroup{margin: 40px 0;}
+  .content{
+    margin: 12px auto;border-radius: 12px;
+    background-color: $bgc1;
+    
+    button.tabItem{
+      position: relative;
+      margin: 0 0 6px; padding: 0 40px 0 20px;
+      font-size: 1.125em;line-height: calc(1em + 46px);
+      width: 100%; height: calc(1em + 40px);
+      text-align: left;
+      background-color: transparent;
+      &::after {
+        content: ''; position: absolute; right: 24px; top: 24px;
+        width: 10px;height: 10px;rotate: 45deg;
+        border: 2px solid $fontColor;
+        border-left: none; border-top: none;
+        transition: .3s;
+      }
+
+      &.active{
+        color: $primaryColor; font-weight: bold;
+        &::after {rotate: 225deg; border-color: $primaryColor;}
+      }
+    }
+
+    .tabContent{
+      display: none;padding: 2px 20px 20px;
+      color: $black; font-weight: bold;
+      img{
+        display: block; margin: 40px auto;
+        width: 100%; max-width: 393px;
+      }
+      p{
+        margin: 40px auto 0; 
+        max-width: 520px;
+        font-size: 1.125em; line-height: 1.5;
+      }
+    
+    }
+  }
+
+  @media screen and (min-width: $wwNormal){
+    --tabItemHeight: calc( 1em + 48px );
+    .contentGroup{ 
+      position: relative;min-height: calc(10.5em + 336px);
+      padding-left: 30%;
+    }
+    .content{
+      padding: 0; background-color: transparent;
+      button.tabItem{ 
+        position: absolute; left: 0; top: auto; width: 30%;
+        padding: 0 24px; height: var(--tabItemHeight); line-height: 1;
+        font-size: 1.5em; font-weight: bold;
+        border-bottom: 1px solid $borderColorLight;
+        &::after {display: none;}
+        &::before{
+          content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+          width: 0; background-color: $primaryColor;
+        }
+        &.active{
+          &::before{width: 4px; transition: .2s;}
+        }
+        &:not(.active) {color: $fontColorLight;}
+      }
+      
+      .tabContent{padding: 16px 16px 16px 40px; }
+      
+      &:nth-child(2) .tabItem { top: var(--tabItemHeight);}
+      &:nth-child(3) .tabItem { top: calc(var(--tabItemHeight)*2)}
+      &:nth-child(4) .tabItem { top: calc(var(--tabItemHeight)*3)}
+      &:nth-child(5) .tabItem { top: calc(var(--tabItemHeight)*4)}
+      &:nth-child(6) .tabItem { top: calc(var(--tabItemHeight)*5)}
+      &:nth-child(7) .tabItem { top: calc(var(--tabItemHeight)*6)}
+    }
+
+  }
+
+}
+// ---------------------------------------------------------------- //

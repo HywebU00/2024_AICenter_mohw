@@ -10,14 +10,14 @@ $wwMaximum: 1440px;
 // 大區塊寬度常數
 // ---------------------------------------------------------------- //
 $sideBarWidth: 300px;  // 窄版側欄選單
-$mobileWidthVW: 92vw; // 窄螢幕寬度 moduals width in mobile
+$mobileWidthVW: 90vw; // 窄螢幕寬度 moduals width in mobile
 $normalWidthVW: 90vw; // 寬螢幕寬度
-$mobileWidth: 92%; // 窄螢幕寬度 moduals width in mobile
+$mobileWidth: 90%; // 窄螢幕寬度 moduals width in mobile
 $normalWidth: 90%; // 寬螢幕寬度
 $maximumWidth: $wwMaximum*.9; // 內容區最大寬度
 
 // 文件邊界寬度
-$marginDocMob: 4%;
+$marginDocMob: 5%;
 $marginDoc: 5%;
 $marginDocMax: calc(50% - $wwMaximum*.45);
 
@@ -55,7 +55,7 @@ $primaryColor:#008281;
 $secondaryColor: #005FA1;
 $assistant: #F39A16;
 $bgc: #F2F8F8;
-$bgc1: #E8F9F7;
+$bgc1: #f2f8f8;
 $bgc2: #EEF7FC;
 $bgc3: #FFF9EE;
 

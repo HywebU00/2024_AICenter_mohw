@@ -1,0 +1,8 @@
+// 首頁：中心成立背景
+// ---------------------------------------------------------------- //
+.background{
+  @extend %primSecWidth;
+  outline: 1px solid #f008;
+  outline-offset: -1px;
+  text-align: center; line-height: 1.5;
+}

@@ -1,6 +1,12 @@
-@import "_news";// 活動訊息
-@import "_bigBanner.scss";// 大圖輪播
-@import "_aiCenters.scss";// 三大 AI 中心
-@import "_downloadFiles";   // 文件下載
-@import "_qa";  // 常見問題
-@import "_contact";  // 聯絡我們
+// 首頁區塊
+@import "_principles";  // 人工智慧發展七大原則
+@import "_strategies";  // 三大落地實施策略
+@import "_background";  // 中心成立背景
+@import "_xxx";  // xxx
+
+// @import "_news";// 活動訊息
+// @import "_bigBanner.scss";// 大圖輪播
+// @import "_aiCenters.scss";// 三大 AI 中心
+// @import "_downloadFiles";   // 文件下載
+// @import "_qa";  // 常見問題
+// @import "_contact";  // 聯絡我們

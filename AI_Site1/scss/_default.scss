@@ -22,24 +22,19 @@ body{
   &::before {
     content: ''; display: inline-block; vertical-align: top;
     width: 50px; height: 24px; margin: 2px 0 0;
+    rotate: 180deg; margin-right: 15px;opacity: 0.8; 
     background: url(../images/twoDisks.svg) no-repeat 0 0;
     background-size: auto 100%;
   }
 
-  // SP 區塊標題
-  &:is(h3){
-    &::before{
-      rotate: 180deg; margin-right: 15px;opacity: 0.8; 
-    }
-  }
-
   @media screen and (min-width: $wwNormal){
-    font-size: 2.5em; text-align: left; margin-bottom: 40px; 
-    &::before { margin: .2em 20px 0; height: 40px; width: 64px; }
-    &:is(h3){
-      position: relative; padding-left: 88px;
-      color: $black;
-      &::before{ position: absolute; left: 0; top: 4px; margin: 0;}
+    font-size: 2.5em; text-align: left; margin-bottom: 40px;
+    position: relative; padding-left: 88px;
+    color: $black;
+
+    &::before { 
+      position: absolute; left: 0; top: 4px; margin: 0;
+      height: 40px; width: 64px; 
     }
   }
 }

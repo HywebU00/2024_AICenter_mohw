@@ -38,7 +38,7 @@ button, input[type="button"], input[type="submit"], input[type="rest"] {
 // --------------------------------------------------------------- //
 .sidebarCtrl{
   --ting: #{$black};
-  --bgc: #{$gray100};
+  --bgc: transparent;
 
   position: absolute;
   width: 44px; height: 44px;
