@@ -301,21 +301,42 @@ $(function(){
   // ----------------- 外掛套件 slick 參數設定 --------------------- //
   // --------------------------------------------------------------- //
 
-  // 首頁大圖輪播
+  // 醫院成功案例 左右滑動
   // --------------------------------------------------------------- //
-  $('.bigBanner').slick({
+  const _successCases = $('.successCases').find('.slides');
+  _successCases.slick({
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplaySpeed: 6000,
     speed: 800,
     autoplay: false,
     arrows: true,
     dots: true,
-    fade: true,
+    fade: false,
     infinite: true,
-    zIndex:8
+    mobileFirst: true,
+    responsive: [
+      {
+        breakpoint: 700,
+        settings: {
+          slidesToShow: 2,
+        }
+      },
+      {
+        breakpoint: 1000,
+        settings: {
+          slidesToShow: 3,
+        }
+      }
+    ]
   });
-
+  function successCasesSlickSet() {
+    const _slickDots =  _successCases.find('.slick-dots');
+    _successCases.find('.slick-prev').insertBefore('.slick-next');
+    _slickDots.find('button').wrapInner('<span></span>');
+    _slickDots.find('span').unwrap();
+  }
+  successCasesSlickSet();
+  
   // --------------------------------------------------------------- //
   // --------------- 外掛套件 slick 參數設定 END ------------------- //
   // --------------------------------------------------------------- //
@@ -997,7 +1018,17 @@ $(function(){
     winResizeTimer = setTimeout( function () {
 
       wwNew = _window.width();
-      
+
+      // --- 成功案例 successCasesSlickSet() --- //
+      // 由【小】到【中、大】螢幕
+      if( ww < wwMedium && wwNew >= wwMedium ) { successCasesSlickSet();  }
+      // 由【中】到【小】或【大】螢幕
+      if( ww >= wwMedium && ww < wwNormal ) {
+        if ( wwNew >= wwNormal ||  wwNew < wwMedium) {
+          successCasesSlickSet(); 
+        }
+      }
+
       // 由小螢幕到寬螢幕
       if( ww < wwNormal && wwNew >= wwNormal ) {
         if (_sidebar.hasClass('reveal')) {
@@ -1012,14 +1043,17 @@ $(function(){
         _window.trigger('scroll');
 
         // [三大 AI 中心] 
-        if ( _drawerTriggerBtn.filter('.active').length == 0 ) {
-          _aiTray.eq(0).show().prev().addClass('active');
-        } else {
-          _drawerTriggerBtn.filter('.active').next('.tabContent').show();
-        }
-        _dropMenuGroup.find('.dropMenu').removeClass('show');
-        _dropMenuGroup.find('.medList').removeAttr('style');
-        _aiContent.find('.infoCard').removeAttr('style');
+        // if ( _drawerTriggerBtn.filter('.active').length == 0 ) {
+        //   _aiTray.eq(0).show().prev().addClass('active');
+        // } else {
+        //   _drawerTriggerBtn.filter('.active').next('.tabContent').show();
+        // }
+        // _dropMenuGroup.find('.dropMenu').removeClass('show');
+        // _dropMenuGroup.find('.medList').removeAttr('style');
+        // _aiContent.find('.infoCard').removeAttr('style');
+
+        
+
       }
 
       // 由寬螢幕到小螢幕
@@ -1033,9 +1067,12 @@ $(function(){
         _window.trigger('scroll');
         
         // [三大 AI 中心] 
-        _drawerTriggerBtn.filter('.active').next('.tabContent').show();
-        _dropMenuGroup.find('.medList>li').removeAttr('style').children('button').removeAttr('style');
-        _aiContent.find('.infoCard').removeAttr('style').end().find('.dim').removeClass('dim');
+        // _drawerTriggerBtn.filter('.active').next('.tabContent').show();
+        // _dropMenuGroup.find('.medList>li').removeAttr('style').children('button').removeAttr('style');
+        // _aiContent.find('.infoCard').removeAttr('style').end().find('.dim').removeClass('dim');
+
+        successCasesSlickSet(); // 成功案例
+
       }
       ww = wwNew;
     }, 200);

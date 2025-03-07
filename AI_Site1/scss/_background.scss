@@ -2,7 +2,16 @@
 // ---------------------------------------------------------------- //
 .background{
   @extend %primSecWidth;
-  outline: 1px solid #f008;
-  outline-offset: -1px;
-  text-align: center; line-height: 1.5;
+  .description{ 
+    text-align: center; font-size: 1.125em;line-height: 1.5;
+    margin: 24px auto;
+    p{
+      margin: 1.2em 0 0;
+      &:first-child{margin-top: 0;}
+    }
+  }
+
+  @media screen and (min-width: $wwNormal){
+    .description{text-align: left;}
+  }
 }

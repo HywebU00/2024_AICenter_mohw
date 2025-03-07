@@ -2,9 +2,14 @@
 // ---------------------------------------------------------------- //
 .principles{
   @extend %primSecWidth;
-  .description{
-    margin: 40px 0;
-    font-size: 1.125em; line-height: 1.5; text-align: center;
+
+  .description{ 
+    text-align: center; font-size: 1.125em;line-height: 1.5;
+    margin: 24px auto 0;
+    p{
+      margin: 1.2em 0 0;
+      &:first-child{margin-top: 0;}
+    }
   }
   .contentGroup{margin: 40px 0;}
   .content{
@@ -50,6 +55,7 @@
 
   @media screen and (min-width: $wwNormal){
     --tabItemHeight: calc( 1em + 48px );
+    .description{text-align: left;}
     .contentGroup{ 
       position: relative;min-height: calc(10.5em + 336px);
       padding-left: 30%;

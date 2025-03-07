@@ -318,12 +318,13 @@ a:hover, a:focus{
 
   // 點點或數字
   .slick-dots { 
-    --tinge: #{$gray500};
+    --tinge: #{$gray200};
 
     list-style: none; margin: 0 auto; padding: 0;
-    text-align: center; font-size: 0;
+    text-align: left; font-size: 0;
+
     li { 
-      display: inline-block; margin: 0 5px;padding: 11px 0;
+      display: inline-block; margin: 0 4px;padding: 5px 0;
       button { 
         width: 8px; height: 8px; border-radius: 4px;
         font-size: 0;
@@ -331,11 +332,17 @@ a:hover, a:focus{
         transition:all .2s, width .3s;
         &:hover, &:focus{box-shadow: var(--tinge) 0 0 0 2px;}
       }
+      span { 
+        display: block;
+        width: 8px; height: 8px; border-radius: 4px;
+        font-size: 0;
+        background-color: var(--tinge);
+        transition:all .2s, width .3s;
+      }
 
       &.slick-active{
         --tinge: #{$focus};
         button{ 
-          width: 28px; 
           &:focus{ box-shadow:#eee 0 0 0 1px,  var(--tinge) 0 0 0 3px; }
         }
       }
@@ -345,40 +352,43 @@ a:hover, a:focus{
 
   // 左右箭頭
   .slick-arrow {
-    --tinge: #fff;
-    --bgc: rgb(0 0 0 / .3);
+    --tinge: #{$primaryColor};
+    --bgc: #fff;
     --gap: 8px;
-    --size: 64px;
-    --arrow-size: 18px;
+    --size: 48px;
+    --arrow-size: 12px;
 
     position: absolute; z-index: 9; 
-    top: 50%; translate: 0 calc(var(--size)*(-.5));
+    // top: 50%; translate: 0 calc(var(--size)*(-.5));
     width: var(--size); height: var(--size);
     font-size: 0; cursor: pointer; border-radius: 50%;
     background-color: var(--bgc);
+    box-shadow: var(--tinge) 0 0 0 1px;
     transition: .2s;
     &::before{
       content: ''; display: block; margin: 0 auto ;
       width: var(--arrow-size); height: var(--arrow-size);
       transform:  rotate(45deg);
-      border: 3px solid var(--tinge);
+      border: 2px solid var(--tinge);
     }
 
     &.slick-prev { 
-      left: var(--gap); padding-left: calc(var(--size)/2 - var(--arrow-size)/2 - 14px);
+      padding-left: calc(var(--size)/2 - var(--arrow-size)/2 - 14px);
       &::before{border-top: none; border-right: none;}
     }
     &.slick-next { 
-      right: var(--gap); padding-right: calc(var(--size)/2 - var(--arrow-size)/2 - 14px);
+      padding-right: calc(var(--size)/2 - var(--arrow-size)/2 - 14px);
       &::before{ border-bottom: none; border-left: none;}
     }
 
     &:hover, &:focus{ 
-      --bgc: rgb(0 0 0 / .8);
-      box-shadow: none; 
+      box-shadow: var(--tinge) 0 0 0 3px;
     }
-    &:focus{ 
-      box-shadow: $white 0 0 0 1px, var(--bgc) 0 0 0 5px; 
+    &:focus{
+      --tinge: #{$white};
+      --bgc: #{$primaryColor};
+
+      box-shadow: $white 0 0 0 1px, var(--bgc) 0 0 0 4px; 
     }
   }
 }
