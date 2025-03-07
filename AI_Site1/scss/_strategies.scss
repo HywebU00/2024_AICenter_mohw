@@ -18,13 +18,18 @@
   li{
     margin: 24px auto; padding: 0;
     a{
-      display: block; padding: 32px; min-height: 240px;
+      display: block; padding: 32px; min-height: 220px;
       text-decoration: none; border-radius: 24px;
       color: $fontColor; background-color: $bgc1;
       display: flex; flex-flow: column nowrap;
       transition: .2s;
-      &:hover, &:focus{
-        box-shadow: $bgc1 0 0 0 2px , rgb(0 0 0 / .3) 0 0 16px;
+      &:hover{
+        background-color: #fff;
+        box-shadow: #fff 0 0 0 2px , $primaryColor 0 0 16px;
+      }
+      &:focus{
+        background-color: #fff;
+        box-shadow: $primaryColor 0 0 0 3px , $primaryColor 0 0 10px;
       }
     }
     img{
@@ -53,22 +58,16 @@
   @media screen and (min-width: $wwMedium){
     ul{
       display: flex; justify-content: space-between;
-      margin: 20px auto;
+      margin: 24px auto;
     }
     li{
-      flex: 0 0 31%;margin:32px 0;
-      a{
-        height: 100%;min-height: none; 
-        padding: 24px; border-radius: 12px;
-      }
+      flex: 0 0 31%;margin: 0;
+      a{height: 100%;min-height: none; padding: 24px;}
     }
   }
   @media screen and (min-width: $wwNormal){
     .description{ text-align: left;}
-    &>ul{
-      max-width: 1000px; 
-    }
-    li{height: $normalWidthVW*.31; max-height:310px;}
+    li {max-height:310px;}
   }
 
 }

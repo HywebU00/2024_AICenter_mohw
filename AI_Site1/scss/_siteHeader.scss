@@ -35,8 +35,7 @@
     padding: 16px $marginDoc;
     display: flex; justify-content: space-between; align-items: center;
     h1{
-      img{height: 48px; width: auto; max-width: none;}
-      outline: 1px dashed #00f6;
+      img{height: 48px; width: 240px; object-fit: contain; max-width: none;}
     }
 
     &.fixed {padding-top: 6px;padding-bottom: 6px;}
