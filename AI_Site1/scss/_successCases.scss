@@ -1,7 +1,6 @@
 // 首頁：醫院成功案例
 // ---------------------------------------------------------------- //
 .successCases{
-  margin-left: -5px;
   .description{ 
     text-align: center;font-size: 1.125em;line-height: 1.5;
     margin: 24px auto 14px;
@@ -19,6 +18,7 @@
       margin: 0 20px 0 0;
       .image{
         position: relative; width:100%; overflow: hidden;
+        border-radius: 24px;
         img{
           display: block;
           width:100%; aspect-ratio: 1.3333; object-fit: cover;
@@ -26,6 +26,7 @@
         }
         &::after{
           content: ''; position: absolute; left: 0; top: 0; right: 0;bottom: 0;
+          border-radius: 24px;
           box-shadow: $primaryColor 0 0 0 0 inset, #fff 0 0 0 0 inset;
           transition: .2s;
         }
@@ -63,6 +64,7 @@
 
     .slick-arrow{
       position: absolute; right: 5vw; top: auto; bottom: 5px;
+      transition: all .2s, right 0s;
       &.slick-prev {
         translate: calc(-100% - 16px) 0;
       }
@@ -78,13 +80,19 @@
 
   @media screen and (min-width: $wwNormal){
     margin-left: $marginDoc;
-    .slides{ padding-right: 5vw; margin-left: 0;}
+    .slides{ 
+      padding-right: 5vw; margin-left: 0;
+      
+    }
     .description{ text-align: left; margin-left: 0;}
   }
 
   @media screen and (min-width: $wwMaximum){
     margin-left: $marginDocMax;
-    .slides{ padding-right: calc(50vw - $wwMaximum*.45);}
+    .slides{ 
+      padding-right: calc(50vw - $wwMaximum*.45);
+      .slick-arrow{ right: calc(50vw - $wwMaximum*.45) }
+    }
 
   }
 

@@ -336,7 +336,7 @@ $(function(){
     _slickDots.find('span').unwrap();
   }
   successCasesSlickSet();
-  
+
   // --------------------------------------------------------------- //
   // --------------- 外掛套件 slick 參數設定 END ------------------- //
   // --------------------------------------------------------------- //
@@ -831,7 +831,10 @@ $(function(){
       _prTabBtn.removeClass('active').next().slideUp(prSpeed);
       _thisBtn.addClass('active');
       _thisContent.slideDown(prSpeed);
-    } 
+    } else {
+      _thisBtn.removeClass('active');
+      _thisContent.slideUp(prSpeed);
+    }
 
   })
   // --------------------------------------------------------------- //
@@ -1028,11 +1031,16 @@ $(function(){
           successCasesSlickSet(); 
         }
       }
+      // ------------------------------------- //
 
       // 由小螢幕到寬螢幕
       if( ww < wwNormal && wwNew >= wwNormal ) {
         if (_sidebar.hasClass('reveal')) {
           hideSidebar(); // 隱藏側欄
+        }
+
+        if (_prTabBtn.filter('.active').length == 0) {
+          _prTabBtn.eq(0).addClass('active').next().show();
         }
  
         // 重設 fixed header

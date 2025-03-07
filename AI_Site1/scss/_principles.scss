@@ -21,14 +21,23 @@
       margin: 0 0 6px; padding: 0 40px 0 20px;
       font-size: 1.125em;line-height: calc(1em + 46px);
       width: 100%; height: calc(1em + 40px);
-      text-align: left;
+      text-align: left;border-radius: 12px;
       background-color: transparent;
+      transition: .2s;
       &::after {
         content: ''; position: absolute; right: 24px; top: 24px;
         width: 10px;height: 10px;rotate: 45deg;
         border: 2px solid $fontColor;
         border-left: none; border-top: none;
         transition: .3s;
+      }
+
+      &:hover{
+        color: $primaryColor;
+        &::after{border-color: $primaryColor;}
+      }
+      &:focus-visible{
+        box-shadow: $primaryColor 0 0 0 2px;
       }
 
       &.active{
