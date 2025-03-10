@@ -150,7 +150,7 @@
     <section class="successCases">
       <h3 class="secHeader">醫院成功案例</h3>
       <article class="description">
-        所有醫院的成功案例
+        <p>所有醫院的成功案例</p>
       </article>
 
       <section class="slides">
@@ -188,25 +188,222 @@
     </section>
 
 
-    <!-- 醫院線上申請管道 -->
-    <section class="xxx">
-      <h3 class="secHeader">醫院線上申請管道</h3>
-      <p>各家醫院的線上申請連結</p>
-      <ul>
-        <li><a href="#" target="_blank">臺北榮民總醫院</a></li>
-        <li><a href="#" target="_blank">中國醫</a></li>
-        <li><a href="#" target="_blank">新北市土城醫院</a></li>
-        <li><a href="#" target="_blank">彰化基督教</a></li>
-        <li><a href="#" target="_blank">新北仁康醫院</a></li>
-        <li><a href="#" target="_blank">嘉義長庚</a></li>
-        <li><a href="#" target="_blank">林口長庚</a></li>
-        <li><a href="#" target="_blank">奇美</a></li>
-        <li><a href="#" target="_blank">聯新</a></li>
-        <li><a href="#" target="_blank">高醫</a></li>
-      </ul>
-      <div class="more"><a href="#">前往列表</a></div>
+    <!-- 醫院窗口及申請管道 -->
+    <section class="hospitalMap">
+      <h3 class="secHeader">醫院窗口及申請管道</h3>
+      <article class="description">
+        <p>各家醫院的窗口聯絡資訊及線上申請連結</p>
+      </article>
+
+      <section class="content">
+        <section class="dropMenuGroup">
+          <div class="dropMenu">
+            <div class="groupLabel">北部</div>
+            <button class="triggler" type="button">北部</button>   
+            <ul class="medList" role="menu">
+              <li>
+                <button data-maparea="臺北市" type="button">臺北榮民總醫院</button>
+                <section class="infoCard">
+                  <div class="head">臺北榮民總醫院</div>
+                  <button class="closeThis" aria-label="關閉"></button>
+                  <dl>
+                    <dt>聯絡資訊</dt>
+                    <dd aria-label="姓名">王曉明</dd>
+                    <dd aria-label="電話">0900123456</dd>
+                    <dd aria-label="電子郵件">abcdefghr@itri.org.tw</dd>
+                  </dl>
+                  <span class="term">連結</span>
+                  <ul class="links">
+                    <li><a href="#" target="_blank">醫院網站</a></li>
+                    <li><a href="#" target="_blank">申請表單</a></li>
+                  </ul>
+                </section>
+              </li>
+              <li><button data-maparea="新北市" type="button">新北市立土城醫院(委託長庚醫療財團法人興建經營)</button>
+                <section class="infoCard">
+                  <div class="head">新北市立土城醫院(委託長庚醫療財團法人興建經營)</div>
+                  <button class="closeThis" aria-label="關閉"></button>
+                  <dl>
+                    <dt>聯絡資訊</dt>
+                    <dd aria-label="姓名">李大城</dd>
+                    <dd aria-label="電話">0909987654</dd>
+                    <dd aria-label="電子郵件">sdfgfghj@xxx.org.tw</dd>
+                  </dl>
+                  <span class="term">連結</span>
+                  <ul class="links">
+                    <li><a href="#" target="_blank">醫院網站</a></li>
+                    <li><a href="#" target="_blank">申請表單</a></li>
+                  </ul>
+                </section>
+              </li>
+              <li><button data-maparea="新北市" type="button">新北仁康醫院</button>
+                <section class="infoCard">
+                  <div class="head">新北仁康醫院</div>
+                  <button class="closeThis" aria-label="關閉"></button>
+                  <dl>
+                    <dt>聯絡資訊</dt>
+                    <dd aria-label="姓名">ＸＸＸ</dd>
+                    <dd aria-label="電話">0909456321</dd>
+                    <dd aria-label="電子郵件">aaaaaa@xxx.org.tw</dd>
+                  </dl>
+                  <span class="term">連結</span>
+                  <ul class="links">
+                    <li><a href="#" target="_blank">醫院網站</a></li>
+                    <li><a href="#" target="_blank">申請表單</a></li>
+                  </ul>
+                </section>      
+              </li>
+              <li><button data-maparea="桃園市" type="button">長庚醫療財團法人林口長庚紀念醫院</button>
+                <section class="infoCard">
+                  <div class="head">長庚醫療財團法人林口長庚紀念醫院</div>
+                  <button class="closeThis" aria-label="關閉"></button>
+                  <dl>
+                    <dt>聯絡資訊</dt>
+                    <dd aria-label="姓名">ＸＸＸ</dd>
+                    <dd aria-label="電話">0909456321</dd>
+                    <dd aria-label="電子郵件">aaaaaa@xxx.org.tw</dd>
+                  </dl>
+                  <span class="term">連結</span>
+                  <ul class="links">
+                    <li><a href="#" target="_blank">醫院網站</a></li>
+                    <li><a href="#" target="_blank">申請表單</a></li>
+                  </ul>
+                </section>
+              </li>
+              <li><button data-maparea="桃園市" type="button">聯新國際醫院</button>
+                <section class="infoCard">
+                  <div class="head">聯新國際醫院</div>
+                  <button class="closeThis" aria-label="關閉"></button>
+                  <dl>
+                    <dt>聯絡資訊</dt>
+                    <dd aria-label="姓名">ＸＸＸ</dd>
+                    <dd aria-label="電話">0909456321</dd>
+                    <dd aria-label="電子郵件">aaaaaa@xxx.org.tw</dd>
+                  </dl>
+                  <span class="term">連結</span>
+                  <ul class="links">
+                    <li><a href="#" target="_blank">醫院網站</a></li>
+                    <li><a href="#" target="_blank">申請表單</a></li>
+                  </ul>
+                </section>
+              </li>
+            </ul>
+          </div>
+          <div class="dropMenu">
+            <div class="groupLabel">中部</div>
+            <button class="triggler" type="button">中部</button>
+            <ul class="medList" role="menu">
+              <li><button data-maparea="臺中市" type="button">中國醫藥大學附設醫院</button>
+                <section class="infoCard">
+                  <div class="head">中國醫藥大學附設醫院</div>
+                  <button class="closeThis" aria-label="關閉"></button>
+                  <dl>
+                    <dt>聯絡資訊</dt>
+                    <dd aria-label="姓名">ＸＸＸ</dd>
+                    <dd aria-label="電話">0909456321</dd>
+                    <dd aria-label="電子郵件">aaaaaa@xxx.org.tw</dd>
+                  </dl>
+                  <span class="term">連結</span>
+                  <ul class="links">
+                    <li><a href="#" target="_blank">醫院網站</a></li>
+                    <li><a href="#" target="_blank">申請表單</a></li>
+                  </ul>
+                </section>
+              </li>
+              <li><button data-maparea="彰化縣" type="button">彰化基督教醫療財團法人彰化基督教醫院</button>
+                <section class="infoCard">
+                  <div class="head">彰化基督教醫療財團法人彰化基督教醫院</div>
+                  <button class="closeThis" aria-label="關閉"></button>
+                  <dl>
+                    <dt>聯絡資訊</dt>
+                    <dd aria-label="姓名">ＸＸＸ</dd>
+                    <dd aria-label="電話">0909456321</dd>
+                    <dd aria-label="電子郵件">aaaaaa@xxx.org.tw</dd>
+                  </dl>
+                  <span class="term">連結</span>
+                  <ul class="links">
+                    <li><a href="#" target="_blank">醫院網站</a></li>
+                    <li><a href="#" target="_blank">申請表單</a></li>
+                  </ul>
+                </section>
+              </li>
+            </ul>
+          </div>
+          <div class="dropMenu">
+            <div class="groupLabel">南部</div>
+            <button class="triggler" type="button">南部</button>
+            <ul class="medList" role="menu">
+              <li><button data-maparea="嘉義縣" type="button">長庚醫療財團法人嘉義長庚紀念醫院</button>
+                <section class="infoCard">
+                  <div class="head">長庚醫療財團法人嘉義長庚紀念醫院</div>
+                  <button class="closeThis" aria-label="關閉"></button>
+                  <dl>
+                    <dt>聯絡資訊</dt>
+                    <dd aria-label="姓名">ＸＸＸ</dd>
+                    <dd aria-label="電話">0909456321</dd>
+                    <dd aria-label="電子郵件">aaaaaa@xxx.org.tw</dd>
+                  </dl>
+                  <span class="term">連結</span>
+                  <ul class="links">
+                    <li><a href="#" target="_blank">醫院網站</a></li>
+                    <li><a href="#" target="_blank">申請表單</a></li>
+                  </ul>
+                </section>
+              </li>
+              <li><button data-maparea="臺南市" type="button">奇美醫療財團法人奇美醫院</button>
+                <section class="infoCard">
+                  <div class="head">奇美醫療財團法人奇美醫院</div>
+                  <button class="closeThis" aria-label="關閉"></button>
+                  <dl>
+                    <dt>聯絡資訊</dt>
+                    <dd aria-label="姓名">ＸＸＸ</dd>
+                    <dd aria-label="電話">0909456321</dd>
+                    <dd aria-label="電子郵件">aaaaaa@xxx.org.tw</dd>
+                  </dl>
+                  <span class="term">連結</span>
+                  <ul class="links">
+                    <li><a href="#" target="_blank">醫院網站</a></li>
+                    <li><a href="#" target="_blank">申請表單</a></li>
+                  </ul>
+                </section>
+              </li>
+              <li><button data-maparea="高雄市" type="button">財團法人私立高雄醫學大學附設中和紀念醫院</button>
+                <section class="infoCard">
+                  <div class="head">財團法人私立高雄醫學大學附設中和紀念醫院</div>
+                  <button class="closeThis" aria-label="關閉"></button>
+                  <dl>
+                    <dt>聯絡資訊</dt>
+                    <dd aria-label="姓名">ＸＸＸ</dd>
+                    <dd aria-label="電話">0909456321</dd>
+                    <dd aria-label="電子郵件">aaaaaa@xxx.org.tw</dd>
+                  </dl>
+                  <span class="term">連結</span>
+                  <ul class="links">
+                    <li><a href="#" target="_blank">醫院網站</a></li>
+                    <li><a href="#" target="_blank">申請表單</a></li>
+                  </ul>
+                </section>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <div class="mapHere">
+          <div class="maps">
+            <img data-mapArea="a00" src="publicData/map1.svg" alt="負責任 AI 執行中心所在縣市">
+            <img data-mapArea="臺北市" style="display: none;" src="publicData/map1-01.svg" alt="負責任 AI 執行中心所在縣市：臺北市">
+            <img data-mapArea="新北市" style="display: none;" src="publicData/map1-02.svg" alt="負責任 AI 執行中心所在縣市：新北市">
+            <img data-mapArea="桃園市" style="display: none;" src="publicData/map1-03.svg" alt="負責任 AI 執行中心所在縣市：桃園市">
+            <img data-mapArea="臺中市" style="display: none;" src="publicData/map1-04.svg" alt="負責任 AI 執行中心所在縣市：臺中市">
+            <img data-mapArea="彰化縣" style="display: none;" src="publicData/map1-05.svg" alt="負責任 AI 執行中心所在縣市：彰化縣">
+            <img data-mapArea="嘉義縣" style="display: none;" src="publicData/map1-06.svg" alt="負責任 AI 執行中心所在縣市：嘉義縣">
+            <img data-mapArea="臺南市" style="display: none;" src="publicData/map1-07.svg" alt="負責任 AI 執行中心所在縣市：臺南市">
+            <img data-mapArea="高雄市" style="display: none;" src="publicData/map1-08.svg" alt="負責任 AI 執行中心所在縣市：高雄市">
+          </div>
+        </div>
+      </section>
 
     </section>
+
 
   </main>
 

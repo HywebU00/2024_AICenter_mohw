@@ -840,167 +840,92 @@ $(function(){
   // --------------------------------------------------------------- //
 
 
-  // .aiCenters [三大 AI 中心] 專用程式
+
+  // 首頁：醫院窗口及申請管道
   // --------------------------------------------------------------- //
-  var _aiContent = $('.aiCenters').find('.content');
-  var _aiTray = _aiContent.find('.tabContent');
-  var _drawerTriggerBtn = _aiContent.find('.tabButton');
-  var drawerSpeed = 400;
+  const _hospitalMap = $('.hospitalMap').find('.content');
+  var _dropMenu = _hospitalMap.find('.dropMenu');
+  var _medTriggler = _dropMenu.find('button.triggler');
+  var _medList = _dropMenu.find('.medList');
+  var _medBtn = _medList.children('li').children('button');
+  var _infoCard = _medList.find('.infoCard');
+  var _hideInfoCard = _infoCard.find('.closeThis');
+  const _mapHere = _hospitalMap.find('.mapHere');
+  var _mapAreaImgs = _mapHere.find('.maps').find('img');
+  const _mapArea0 = _mapAreaImgs.eq(0);
+  var _tempInfocard;
+  var _keptHname;
 
-  _drawerTriggerBtn.filter('.active').next('.tabContent').show();
+  _medTriggler.attr('aria-expanded', false);
+  _infoCard.attr('role', 'dialog');
 
-  // 行動版 slideDown/slideUp 效果，寬版類似頁籤切換
-  _drawerTriggerBtn.on('click', function(){
-
+  // 北中南下拉選單
+  _medTriggler.on('click', function(){
     let _thisBtn = $(this);
-    let _thisTray = _thisBtn.next('.tabContent');
-    let _otherTray = _aiTray.not(_thisTray);
+    let _thisList = _thisBtn.next('.medList');
 
-    ww < wwNormal ? drawerSpeed = 400 : drawerSpeed = 0;
-
-    if (_thisTray.is(':hidden')) {
-      _thisBtn.addClass('active');
-      _thisTray.slideDown(drawerSpeed);
-      _otherTray.slideUp(drawerSpeed, function(){
-        _otherTray.find('.infoCard').removeAttr('style')
-        _otherTray.find('.medList').removeAttr('style').find('button').removeAttr('style');
-        _otherTray.find('.triggler.show').removeClass('show').end().find('.dim').removeClass('dim');
+    if ( _thisList.is(':hidden') ) {
+      _medTriggler.removeClass('show').attr('aria-expanded', false);
+      _thisBtn.addClass('show').attr('aria-expanded', true);
+      _medList.not(_thisList).slideUp(200, function(){
+        $(this).removeAttr('style');
       });
-      _drawerTriggerBtn.not(_thisBtn).removeClass('active');
+      _thisList.slideDown(250);
     } else {
-      if (ww < wwNormal) {
-        _thisBtn.removeClass('active');
-        _thisTray.find('.triggler.show').trigger('click');
-        // _thisTray.slideUp(drawerSpeed).find('.infoCard').filter(':visible').find('.closeThis').trigger('click');
-        _thisTray.slideUp(drawerSpeed);
-      }
+      _thisList.slideUp(200, function(){
+        $(this).removeAttr('style');
+      });
+      _thisBtn.removeClass('show').attr('aria-expanded', false);
     }
-
-  })
-  
-  // 北中南下拉選單 // .dropMenuGroup
-  var _dropMenuGroup = $('.dropMenuGroup');
-  _dropMenuGroup.each(function(){
-    let _this = $(this);
-    let _dropMenu = _this.find('.dropMenu');
-    let _btnShowHide = _dropMenu.find('button.triggler');
-    let _medList = _dropMenu.find('.medList');
-    let _medListBtn = _medList.children('li').children('button');
-    let _mobileMaps = _this.next('.mapHere').find('.mobileMaps');
-    let _mapAreaImgs = _mobileMaps.find('img');
-    let _tempInfocard;
-
-    _btnShowHide.attr('aria-expanded', false);
-    _btnShowHide.on('click', function(){
-      let _thisBtn = $(this);
-      let _thisList = _thisBtn.next('.medList');
-
-      if ( _thisList.is(':hidden') ) {
-        _btnShowHide.removeClass('show').attr('aria-expanded', false);
-        _thisBtn.addClass('show').attr('aria-expanded', true);
-        _medList.not(_thisList).slideUp(200, function(){
-          $(this).removeAttr('style');
-        });
-        _thisList.slideDown(250);
-      } else {
-        _thisList.slideUp(200, function(){
-          $(this).removeAttr('style');
-        });
-        _thisBtn.removeClass('show').attr('aria-expanded', false);
-      }
-    })
-
-    _medListBtn.on('click', function(){
-
-      if ( ww < wwNormal) {
-        let _thisBtn = $(this);
-        let whichArea = _thisBtn.attr('data-maparea');
-        let _mapArea0 = _mapAreaImgs.eq(0);
-
-        // 顯示所在縣市地圖
-        _mapAreaImgs.hide().filter( function(){
-          return $(this).attr('data-maparea') == whichArea;
-        }).show();
-
-        // 顯示相對應資料卡
-        _thisBtn.parents('.medList').prev().trigger('click');
-        _mobileMaps.find('.infoCard').remove();
-        _thisBtn.next().clone().prependTo( _mobileMaps ).hide().fadeIn(360);
-  
-        _tempInfocard = _mobileMaps.find('.infoCard');
-  
-        _tempInfocard.find('.closeThis').on('click', function(){
-          $(this).parent().remove();
-          _mapAreaImgs.hide()
-          _mapArea0.fadeIn(360);
-        })
-      }
-
-    })
-
-
   })
 
-  // AI 中心相關資料卡 顯示/隱藏 // .infoCard 
-  _aiContent.each( function(){
-    let _thisAIContent = $(this);
-    let _infoCard = _thisAIContent.find('.infoCard');
-    let _hideInfoCard = _infoCard.find('.closeThis');
-    let _pins = _thisAIContent.find('.pins').find('li');
-    const speed = 300;
-    let _kept;
+  // 醫院資料卡infoCard 顯示/隱藏
+  _medBtn.on('click', function(){
+    let _thisBtn = $(this);
+    let whichArea = _thisBtn.attr('data-maparea');
 
-    // ARIA
-    _infoCard.attr('role', 'dialog');
+    // 顯示所在縣市地圖
+    _mapAreaImgs.hide().filter( function(){
+      return $(this).attr('data-maparea') == whichArea;
+    }).show();
 
-    // 顯示資料卡
-    let _showInfoCard = _thisAIContent.find('.medList>li').children('button');
-    _showInfoCard.on('click', function(){
-      let _thisBtn = $(this);
-      let hName = _thisBtn.text();
-      _kept = _thisBtn;
-      if( ww >= wwNormal ) {
-        _infoCard.filter(':visible').slideUp(speed);
-        _showInfoCard.filter(':hidden').show();
-        _thisBtn.hide().next().slideDown(speed, function(){
-          $(this).find('.closeThis').trigger('focus');
-        });
-        _pins.removeClass('dim').filter( function(){
-          return $(this).attr('data-name') === hName;
-        }).siblings().addClass('dim');
-      } else {
-        // 行動版 infoCard 顯示程式
-      }
-    })
-
-    // 隱藏資料卡
-    _hideInfoCard.on('click', function(){
-      let _this = $(this);
-      if (ww >= wwNormal) {
-        _pins.removeClass('dim');
-        _this.parent().slideUp(speed, function(){
-          _kept.show().trigger('focus');
-        });
-      } else {
-        // 行動版 infoCard 顯示程式
-      }
-
-    })
-
-
-
-
-    // Tab 鍵操作
-    _infoCard.find('a').last().on('keydown', function(e){
-      if (e.code == 'Tab' && !e.shiftKey) {
-       e.preventDefault();
-        _hideInfoCard.trigger('focus');
-      }
-    })
-
-
-
+    // 顯示相對應資料卡
+    if ( ww < wwNormal) {
+      _mapHere.find('.infoCard').remove();
+      _thisBtn.next().clone().prependTo( _mapHere ).hide().fadeIn(360);
+      _thisBtn.parents('ul').prev().trigger('click');
+      _tempInfocard = _mapHere.find('.infoCard');
+      _tempInfocard.find('.closeThis').on('click', function(){
+        _tempInfocard.remove();
+        _mapAreaImgs.hide();
+        _mapArea0.fadeIn(360);
+      })
+    } else {
+      _keptHname = _thisBtn;
+      _infoCard.filter(':visible').slideUp(400);
+      _medBtn.filter(':hidden').show();
+      _thisBtn.hide().next().slideDown(400, function(){
+        $(this).find('.closeThis').trigger('focus');
+      });
+    }
   })
+
+  // 隱藏資料卡
+  _hideInfoCard.on('click', function(){
+    $(this).parent().slideUp(400, function(){
+      _keptHname.show().trigger('focus');
+      _mapAreaImgs.hide();
+      _mapArea0.fadeIn();
+    })
+  })
+
+  // Tab 鍵操作
+  _infoCard.find('a').last().on('keydown', function(e){
+    if (e.code == 'Tab' && !e.shiftKey) {
+      e.preventDefault();
+      _hideInfoCard.trigger('focus');
+    }
+  })  
 
 
   // --------------------------------------------------------------- //
