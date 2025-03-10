@@ -47,10 +47,9 @@
         text-decoration: none;
         &:hover, &:focus {
           .image{
-            img{box-shadow:$white 0 0 0 3px, $shadow2 3px 5px 9px; scale: 1.1;}
+            img{scale: 1.1;}
             &::after{
-              box-shadow: $primaryColor 0 0 0 3px inset, #fff 0 0 0 4px inset;
-
+              box-shadow: $primaryColor 0 0 0 3px inset, $white 0 0 0 4px inset;
             }
           }
           .title{text-decoration: underline;}
@@ -75,22 +74,20 @@
     }
   }
 
-  @media screen and (min-width: $wwMedium){
-  }
 
   @media screen and (min-width: $wwNormal){
-    margin-left: $marginDoc;
+    margin-left: $marginDoc; margin-right: $marginDoc;
     .slides{ 
-      padding-right: 5vw; margin-left: 0;
-      
+      margin: 0 -10px;  padding-right: 0;
+      .slideItem{ margin: 0 10px; }
+      .slick-arrow{ right: 10px;}
     }
     .description{ text-align: left; margin-left: 0;}
   }
 
   @media screen and (min-width: $wwMaximum){
-    margin-left: $marginDocMax;
+    width: $maximumWidth; margin-left: auto; margin-right: auto;
     .slides{ 
-      padding-right: calc(50vw - $wwMaximum*.45);
       .slick-arrow{ right: calc(50vw - $wwMaximum*.45) }
     }
 

@@ -26,7 +26,7 @@
     position: relative;padding:20px 12px 16px; margin: 0;
     line-height: 1.5; border-radius: $radius1;
     background-color: $white; color: var(--tabTheme);
-    box-shadow: rgb(0 0 0 / .3) 0 0 8px;
+    box-shadow: rgb(0 0 0 / .3) 0 0 7px;
     .closeThis{
       position: absolute; right: 0;top: 5px;
       border-radius: 50%; scale: .6;
@@ -194,8 +194,37 @@
     // 醫院資料卡
     .infoCard {
       width: 100%; z-index: 9;
-      box-shadow: rgb(0 0 0 / .3) 0 0 7px;
+      background-color: var(--tabTheme); color: $white;
+      .closeThis{
+        &::before, &::after { background-color: $white;}
+        &:hover, &:focus{ background-color: transparent;box-shadow: $white 0 0 0 2px;}
+        &:focus-visible { box-shadow: $white 0 0 0 3px;}
+  
+      }
+      .head{ border-bottom-color: rgb(225 255 255 / .2);}
+      dl dt, .term {
+        color: var(--borderColor);
+      }
+      
+      .links li{
+        &:nth-child(1) a{
+          background-color: $white ; color: var(--tabTheme);
+          &::after {filter: none;}
+          &:hover, &:focus{
+            box-shadow: var(--tabTheme) 0 0 0 1px inset, $white 0 0 0 2px;
+          }
+        }
+        &:nth-child(2) a{
+          background-color: var(--tabTheme) ; color: $white;
+          box-shadow: $white 0 0 0 1px inset;
+          &::after {filter: brightness(80);}
+          &:hover, &:focus{
+            box-shadow: transparent 0 0 0 1px inset, $white 0 0 0 2px;
+          }
+        }
+      }
     }
+
 
     // 北部、中部、南部 寬版直接顯示
     .dropMenuGroup{
@@ -231,6 +260,8 @@
         &:nth-child(2), &:nth-child(3) {margin-left: 69%;}
       }
     }
+
+    .more{margin-top: 40px;}
   }
 }
 // ---------------------------------------------------------------- //
