@@ -132,9 +132,15 @@
           border: 2px solid #fff; border-left: none; border-top: none;
           transition: .3s;
         }
+        &:hover{box-shadow: var(--tabTheme) 0 0 0 2px;}
+        &:focus-visible{box-shadow: #fff 0 0 0 1px inset, var(--tabTheme) 0 0 0 2px;}
         &.show {
           background-color: $white; color: $fontColor;
+          box-shadow: none;
           &::after {rotate: 225deg; top: 1.2em; border-color: $fontColor;}
+          &:focus-visible {
+            box-shadow: var(--tabTheme) 0 0 0 2px;
+          }
         }
       }
 
@@ -151,7 +157,13 @@
           margin: 2px 0;padding:3px 0; margin: 0;
           border-bottom: 1px solid $borderColor;
           &:last-child{border-bottom: none;}
-          &>button {text-align: left;width: 100%; padding: .6em 0;}
+          &>button {
+            text-align: left;width: 100%; padding: .6em 0;
+            border-radius: 4px;
+            &:focus-visible{
+              box-shadow: var(--tabTheme) 0 0 0 2px;
+            }
+          }
         }
         .infoCard {display: none;}
       }      

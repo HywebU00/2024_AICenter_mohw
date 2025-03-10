@@ -855,6 +855,7 @@ $(function(){
   const _mapArea0 = _mapAreaImgs.eq(0);
   var _tempInfocard;
   var _keptHname;
+  var partIndex;
 
   _medTriggler.attr('aria-expanded', false);
   _infoCard.attr('role', 'dialog');
@@ -863,6 +864,7 @@ $(function(){
   _medTriggler.on('click', function(){
     let _thisBtn = $(this);
     let _thisList = _thisBtn.next('.medList');
+    partIndex = _thisBtn.parent().index();
 
     if ( _thisList.is(':hidden') ) {
       _medTriggler.removeClass('show').attr('aria-expanded', false);
@@ -895,10 +897,11 @@ $(function(){
       _thisBtn.next().clone().prependTo( _mapHere ).hide().fadeIn(360);
       _thisBtn.parents('ul').prev().trigger('click');
       _tempInfocard = _mapHere.find('.infoCard');
-      _tempInfocard.find('.closeThis').on('click', function(){
+      _tempInfocard.find('.closeThis').trigger('focus').on('click', function(){
         _tempInfocard.remove();
         _mapAreaImgs.hide();
         _mapArea0.fadeIn(360);
+        _medTriggler.eq(partIndex).trigger('focus');
       })
     } else {
       _keptHname = _thisBtn;
