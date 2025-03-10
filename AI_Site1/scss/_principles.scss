@@ -75,6 +75,7 @@
         position: absolute; left: 0; top: auto; width: 30%;
         padding: 0 24px; height: var(--tabItemHeight); line-height: 1;
         font-size: 1.5em; font-weight: bold;
+        border-radius: 0;
         border-bottom: 1px solid $borderColorLight;
         &::after {display: none;}
         &::before{

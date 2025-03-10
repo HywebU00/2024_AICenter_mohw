@@ -832,8 +832,10 @@ $(function(){
       _thisBtn.addClass('active');
       _thisContent.slideDown(prSpeed);
     } else {
-      _thisBtn.removeClass('active');
-      _thisContent.slideUp(prSpeed);
+      if (ww < wwNormal ) {
+        _thisBtn.removeClass('active');
+        _thisContent.slideUp(prSpeed);
+      }
     }
 
   })
