@@ -118,7 +118,7 @@ table.list{
   }
 }
 
-.lp:has(.list) {
+.lp:has(table.list) {
   border-radius: $radius2; overflow: hidden;
   margin: 20px auto;
   border: 3px solid $borderColor;
@@ -137,7 +137,7 @@ table.list{
 
 // lp 的 RWD 表格
 // ---------------------------------------------------------------- //
-.lp:has(.rwdTable) {
+.lp:has(table.rwdTable) {
   @media screen and (max-width: $wwMedium){
     border: none; border-radius: 0;
     overflow: visible;
