@@ -17,7 +17,7 @@ $(function(){
   const _sidebar = $('.sidebar');
   const _sidebarCtrl = $('.sidebarCtrl');
 
-  const _siteFooter = $('.siteFooter');
+  // const _siteFooter = $('.siteFooter');
   const _goTop = $('.goTop');
 
   // _html.removeClass('no-js');
@@ -91,13 +91,12 @@ $(function(){
       _sidebarA_first.trigger('focus');
     }
   })
-
   // --------------------------------------------------------------- //
 
   
 
   // 行動版側欄，顯示／隱藏
-  // ---------------------------------------------------- //
+  // --------------------------------------------------------------- //
   _sidebarCtrl.attr('aria-haspopup', true).attr('aria-expanded', false);
 
   _sidebarCtrl.click(function(){
@@ -177,16 +176,8 @@ $(function(){
       _body.removeClass('noScroll');
     });
   }
-
-  // --------------------------------------------------------------- //
-  // --------------------------------------------------------------- //
   // --------------------------------------------------------------- //
 
-
-
-
-  // --------------------------------------------------------------- //
-  // --------------------------------------------------------------- //
 
 
 
@@ -231,11 +222,11 @@ $(function(){
   })
 
   // 離開 _menu 隱藏所有次選單
-  // $('*').on( 'focus', function(){
-  //   if( $(this).parents('.menu').length == 0 ){
-  //     _hasChild.removeClass('here turn').find('ul').removeAttr('style');
-  //   }
-  // })
+  $('*').on( 'focus', function(){
+    if( $(this).parents('.menu').length == 0 ){
+      _hasChild.removeClass('here turn').find('ul').removeAttr('style');
+    }
+  })
 
   // 從最後一個 a 離開
   _menuLastA.on('keydown', function(e){
@@ -254,10 +245,8 @@ $(function(){
     _hasChild.removeClass('here turn').find('ul').removeAttr('style');
     _hasChildA.attr('aria-expanded', false);  
   }
+  // --------------------------------------------------------------- //
 
-  // --------------------------------------------------------------- //
-  // --------------------------------------------------------------- //
-  // --------------------------------------------------------------- //
 
 
 
@@ -273,7 +262,6 @@ $(function(){
   }
 
   _window.scroll(function(){
-    
     if (_window.scrollTop() >= fixHeadThreshold ) {
       // console.log(hh);
       _body.offset({top: hh});
@@ -284,17 +272,18 @@ $(function(){
     }
 
     // goTop button 顯示、隱藏
-    // ----------------------------------------------- //
+    // -------------------------------------------- //
     if (_window.scrollTop() > 200) {
       _goTop.addClass('show');
     } else {
       _goTop.removeClass('show');
     }
+    // -------------------------------------------- //
+
   })
   _window.trigger('scroll');
   // --------------------------------------------------------------- //
-  // --------------------------------------------------------------- //
-  // --------------------------------------------------------------- //
+
 
 
   // --------------------------------------------------------------- //
@@ -302,7 +291,7 @@ $(function(){
   // --------------------------------------------------------------- //
 
   // 醫院成功案例 左右滑動
-  // --------------------------------------------------------------- //
+  // ------------------------------ //
   const _successCases = $('.successCases').find('.slides');
   _successCases.slick({
     slidesToShow: 1,
@@ -329,6 +318,7 @@ $(function(){
       }
     ]
   });
+  // 點點改為非互動元件（button 改為 span）
   function successCasesSlickSet() {
     const _slickDots =  _successCases.find('.slick-dots');
     _successCases.find('.slick-prev').insertBefore('.slick-next');
@@ -713,7 +703,7 @@ $(function(){
     }).show();
 
     _hideLightbox.focus();
-    _cover.stop(true, false).fadeIn();
+    _coverAll.stop(true, false).fadeIn();
     _body.addClass('noScroll');
 
   })
@@ -777,40 +767,6 @@ $(function(){
   })
   // ---------------------------------------------- *** //
 
-
-
-
-
-
-
-  // 問答列表 展開／收合
-  // --------------------------------------------------------------- //
-  var _qaItem = $('.qa').children('ul').children('li');
-  _qaItem.each( function () {
-    let _this = $(this);
-    let _ctrlBtn = _this.find('.ctrlBtn');
-    let _question = _this.find('.q');
-    let _answer = _this.find('.a');
-    const speed = 400;
-
-    if ( _answer.is(':visible') ){
-      _ctrlBtn.addClass('closeIt').attr('aria-expanded', true);
-    } else {
-      _ctrlBtn.removeClass('closeIt').attr('aria-expanded', false);
-    }
-
-    _ctrlBtn.click( function() {
-      if ( _answer.is(':visible') ) {
-        _answer.slideUp(speed);
-        _ctrlBtn.removeClass('closeIt').attr('aria-expanded', false);
-      } else {
-        _answer.slideDown(speed);
-        _ctrlBtn.addClass('closeIt').attr('aria-expanded', true);
-        _this.siblings().find('.ctrlBtn').removeClass('closeIt').attr('aria-expanded', false).end().find('.a').slideUp(speed);
-      }
-    });
-  });
-  // --------------------------------------------------------------- //
 
 
 
@@ -931,8 +887,6 @@ $(function(){
       _hideInfoCard.trigger('focus');
     }
   })  
-
-
   // --------------------------------------------------------------- //
 
 
@@ -1017,9 +971,6 @@ $(function(){
   });
   // window resize  end -------------------------------------------- //
   
-
-
-
 
 
 

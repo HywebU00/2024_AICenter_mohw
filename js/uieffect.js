@@ -431,7 +431,6 @@ $(function(){
   _lightbox.before('<div class="coverAll"></div>');
   _lightbox.append('<button type="button" class="skip">焦點移到 "關閉此燈箱"</button>');
 
-  // let _thisLightbox = $(this);
   const _hideLightbox = _lightbox.find('.closeThis');
   const _coverAll = _lightbox.prev('.coverAll');
   const _skipToClose = _lightbox.find('.skip');
@@ -692,7 +691,7 @@ $(function(){
     }).show();
 
     _hideLightbox.focus();
-    _cover.stop(true, false).fadeIn();
+    _coverAll.stop(true, false).fadeIn();
     _body.addClass('noScroll');
 
   })
@@ -700,7 +699,7 @@ $(function(){
 
   
   // cp 頁大圖燈箱
-  // ---------------------------------------------- *** //
+  // --------------------------------------------------------------- //
   _cpBigPhoto.each(function(){
     let _this = $(this);
     let _photoList = _this.find('.flowList');
@@ -754,11 +753,7 @@ $(function(){
       photoNow.stop(true, false).fadeIn(speed).find('img').height( photoNow.height() - photoNow.find('p').outerHeight(true));
     })
   })
-  // ---------------------------------------------- *** //
-
-
-
-
+  // --------------------------------------------------------------- //
 
 
 
@@ -944,8 +939,6 @@ $(function(){
         _pins.removeClass('dim').filter( function(){
           return $(this).attr('data-name') === hName;
         }).siblings().addClass('dim');
-      } else {
-        // 行動版 infoCard 顯示程式
       }
     })
 
@@ -957,14 +950,8 @@ $(function(){
         _this.parent().slideUp(speed, function(){
           _kept.show().trigger('focus');
         });
-      } else {
-        // 行動版 infoCard 顯示程式
       }
-
     })
-
-
-
 
     // Tab 鍵操作
     _infoCard.find('a').last().on('keydown', function(e){
@@ -973,9 +960,6 @@ $(function(){
         _hideInfoCard.trigger('focus');
       }
     })
-
-
-
   })
 
 

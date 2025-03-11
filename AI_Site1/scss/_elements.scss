@@ -225,22 +225,22 @@ kbd {
   display: inline-block;margin: 3px auto;text-align: center;
   &>a {
     display: block;
-    background-color: $secondaryColor;
+    background-color: $primaryColor;
     height: 2.6em; line-height: 2.6;
     padding: 0 1.5em; border-radius: 2em;
     outline: none;
     color: $white;
     text-decoration: none;
     transition: .2s;
-    &:hover{box-shadow:transparent 0 0 0 0, $secondaryColor 0 0 0 2px;}
-    &:focus {box-shadow:$white 0 0 0 1px, $secondaryColor 0 0 0 4px;}
+    &:hover{box-shadow:transparent 0 0 0 0, $primaryColor 0 0 0 2px;}
+    &:focus {box-shadow:$white 0 0 0 1px, $primaryColor 0 0 0 4px;}
   }
 }
 .cpArticle{
   .button>a{
     text-decoration: none;outline: none; color: $white;
-    &:hover{box-shadow:transparent 0 0 0 0, $secondaryColor 0 0 0 2px;}
-    &:focus {box-shadow:$white 0 0 0 1px, $secondaryColor 0 0 0 4px;}
+    &:hover{box-shadow:transparent 0 0 0 0, $primaryColor 0 0 0 2px;}
+    &:focus {box-shadow:$white 0 0 0 1px, $primaryColor 0 0 0 4px;}
   }
 }
 // ---------------------------------------------------------------------- //

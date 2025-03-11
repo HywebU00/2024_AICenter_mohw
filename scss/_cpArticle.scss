@@ -169,3 +169,41 @@ table.tbStyle2{
   }
 }
 
+
+// 內容頁表格: RWD 表格
+.listTb {
+  margin: 30px auto;
+  font-size: 1em;
+  border: 3px solid $borderColor;
+  border-radius: $radius2; overflow: hidden;
+  table{
+    margin:0;
+    width: 100%; line-height: 1.5;
+    border-collapse: collapse; 
+  }
+  thead{ background-color: $primaryColor; color: $white;}
+  th, td {
+    padding: 16px 15px 15px;
+    border: 1px solid $borderColor;
+    border-top: none;border-left: none;
+    &:last-child {border-right: none;}
+  }
+  td{word-break: break-all;}
+  tbody{
+    tr{
+      &:last-child{
+        td{border-bottom: none;}
+      }
+    }
+  }
+
+  @media screen and (max-width: $wwMedium){
+    &:has(.rwdTable){
+      border: none; border-radius: 0; overflow: visible;
+    }
+    .rwdTable{
+      tr{border-radius: $radius1;}
+    }
+  }
+
+}

@@ -4,7 +4,7 @@
   @extend %primSecWidth;
   margin-top: 16px;margin-bottom: 48px;
 
-  ul{ list-style: none; margin: 0; padding: 0; line-height: 1.6; }
+  ul.list, ol.list{ list-style: none; margin: 0; padding: 0; line-height: 1.6; }
   li{
     margin: 0;padding: 0;
     &>a{ display: block; text-decoration: none; color: $fontColor; }
@@ -16,7 +16,7 @@
 
 // 項目 ul, ol 條列
 // ---------------------------------------------------------------- //
-.lp .list{
+.lp ul.list, .lp ol.list{
   --focusOutline: #{$focus};
   --bdColor: #{$borderColor};
 
@@ -68,25 +68,35 @@
 
 
 
-// 表格條列, RWD 表格 20250217
-// ------------------------------------------------------ //
-table.listTb{
-  margin:20px auto;
-  width: 100%; line-height: 1.6; 
+// 表格條列
+// ---------------------------------------------------------------- //
+table.list{
+  margin:0 auto;
+  width: 100%; line-height: 1.6; font-size: 1.125em;
   border-collapse: collapse; 
   border: 2px solid $borderColor;
   
   caption{padding: 0 0 .4em;}
-  th, td{padding:16px 15px 15px; border: 1px solid $borderColor;}
-  
+  th, td {
+    padding: 16px 15px 15px;
+    border: 1px solid $borderColor;
+    border-top: none;border-left: none;
+    &:last-child {border-right: none;}
+  }
   thead{
     background-color: $primaryColor; color: $white;
-    th{ white-space: nowrap; font-weight: normal; }
+    th{ 
+      white-space: nowrap; font-weight: normal;
+      border-bottom: none;
+    }
   }
 
   tbody{
     tr{
       transition: background-color .2s;
+      &:last-child{
+        td{border-bottom: none;}
+      }
       &:hover{ background-color: $gray100;}
     }
   }
@@ -101,50 +111,97 @@ table.listTb{
 
   }
 
-  @media screen and (max-width: calc($wwMedium + 1px)){
+  @media screen and (max-width: $wwMedium){
   
     margin: 0 auto;
-    table.listTb {
-      &.rwdTable{
-        border: none;
-        thead{ display: none;}
-        tbody{ border: none;
-          tr{
-            &:hover{
-              background-color: $white;
-              box-shadow: $borderColorDark 0 0 0 2px, $shadow1 0 0 14px;
-            }  
-          }
-        }
-        tr, th, td{ display: block;}
-        tr{ 
-          position: relative; overflow: hidden;
-          padding: .5em 8px .4em; margin:0 0 10px;
-          box-shadow: $borderColor 0 0 0 1px;
-          transition: .2s;
-        }
-        th, td{
-          position: static; padding: 0;margin: 0; text-align: left;
-          border: none;
-        }
-        td{
-          padding:.35em 0; text-align: left !important;
-          border-bottom: 1px dotted $borderColor;
-          &:last-child{ border: none;}
-          &::before {
-            content: attr(data-th); display: inline-block; margin-right: .5em;
-            line-height: 1.7; height: 1.6em;
-            vertical-align: top;
-            background-color: $primaryColor; color: $white;
-            padding: 0 .6em 1px 5px; border-radius: 3px 1em 1em 3px
-          }
-          &>a{ 
-            text-decoration: underline; text-underline-offset: 3px;
-            &:hover{text-decoration: none; color: $linkColor;}
-          }
-        }
-      }
-    }
 
   }
 }
+
+.lp:has(.list) {
+  border-radius: $radius2; overflow: hidden;
+  margin: 20px auto;
+  border: 3px solid $borderColor;
+}
+.lp table.list {
+  border: none;
+}
+// ---------------------------------------------------------------- //
+
+
+
+//////////////////////////////////////////////////////////////////////
+///////////////////////////// RWD 表格 ///////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+
+// lp 的 RWD 表格
+// ---------------------------------------------------------------- //
+.lp:has(.rwdTable) {
+  @media screen and (max-width: $wwMedium){
+    border: none; border-radius: 0;
+    overflow: visible;
+  }
+}
+.lp>table.rwdTable{
+  margin: 0 auto; border: none;
+  @media screen and (max-width: $wwMedium){
+    tbody tr:last-child td{
+      border-bottom: 1px dotted $borderColor;
+    }
+  }
+}
+
+
+// RWD 表格，小螢幕時 tr 表現為 block //
+// ---------------------------------------------------------------- //
+table.rwdTable{
+  @media screen and (max-width: $wwMedium){
+    border: none; width: 100%;
+    thead{ display: none;}
+    tbody{ 
+      border: none;
+      tr{
+        border: 1px solid $borderColor;
+        transition: .2s;
+        &:hover{
+          background-color: $white;
+          border-color: transparent;
+          box-shadow: $borderColorDark 0 0 0 2px, $shadow1 0 0 14px;
+        } 
+        &:last-child td{
+          border-bottom: 1px dotted $borderColor;
+          &:last-child{border: none;}
+        }
+     
+      }
+      tr, td, th{display: block;}
+    }
+    tr{ 
+      position: relative; overflow: hidden;
+      padding: .5em 8px .4em; margin:0 0 10px;
+      transition: .2s;
+    }
+    th, td{
+      position: static; padding: 0;margin: 0; text-align: left;
+      border: none;
+    }
+    td{
+      padding:.35em 0; text-align: left !important;
+      border-bottom: 1px dotted $borderColor;
+      &:last-child{ border: none;}
+      &::before {
+        content: attr(data-th); display: inline-block; margin-right: .5em;
+        line-height: 1.7; height: 1.6em;
+        vertical-align: top;
+        background-color: $primaryColor; color: $white;
+        padding: 0 .6em 1px 5px; border-radius: 3px 1em 1em 3px
+      }
+      &>a{ 
+        text-decoration: underline; text-underline-offset: 3px;
+        &:hover{text-decoration: none; color: $linkColor;}
+      }
+    }
+  }
+}
+// ---------------------------------------------------------------- //
