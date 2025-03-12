@@ -24,7 +24,6 @@
         a{
           background-color: var(--activeColor); color: $fontInvert;
           box-shadow: var(--activeColor) 0 0 0 1px;
-
           &:hover,  &:focus{
             box-shadow: $white 0 0 0 1px, var(--activeColor) 0 0 0 4px;
           }
@@ -42,6 +41,5 @@
   @extend %primSecWidth;
   margin-top: 24px; margin-bottom: 12px;
   line-height: 1.8;
-
 }
 // ------------------------------------------------------ //

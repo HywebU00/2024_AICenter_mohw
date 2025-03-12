@@ -50,18 +50,3 @@
 
 }
 // ---------------------------------------------------------------- //
-
-
-
-
-// 登入按鈕
-.loginBtn{
-  height: 2.8em; padding: 0 1.5em;
-  border: none;border-radius: $radius;
-  background-color: $primaryColor; color: $fontInvert;
-}
-
-@keyframes fixHeaderAni {
-  0% { translate: 0 -120%;}
-  100% {translate: 0 0;}
-}

@@ -88,28 +88,22 @@
   .fileName{ display: block;}
 
   .files{
-    font-size: .82em; margin: 5px 0 8px;
-    text-align: right;
-    li{
-      display: inline-block;
-      margin:0 0 0 4px; padding:0;
-    }
+    display: flex; flex-flow: row wrap; justify-content: flex-end;
+    font-size: .82em; margin: 0 0 8px;
+    li{margin:6px 0 0 6px; padding:0;}
     a{
       padding: 5px 16px;display: block;outline: none;
       border-radius: 2em;
       box-shadow: $borderColor 0 0 0 1px;
-      &:hover, &:focus {
-        box-shadow: $gray700 0 0 0 2px;
-      }
+      &:hover, &:focus {box-shadow: $gray700 0 0 0 2px;}
     }
     .fileType{ display: inline-block; vertical-align: middle; margin-right: 4px;}
   }
 
-  @media screen and (min-width: $wwNormal){
-
+  @media screen and (min-width: $wwMedium){
     .fileName{ display: inline-block; padding-top: .3em; }
-    .files{ padding-left: 1em;}
+    .files{ float: right; margin-left: 30px; }
   }
-
+  
 }
 // ---------------------------------------------------------------- //

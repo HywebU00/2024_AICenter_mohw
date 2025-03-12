@@ -27,8 +27,9 @@
 
   .flowNav{display: none;}
   .arrowBtn{
-    position: absolute; margin:0 5px auto; 
-    &.next{left: auto; right: 0;}
+    top: 50%; translate: 0 -50%;
+    &.next{ right: 8px;}
+    &.prev{ left: 8px;}
   }
 
 

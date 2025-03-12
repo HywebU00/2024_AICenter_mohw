@@ -9,10 +9,10 @@
     display: block; z-index: 99;
     position: absolute; left: 0; top: 0;padding: 3px;
     text-decoration: none; outline: none;
-    color: $fontColorLight;
+    color: #bcb;
     
-    &:focus, &:hover { box-shadow: $fontColor 0 0 0 2px inset;color: $fontColor;}
-    &:focus-visible { background-color: rgb(255 255 255 / .8);}
+    &:focus, &:hover { box-shadow: $primaryColor 0 0 0 2px inset;color: #444;}
+    &:focus { background-color: #fff;}
   }
 }
 @media screen and (min-width: calc($wwMaximum + 40px)){
@@ -359,7 +359,6 @@ a:hover, a:focus{
     --arrow-size: 12px;
 
     position: absolute; z-index: 9; 
-    // top: 50%; translate: 0 calc(var(--size)*(-.5));
     width: var(--size); height: var(--size);
     font-size: 0; cursor: pointer; border-radius: 50%;
     background-color: var(--bgc);

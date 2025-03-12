@@ -14,8 +14,6 @@
     img{ display: block; width: 60px;}
   }
 
-  // .contactInfo{width: $mobileWidth; margin: 24px auto 0;}
-
   .siteTree{
     width: $mobileWidth; margin: 24px auto 40px;
     &>ul{
@@ -43,7 +41,7 @@
 
 
         // 第二層
-        &>ul {/* font-size: .9375em; */ margin-top: 14px; margin-bottom: 16px;}
+        &>ul {margin-top: 14px; margin-bottom: 16px;}
         ul ul{ font-size: inherit;}
 
         li{
@@ -78,20 +76,20 @@
     &>li{
        flex: 0 0 auto; margin:0 5px 0 0;
       &>a{
-        display: block;border-radius: $radius1; overflow: hidden;
-        width: 44px; height: 44px; 
+        display: block;border-radius: 50%; overflow: hidden;
+        width: 48px; height: 48px; padding: 6px;
         transition: .2s;
         img{
-          display: block; height: 100%; width: 80%; margin: 0 auto;
-          object-fit: contain;
+          display: block;
+          height: 36px; width: 36px; object-fit: contain; 
         }
         &:hover{
           background-color: $white;
-          box-shadow:transparent 0 0 0 0, rgb(0 0 0 / .4) 0 0 9px;
+          box-shadow:$black 0 0 0 0, $primaryColor 0 0 9px;
         }
         &:focus{
           background-color: $white;
-          box-shadow: $black 0 0 0 2px, rgb(0 0 0 / .6) 0 0 7px;
+          box-shadow: $black 0 0 0 2px, $primaryColor 0 0 0;
         }
       }
     }
@@ -162,7 +160,6 @@
         justify-content: space-between;
         &>li{
           flex: 0 1 auto; white-space: nowrap; margin: 0;
-          // li{ max-width: 12em; min-width: 100%;}
         }
       }
     }
