@@ -887,16 +887,12 @@ $(function(){
       _hideInfoCard.trigger('focus');
     }
   })  
-  // --------------------------------------------------------------- //
-
-
-
-
-
-
-
-
-
+  // --------------------------------------------------------------- 
+  if ( ww >= wwNormal) {
+    $('#BackGroundMore').attr("style", "text-align:left");
+  } else {
+    $('#BackGroundMore').attr("style", "text-align:center");
+  }
   // 改變瀏覽器寬度 window resize 
   // --------------------------------------------------------------- //
   var winResizeTimer;
@@ -934,18 +930,7 @@ $(function(){
         fixHeadThreshold =  hh;
         _window.trigger('scroll');
 
-        // [三大 AI 中心] 
-        // if ( _drawerTriggerBtn.filter('.active').length == 0 ) {
-        //   _aiTray.eq(0).show().prev().addClass('active');
-        // } else {
-        //   _drawerTriggerBtn.filter('.active').next('.tabContent').show();
-        // }
-        // _dropMenuGroup.find('.dropMenu').removeClass('show');
-        // _dropMenuGroup.find('.medList').removeAttr('style');
-        // _aiContent.find('.infoCard').removeAttr('style');
-
-        
-
+        $('#BackGroundMore').attr("style", "text-align:left");
       }
 
       // 由寬螢幕到小螢幕
@@ -958,10 +943,7 @@ $(function(){
         hh = _siteHeader.innerHeight();
         _window.trigger('scroll');
         
-        // [三大 AI 中心] 
-        // _drawerTriggerBtn.filter('.active').next('.tabContent').show();
-        // _dropMenuGroup.find('.medList>li').removeAttr('style').children('button').removeAttr('style');
-        // _aiContent.find('.infoCard').removeAttr('style').end().find('.dim').removeClass('dim');
+        $('#BackGroundMore').attr("style", "text-align:center");
 
         successCasesSlickSet(); // 成功案例
 
