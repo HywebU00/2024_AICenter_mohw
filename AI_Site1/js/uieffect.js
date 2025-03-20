@@ -17,10 +17,7 @@ $(function(){
   const _sidebar = $('.sidebar');
   const _sidebarCtrl = $('.sidebarCtrl');
 
-  // const _siteFooter = $('.siteFooter');
   const _goTop = $('.goTop');
-
-  // _html.removeClass('no-js');
 
 
   
@@ -263,7 +260,6 @@ $(function(){
 
   _window.scroll(function(){
     if (_window.scrollTop() >= fixHeadThreshold ) {
-      // console.log(hh);
       _body.offset({top: hh});
       _siteHeader.addClass('fixed');
     } else {
@@ -442,7 +438,6 @@ $(function(){
   _lightbox.before('<div class="coverAll"></div>');
   _lightbox.append('<button type="button" class="skip">焦點移到 "關閉此燈箱"</button>');
 
-  // let _thisLightbox = $(this);
   const _hideLightbox = _lightbox.find('.closeThis');
   const _coverAll = _lightbox.prev('.coverAll');
   const _skipToClose = _lightbox.find('.skip');
@@ -473,8 +468,6 @@ $(function(){
       _hideLightbox.trigger('click');
     }
   })
-  // _lightbox.each(function(){
-  // })
   // --------------------------------------------------------------- //
 
 
@@ -879,20 +872,20 @@ $(function(){
       _mapArea0.fadeIn();
     })
   })
+  // --------------------------------------------------------------- //
 
-  // Tab 鍵操作
-  _infoCard.find('a').last().on('keydown', function(e){
-    if (e.code == 'Tab' && !e.shiftKey) {
-      e.preventDefault();
-      _hideInfoCard.trigger('focus');
-    }
-  })  
-  // --------------------------------------------------------------- 
+
+  // 20250319 工程師增加
+  // --------------------------------------------------------------- //
   if ( ww >= wwNormal) {
     $('#BackGroundMore').attr("style", "text-align:left");
   } else {
     $('#BackGroundMore').attr("style", "text-align:center");
   }
+  // --------------------------------------------------------------- //
+
+
+
   // 改變瀏覽器寬度 window resize 
   // --------------------------------------------------------------- //
   var winResizeTimer;
@@ -930,6 +923,9 @@ $(function(){
         fixHeadThreshold =  hh;
         _window.trigger('scroll');
 
+         // 醫院窗口及申請管道：關閉已開啟的 .infoCard 並顯示預設地圖
+        _mapHere.find('.infoCard').find('.closeThis').trigger('click');
+
         $('#BackGroundMore').attr("style", "text-align:left");
       }
 
@@ -943,10 +939,19 @@ $(function(){
         hh = _siteHeader.innerHeight();
         _window.trigger('scroll');
         
+        // 醫院窗口及申請管道：關閉已開啟的 .infoCard 並顯示預設地圖
+        if ( typeof _keptHname !== 'undefined') {
+          _keptHname.removeAttr('style').next().removeAttr('style');
+          if ( _keptHname.next().is(':visible')) {
+            _mapAreaImgs.hide();
+            _mapArea0.show();
+          }
+        }
+
+        // 20250319 工程師增加
         $('#BackGroundMore').attr("style", "text-align:center");
 
         successCasesSlickSet(); // 成功案例
-
       }
       ww = wwNew;
     }, 200);
