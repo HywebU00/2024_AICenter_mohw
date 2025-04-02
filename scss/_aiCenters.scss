@@ -166,13 +166,18 @@
   
   @media screen and (min-width: $wwNormal){
 
-    .contentGroup{position: relative;}
+    .contentGroup{
+      position: relative;
+      &::after {
+        content: ''; display: block; clear: both;
+      }
+    }
     .content{
       padding: 0; margin: 0;
       background-color: transparent;
       .tabButton{
         position: absolute; left: 0; top: 0;
-        padding: 0 30px; height: 220px; width: 30%;
+        padding: 0 30px; width: 30%; height: 156px;
         font-size: 1.5em; line-height: 1.6;
         color: $fontColorLight;
         &::after { 
@@ -239,11 +244,11 @@
       .tabContent{
         position: relative;
         padding: 0;margin: 0 0 0 35%;border: none; 
-        min-height: 660px;
+        min-height: 470px;
         .description{display: none;}
       }
-      &:nth-child(2){.tabButton{ top: 220px;} }
-      &:nth-child(3){.tabButton{ top: 440px;} }
+      &:nth-child(2){.tabButton{ top: 156px;} }
+      &:nth-child(3){.tabButton{ top: 312px;} }
     }
 
     // 地圖
@@ -321,6 +326,10 @@
         &:nth-child(2), &:nth-child(3) {margin-left: 70%;}
       }
     }
+  }
+
+  @media screen and (min-width: $wwMaximum){
+
   }
 }
 // ---------------------------------------------------------------- //
