@@ -118,7 +118,7 @@ table.list{
   }
 }
 
-.lp:has(.list) {
+.lp:has(>table.list) {
   border-radius: $radius2; overflow: hidden;
   margin: 20px auto;
   border: 3px solid $borderColor;
