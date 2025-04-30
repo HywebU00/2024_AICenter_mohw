@@ -112,9 +112,7 @@ table.list{
   }
 
   @media screen and (max-width: $wwMedium){
-  
     margin: 0 auto;
-
   }
 }
 
@@ -123,7 +121,7 @@ table.list{
   margin: 20px auto;
   border: 3px solid $borderColor;
 }
-.lp table.list {
+.lp>table.list {
   border: none;
 }
 // ---------------------------------------------------------------- //
