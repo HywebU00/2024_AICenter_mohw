@@ -2,91 +2,146 @@
 // ---------------------------------------------------------------- //
 // .main>section:not(.hospitalMap){display: none}
 
-.hospitalMap{
+.hospitalMap {
   @extend %primSecWidth;
 
   --tabBgc: #f2f8f8;
   --tabTheme: #007978;
-  --borderColor: #cce4e4;
+  --borderColor: #edffff;
 
-  button{
-    text-align: left; border: none; box-shadow: none;
+  button {
+    text-align: left;
+    border: none;
+    box-shadow: none;
     background-color: transparent;
   }
 
-  .content{
+  .content {
     position: relative;
-    padding: 16px 12px; margin: 0 0 10px;
-    border-radius:$radius1;
+    padding: 16px 12px;
+    margin: 0 0 10px;
+    border-radius: $radius1;
     background-color: var(--tabBgc);
   }
 
   // 醫院資料卡
-  .infoCard{
-    position: relative;padding:20px 10px 16px; margin: 0;
-    line-height: 1.5; border-radius: $radius1;
-    background-color: $white; color: var(--tabTheme);
-    box-shadow: rgb(0 0 0 / .3) 0 0 7px;
-    .closeThis{
-      position: absolute; right: 0;top: 4px;
-      border-radius: 50%; scale: .6;
+  .infoCard {
+    position: relative;
+    padding: 20px 10px 16px;
+    margin: 0;
+    line-height: 1.5;
+    border-radius: $radius1;
+    background-color: $white;
+    color: var(--tabTheme);
+    box-shadow: rgb(0 0 0 / 0.3) 0 0 7px;
+    .closeThis {
+      position: absolute;
+      right: 0;
+      top: 4px;
+      border-radius: 50%;
+      scale: 0.6;
       box-shadow: none;
-      transition: .2s;
-      &::before, &::after { background-color: $gray700; transition: .2s;}
-      &:hover, &:focus{ background-color: $gray100;}
-      &:focus-visible { box-shadow: $gray700 0 0 0 2px;}
+      transition: 0.2s;
+      &::before,
+      &::after {
+        background-color: $gray700;
+        transition: 0.2s;
+      }
+      &:hover,
+      &:focus {
+        background-color: $gray100;
+      }
+      &:focus-visible {
+        box-shadow: $gray700 0 0 0 2px;
+      }
     }
-    .head{ 
-      padding: 0 32px 8px 0; 
-      font-weight: bold; 
+    .head {
+      padding: 0 32px 8px 0;
+      font-weight: bold;
       border-bottom: 1px solid var(--borderColor);
     }
-    dl{
-      margin: 0;padding: 0;
-      a{
+    dl {
+      margin: 0;
+      padding: 0;
+      a {
         color: var(--tabTheme);
-        &:focus-visible { outline: var(--tabTheme) 2px solid; border-bottom-color: transparent;}
+        &:focus-visible {
+          outline: var(--tabTheme) 2px solid;
+          border-bottom-color: transparent;
+        }
       }
-      dt, dd {margin:.5em 0 0; display: block;}
-      dt{ font-size: .88em;margin-top: 1.5em;color: $fontColorLight;}
-      dd{word-break: break-all;}
+      dt,
+      dd {
+        margin: 0.5em 0 0;
+        display: block;
+      }
+      dt {
+        font-size: 0.88em;
+        margin-top: 1.5em;
+        color: $fontColorLight;
+      }
+      dd {
+        word-break: break-all;
+      }
     }
 
     // 連結：醫院網站、申請表單
-    .term{
-      display: block; margin: 12px 0 6px;
-      font-size: .88em;margin-top: 1.5em;color: $fontColorLight;
+    .term {
+      display: block;
+      margin: 12px 0 6px;
+      font-size: 0.88em;
+      margin-top: 1.5em;
+      color: $fontColorLight;
     }
-    .links{
-      list-style: none; margin: 0; padding: 0;
-      display: flex; flex-flow: row wrap; justify-content: space-between;
+    .links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
       gap: 6px;
-      li{
+      li {
         flex: 1 0 calc(50% - 3px);
-        a{
-          display: block; height: 2.3em; line-height: 2.3; 
-          text-align: center; text-decoration: none;
-          white-space: nowrap; padding: 0 6px;
-          border-radius: 4px; cursor: pointer;
-          transition: .2s;
-          &::after{
-            content: ''; display: inline-block; vertical-align: middle;
-            width: 20px; height: 20px; margin-left: 3px;
+        a {
+          display: block;
+          height: 2.3em;
+          line-height: 2.3;
+          text-align: center;
+          text-decoration: none;
+          white-space: nowrap;
+          padding: 0 6px;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: 0.2s;
+          &::after {
+            content: "";
+            display: inline-block;
+            vertical-align: middle;
+            width: 20px;
+            height: 20px;
+            margin-left: 3px;
             background: url(../images/icon_linkout2.svg) no-repeat 0 -1px;
             background-size: contain;
           }
         }
-        &:nth-child(1) a{
-          background-color: var(--tabTheme) ; color: $white;
-          &::after {filter: brightness(80);}
-          &:hover, &:focus{
+        &:nth-child(1) a {
+          background-color: var(--tabTheme);
+          color: $white;
+          &::after {
+            filter: brightness(80);
+          }
+          &:hover,
+          &:focus {
             box-shadow: $white 0 0 0 1px inset, var(--tabTheme) 0 0 0 2px;
           }
         }
-        &:nth-child(2) a{
-          background-color: $white; color: var(--tabTheme);
+        &:nth-child(2) a {
+          background-color: $white;
+          color: var(--tabTheme);
           box-shadow: var(--tabTheme) 0 0 0 1px inset;
-          &:hover, &:focus{
+          &:hover,
+          &:focus {
             box-shadow: transparent 0 0 0 1px inset, var(--tabTheme) 0 0 0 2px;
           }
         }
@@ -95,51 +150,95 @@
   }
 
   // 地圖
-  .mapHere{
+  .mapHere {
     padding: 20px 0 0;
-    display: flex; align-items: flex-start; justify-content: center;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
     .maps {
-      width: 55%; max-width: 220px;
-      img{display: block; width: 100%; margin: 0 auto; }
+      width: 55%;
+      max-width: 220px;
+      img {
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+      }
     }
-    .infoCard{ 
-      flex: 1 0 50%; max-width: 300px;
-      & ~ .maps{flex: 1 1 auto; margin:160px 0 0 0;}
+    .infoCard {
+      flex: 1 0 50%;
+      max-width: 300px;
+      & ~ .maps {
+        flex: 1 1 auto;
+        margin: 160px 0 0 0;
+      }
     }
   }
 
   // 醫院名稱下拉選單
-  .dropMenuGroup{
-    position: relative; margin: 1em 0 0; padding: 0; z-index: 9;
-    display: flex; gap: 9px;
+  .dropMenuGroup {
+    position: relative;
+    margin: 1em 0 0;
+    padding: 0;
+    z-index: 9;
+    display: flex;
+    gap: 9px;
     line-height: 1.5;
-    ul{list-style: none; margin:0; padding: 0;}
-    li{margin:0; padding: 0;}
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      margin: 0;
+      padding: 0;
+    }
 
     // 北部、中部、南部 個別下拉選單
-    .dropMenu{
+    .dropMenu {
       flex: 1 0 calc(33.33% - 6px);
 
       // 北部、中部、南部
-      .groupLabel {display: none;}
-      button.triggler{
+      .groupLabel {
+        display: none;
+      }
+      button.triggler {
         position: relative;
-        width: 100%; height: 2.8em; padding: 0 20px 0 12px; margin: 0;
+        width: 100%;
+        height: 2.8em;
+        padding: 0 20px 0 12px;
+        margin: 0;
         border-radius: $radius;
-        background-color: $primaryColor; color: $white;
-        transition: .2s;
+        background-color: $primaryColor;
+        color: $white;
+        transition: 0.2s;
         &::after {
-          content: ''; position: absolute; right: 12px; top: 1em;
-          width: 8px; height: 8px;rotate: 45deg;
-          border: 2px solid #fff; border-left: none; border-top: none;
-          transition: .3s;
+          content: "";
+          position: absolute;
+          right: 12px;
+          top: 1em;
+          width: 8px;
+          height: 8px;
+          rotate: 45deg;
+          border: 2px solid #fff;
+          border-left: none;
+          border-top: none;
+          transition: 0.3s;
         }
-        &:hover{box-shadow: var(--tabTheme) 0 0 0 2px;}
-        &:focus-visible{box-shadow: #fff 0 0 0 1px inset, var(--tabTheme) 0 0 0 2px;}
+        &:hover {
+          box-shadow: var(--tabTheme) 0 0 0 2px;
+        }
+        &:focus-visible {
+          box-shadow: #fff 0 0 0 1px inset, var(--tabTheme) 0 0 0 2px;
+        }
         &.show {
-          background-color: $white; color: $fontColor;
+          background-color: $white;
+          color: $fontColor;
           box-shadow: none;
-          &::after {rotate: 225deg; top: 1.2em; border-color: $fontColor;}
+          &::after {
+            rotate: 225deg;
+            top: 1.2em;
+            border-color: $fontColor;
+          }
           &:focus-visible {
             box-shadow: var(--tabTheme) 0 0 0 2px;
           }
@@ -147,123 +246,192 @@
       }
 
       // 醫院名稱選單
-      ul.medList{
+      ul.medList {
         display: none;
-        position: absolute; top: auto; left: 0;
-        width: 100%; margin:4px 0 0; padding: 12px;
-        list-style: none; 
+        position: absolute;
+        top: auto;
+        left: 0;
+        width: 100%;
+        margin: 4px 0 0;
+        padding: 12px;
+        list-style: none;
         border-radius: $radius1;
-        background-color: $white; 
+        background-color: $white;
         box-shadow: $shadow2 0 0 12px;
-        &>li{
-          margin: 2px 0;padding:3px 0; margin: 0;
+        & > li {
+          margin: 2px 0;
+          padding: 3px 0;
+          margin: 0;
           border-bottom: 1px solid $borderColor;
-          &:last-child{border-bottom: none;}
-          &>button {
-            text-align: left;width: 100%; padding: .6em 0;
+          &:last-child {
+            border-bottom: none;
+          }
+          & > button {
+            text-align: left;
+            width: 100%;
+            padding: 0.6em 0;
             border-radius: 4px;
-            &:focus-visible{
+            &:focus-visible {
               box-shadow: var(--tabTheme) 0 0 0 2px;
             }
           }
         }
-        .infoCard {display: none;}
-      }      
+        .infoCard {
+          display: none;
+        }
+      }
     }
   }
-  
-  @media screen and (min-width: $wwNormal){
 
-    .content{
+  @media screen and (min-width: $wwNormal) {
+    .content {
       position: relative;
-      padding:10px 0; margin:20px 0 0;
+      padding: 10px 0;
+      margin: 20px 0 0;
       background-color: transparent;
-      min-height: 480px;overflow: hidden;
+      min-height: 480px;
+      overflow: hidden;
     }
 
     // 地圖
-    .mapHere{
+    .mapHere {
       display: block;
-      position: absolute; top: 0; left: 35%;
-      width: 30%; margin: 0; padding: 0;
-      .maps{
+      position: absolute;
+      top: 0;
+      left: 35%;
+      width: 30%;
+      margin: 0;
+      padding: 0;
+      .maps {
         display: block;
-        width: 100%; max-width:none; margin: 0;
-        img{ max-height: 480px;}
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        img {
+          max-height: 480px;
+        }
       }
     }
 
     // 醫院資料卡
     .infoCard {
-      width: 100%; z-index: 9;
-      background-color: var(--tabTheme); color: $white;
-      .closeThis{
-        &::before, &::after { background-color: $white;}
-        &:hover, &:focus{ background-color: transparent;box-shadow: $white 0 0 0 2px;}
-        &:focus-visible { box-shadow: $white 0 0 0 3px;}
-  
+      width: 100%;
+      z-index: 9;
+      background-color: var(--tabTheme);
+      color: $white;
+      .closeThis {
+        &::before,
+        &::after {
+          background-color: $white;
+        }
+        &:hover,
+        &:focus {
+          background-color: transparent;
+          box-shadow: $white 0 0 0 2px;
+        }
+        &:focus-visible {
+          box-shadow: $white 0 0 0 3px;
+        }
       }
-      .head{ border-bottom-color: rgb(225 255 255 / .2);}
-      dl dt, .term {
+      .head {
+        border-bottom-color: rgb(225 255 255 / 0.2);
+      }
+      dl dt,
+      .term {
         color: var(--borderColor);
       }
-      
-      .links li{
-        &:nth-child(1) a{
-          background-color: $white ; color: var(--tabTheme);
-          &::after {filter: none;}
-          &:hover, &:focus{
+
+      .links li {
+        &:nth-child(1) a {
+          background-color: $white;
+          color: var(--tabTheme);
+          &::after {
+            filter: none;
+          }
+          &:hover,
+          &:focus {
             box-shadow: var(--tabTheme) 0 0 0 1px inset, $white 0 0 0 2px;
           }
         }
-        &:nth-child(2) a{
-          background-color: var(--tabTheme) ; color: $white;
+        &:nth-child(2) a {
+          background-color: var(--tabTheme);
+          color: $white;
           box-shadow: $white 0 0 0 1px inset;
-          &::after {filter: brightness(80);}
-          &:hover, &:focus{
+          &::after {
+            filter: brightness(80);
+          }
+          &:hover,
+          &:focus {
             box-shadow: transparent 0 0 0 1px inset, $white 0 0 0 2px;
           }
         }
       }
     }
 
-
     // 北部、中部、南部 寬版直接顯示
-    .dropMenuGroup{
-      display: block; padding:0;  margin:0;
-      .dropMenu{
-        width: 31%;margin-bottom: 20px;
-        .groupLabel{
-          display: block;margin: 0 0 0 1.5em;
-          font-size: 1em; font-weight: bold; line-height: 1; 
+    .dropMenuGroup {
+      display: block;
+      padding: 0;
+      margin: 0;
+      .dropMenu {
+        width: 31%;
+        margin-bottom: 20px;
+        .groupLabel {
+          display: block;
+          margin: 0 0 0 1.5em;
+          font-size: 1em;
+          font-weight: bold;
+          line-height: 1;
           color: var(--tabTheme);
         }
-        button.triggler{ display: none;}
+        button.triggler {
+          display: none;
+        }
 
         // 醫院 List
-        ul.medList{
-          display: block;position: static;
-          margin: 0; padding:6px 8px;
-          background-color: transparent; box-shadow: none;
-          &>li{
+        ul.medList {
+          display: block;
+          position: static;
+          margin: 0;
+          padding: 6px 8px;
+          background-color: transparent;
+          box-shadow: none;
+          & > li {
             position: relative;
-            padding: 0;margin:6px 0;border: none; 
-            &>button{
-              padding:.65em 1em; margin:0; border-radius:$radius1;
+            padding: 0;
+            margin: 6px 0;
+            border: none;
+            & > button {
+              padding: 0.65em 1em;
+              margin: 0;
+              border-radius: $radius1;
               font-size: 1.125em;
               background-color: var(--tabBgc);
-              transition: .2s;
-              &:hover, &:focus{box-shadow: var(--tabTheme) 0 0 0 2px inset;}
-              &:focus{background-color: var(--tabTheme); color: $fontInvert;}
+              transition: 0.2s;
+              &:hover,
+              &:focus {
+                box-shadow: var(--tabTheme) 0 0 0 2px inset;
+              }
+              &:focus {
+                background-color: var(--tabTheme);
+                color: $fontInvert;
+              }
             }
           }
         }
-        &:nth-child(1){ float: left;}
-        &:nth-child(2), &:nth-child(3) {margin-left: 69%;}
+        &:nth-child(1) {
+          float: left;
+        }
+        &:nth-child(2),
+        &:nth-child(3) {
+          margin-left: 69%;
+        }
       }
     }
 
-    .more{margin-top: 40px;}
+    .more {
+      margin-top: 40px;
+    }
   }
 }
 // ---------------------------------------------------------------- //
