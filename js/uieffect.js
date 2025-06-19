@@ -23,30 +23,30 @@ $(function(){
   // _html.removeClass('no-js');
 
 
-  
-  
+
+
   // 行動版側欄
   // --------------------------------------------------------------- //
 
   // 製作側欄選單遮罩
   _body.append('<div class="sidebarMask"></div>');
   const _sidebarMask = $('.sidebarMask');
-  
-  // 找出_menu中有次選單的li 
+
+  // 找出_menu中有次選單的li
   _menu.find('li').has('ul').addClass('hasChild').children('a').attr('role', 'button').attr('aria-expanded', false);
-  
+
   // mobile 側欄「主選單」
   // --------------------------------------------------------------- //
   // --------------------------------------------------------------- //
   _menu.clone().appendTo(_sidebar);  // 複製「主選單」到側欄給行動版用
-  
+
   const _sidebarMenu = _sidebar.find('.menu');
   var _sbHasChildA = _sidebarMenu.find('.hasChild>a');
   // mobile 側欄「主選單」開合
   // --------------------------------------------------------------- //
-  _sbHasChildA.on( 'click', 
+  _sbHasChildA.on( 'click',
     function(e){
-      e.preventDefault();  
+      e.preventDefault();
 
       let _this = $(this);
       let _subMenu = _this.next('ul');
@@ -68,9 +68,9 @@ $(function(){
   var _sidebarA = _sidebar.find('a, button, input');
   var _sidebarA_first = _sidebarA.eq(0); // 第一個可 focus 元件
   var _sidebarA_last = _sidebarA.eq(_sidebarA.length - 1); // 最後一個可 focus 元件
-  
+
   // 離開最後一個可 focus 元件，焦點回到 _sidebarCtrl
-  _sidebarA_last.on('blur', function(){ 
+  _sidebarA_last.on('blur', function(){
     _body.one('keyup', function(e){
       if (!e.shiftKey) {
         _sidebarCtrl.trigger('focus');
@@ -94,7 +94,7 @@ $(function(){
 
   // --------------------------------------------------------------- //
 
-  
+
 
   // 行動版側欄，顯示／隱藏
   // ---------------------------------------------------- //
@@ -132,35 +132,65 @@ $(function(){
 
   // 側欄側欄開關鍵盤操作 --------------- //
   // 側欄第一個 focusable 元件
-  var _sidebarFA_first = _sidebarMenu.children('ul').children('li').first().children('a');
+  // var _sidebarFA_first = _sidebarMenu.children('ul').children('li').first().children('a');
 
-  _sidebarCtrl.on('keydown', function(e){
-    if( _sidebar.is(':visible') ){
-      if( e.code == 'Tab' && !e.shiftKey ) {
-        e.preventDefault();
-        _sidebarFA_first.trigger('focus');
-      }
-      if ( e.code == 'Tab' && e.shiftKey ) {
-        e.preventDefault();
-      }
-    }
-  })
-  // 側欄第一個 focusable 元件逆向 Tab（有按下 shift 鍵時）
-  _sidebarFA_first.on('keydown', function(e){
-    if( e.code == 'Tab' && e.shiftKey ) {
-      e.preventDefault();
-      _sidebarCtrl.trigger('focus');
-    }
-  })
+  // _sidebarCtrl.on('keydown', function(e){
+  //   if( _sidebar.is(':visible') ){
+  //     if( e.code == 'Tab' && !e.shiftKey ) {
+  //       e.preventDefault();
+  //       _sidebarFA_first.trigger('focus');
+  //     }
+  //     if ( e.code == 'Tab' && e.shiftKey ) {
+  //       e.preventDefault();
+  //     }
+  //   }
+  // })
+  // // 側欄第一個 focusable 元件逆向 Tab（有按下 shift 鍵時）
+  // _sidebarFA_first.on('keydown', function(e){
+  //   if( e.code == 'Tab' && e.shiftKey ) {
+  //     e.preventDefault();
+  //     _sidebarCtrl.trigger('focus');
+  //   }
+  // })
 
-  // 側欄最後一個 focusable 元件
-  var _sidebarFA_last = _sidebar.find('a, input, button').last();
-  _sidebarFA_last.on('keydown', function(e){
-    if ( e.code == 'Tab' && !e.shiftKey ) {
-      e.preventDefault();
-      _sidebarCtrl.trigger('focus');
+  // // 側欄最後一個 focusable 元件
+  // var _sidebarFA_last = _sidebar.find('a, input, button').last();
+  // _sidebarFA_last.on('keydown', function(e){
+  //   if ( e.code == 'Tab' && !e.shiftKey ) {
+  //     e.preventDefault();
+  //     _sidebarCtrl.trigger('focus');
+  //   }
+  // })
+
+  // 側欄鍵盤操作改善
+_sidebar.on('keydown', function(e) {
+  if (e.key === 'Tab') {
+    let focusable = _sidebar.find('a, button, input').filter(':visible');
+    let first = focusable.first()[0];
+    let last = focusable.last()[0];
+
+    if (e.shiftKey) {
+      // Shift + Tab：從第一個往回跳到 sidebarCtrl
+      if (document.activeElement === first) {
+        e.preventDefault();
+        _sidebarCtrl.trigger('focus');
+      }
+    } else {
+      // Tab：從最後一個跳回 sidebarCtrl
+      if (document.activeElement === last) {
+        e.preventDefault();
+        _sidebarCtrl.trigger('focus');
+      }
     }
-  })
+  }
+
+  // 按下 ESC 關閉側欄
+  if (e.key === 'Escape') {
+    hideSidebar();
+    _sidebarCtrl.trigger('focus');
+  }
+});
+
   // 側欄鍵盤操作 end -------------- //
 
   // 點擊遮罩，隱藏側欄
@@ -252,7 +282,7 @@ $(function(){
 
   function hideAllSubMenu() {
     _hasChild.removeClass('here turn').find('ul').removeAttr('style');
-    _hasChildA.attr('aria-expanded', false);  
+    _hasChildA.attr('aria-expanded', false);
   }
 
   // --------------------------------------------------------------- //
@@ -261,7 +291,7 @@ $(function(){
 
 
 
-  // 固定版頭 
+  // 固定版頭
   // --------------------------------------------------------------- //
   var fixHeadThreshold;
   var hh = _siteHeader.innerHeight();
@@ -273,7 +303,7 @@ $(function(){
   }
 
   _window.scroll(function(){
-    
+
     if (_window.scrollTop() >= fixHeadThreshold ) {
       // console.log(hh);
       _body.offset({top: hh});
@@ -397,7 +427,7 @@ $(function(){
   } else {
     _fatFootCtrl.removeClass('closed').attr('aria-expanded' , true);
   }
-  
+
   _fatFootCtrl.on( 'click', function(){
     if ( _footSiteTree.is(':hidden')) {
       _footSiteTree.slideDown();
@@ -409,7 +439,7 @@ $(function(){
   })
   // --------------------------------------------------------------- //
 
-  
+
 
 
 
@@ -425,7 +455,7 @@ $(function(){
 
 
 
-  // 燈箱 
+  // 燈箱
   // --------------------------------------------------------------- //
   const _lightbox = $('.lightbox');
   _lightbox.before('<div class="coverAll"></div>');
@@ -434,7 +464,7 @@ $(function(){
   const _hideLightbox = _lightbox.find('.closeThis');
   const _coverAll = _lightbox.prev('.coverAll');
   const _skipToClose = _lightbox.find('.skip');
-  const speed = 400;  
+  const speed = 400;
 
   _skipToClose.on('focus', function () {
     _hideLightbox.trigger('focus');
@@ -524,7 +554,7 @@ $(function(){
           flownavHide();
         }
       }
-      
+
       if (ww >= wwSlim) {
         if (slideCount <= 2) {
           flownavHide();
@@ -632,7 +662,7 @@ $(function(){
     // --------------------------------------------------
 
     // 點擊向右箭頭
-    _btnRight.click(function () { 
+    _btnRight.click(function () {
       slideForward();
     });
 
@@ -677,7 +707,7 @@ $(function(){
   // 複製「相關圖片」到大圖燈箱中 *** //
   _photoflow.find('.flowBox').clone().insertBefore(_skipToClose);
 
-  
+
   // 點擊.photoflow的圖片，開燈箱顯示大圖
   // --------------------------------------------------------------- //
   var _showBigPhoto = _photoflow.find('.flowList>li');
@@ -697,7 +727,7 @@ $(function(){
   })
   // --------------------------------------------------------------- //
 
-  
+
   // cp 頁大圖燈箱
   // --------------------------------------------------------------- //
   _cpBigPhoto.each(function(){
@@ -712,7 +742,7 @@ $(function(){
     let i, j;
 
     _photoItem.find('img').unwrap('a');
-    
+
     if(photoCount>1) {
       _btnRight.add(_btnLeft).show();
     }
@@ -735,7 +765,7 @@ $(function(){
       _photoNow.stop(true, false).fadeIn(speed).find('img').height( _photoNow.height() - _photoNow.find('p').outerHeight(true) );
 
     })
-    
+
     // 點擊向左箭頭
     _btnLeft.on('click' , function(){
       i = Number(_photoItem.filter(':visible').attr('data-index'));
@@ -805,7 +835,7 @@ $(function(){
       _prTabBtn.removeClass('active').next().slideUp(prSpeed);
       _thisBtn.addClass('active');
       _thisContent.slideDown(prSpeed);
-    } 
+    }
 
   })
   // --------------------------------------------------------------- //
@@ -848,7 +878,7 @@ $(function(){
     }
 
   })
-  
+
   // 北中南下拉選單 // .dropMenuGroup
   var _dropMenuGroup = $('.dropMenuGroup');
   _dropMenuGroup.each(function(){
@@ -897,9 +927,9 @@ $(function(){
         _thisBtn.parents('.medList').prev().trigger('click');
         _mobileMaps.find('.infoCard').remove();
         _thisBtn.next().clone().prependTo( _mobileMaps ).hide().fadeIn(360);
-  
+
         _tempInfocard = _mobileMaps.find('.infoCard');
-  
+
         _tempInfocard.find('.closeThis').on('click', function(){
           $(this).parent().remove();
           _mapAreaImgs.hide()
@@ -912,7 +942,7 @@ $(function(){
 
   })
 
-  // AI 中心相關資料卡 顯示/隱藏 // .infoCard 
+  // AI 中心相關資料卡 顯示/隱藏 // .infoCard
   _aiContent.each( function(){
     let _thisAIContent = $(this);
     let _infoCard = _thisAIContent.find('.infoCard');
@@ -973,7 +1003,7 @@ $(function(){
 
 
 
-  // 改變瀏覽器寬度 window resize 
+  // 改變瀏覽器寬度 window resize
   // --------------------------------------------------------------- //
   var winResizeTimer;
   _window.resize(function () {
@@ -981,13 +1011,13 @@ $(function(){
     winResizeTimer = setTimeout( function () {
 
       wwNew = _window.width();
-      
+
       // 由小螢幕到寬螢幕
       if( ww < wwNormal && wwNew >= wwNormal ) {
         if (_sidebar.hasClass('reveal')) {
           hideSidebar(); // 隱藏側欄
         }
- 
+
         // 重設 fixed header
         _siteHeader.removeClass('fixed');
         _body.removeAttr('style');
@@ -995,7 +1025,7 @@ $(function(){
         fixHeadThreshold =  hh;
         _window.trigger('scroll');
 
-        // [三大 AI 中心] 
+        // [三大 AI 中心]
         if ( _drawerTriggerBtn.filter('.active').length == 0 ) {
           _aiTray.eq(0).show().prev().addClass('active');
         } else {
@@ -1015,8 +1045,8 @@ $(function(){
         fixHeadThreshold = 0;
         hh = _siteHeader.innerHeight();
         _window.trigger('scroll');
-        
-        // [三大 AI 中心] 
+
+        // [三大 AI 中心]
         _drawerTriggerBtn.filter('.active').next('.tabContent').show();
         _dropMenuGroup.find('.medList>li').removeAttr('style').children('button').removeAttr('style');
         _aiContent.find('.infoCard').removeAttr('style').end().find('.dim').removeClass('dim');
@@ -1025,14 +1055,14 @@ $(function(){
     }, 200);
   });
   // window resize  end -------------------------------------------- //
-  
 
 
 
 
 
 
-	// rwd Table 
+
+	// rwd Table
   // --------------------------------------------------------------- //
 	// 把 th 的內容複製到對應的td的 data-th 屬性值
 	var _rwdTable = $('.rwdTable');
