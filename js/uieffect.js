@@ -1,5 +1,4 @@
 $(function(){
-
   const _html = $('html');
   const _body = $('body');
   const _window = $(window);
@@ -7,206 +6,104 @@ $(function(){
   var ww = _window.width();
   var wwNew = ww;
 
-  const wwSlim = 400; //此值以下是手機
-  const wwMedium = 700; //此值以下是手機
-  const wwNormal = 1000; //此值以上是電腦
-  const wwMaximum = 1400; // 最大寬度
+  const wwSlim = 400;
+  const wwMedium = 700;
+  const wwNormal = 1000;
+  const wwMaximum = 1400;
 
   const _siteHeader = $('.siteHeader');
-  const _menu = _siteHeader.find('.menu'); // 寬版主選單
+  const _menu = _siteHeader.find('.menu'); // 主選單
   const _sidebar = $('.sidebar');
   const _sidebarCtrl = $('.sidebarCtrl');
 
   const _siteFooter = $('.siteFooter');
   const _goTop = $('.goTop');
 
-  // _html.removeClass('no-js');
-
-
-
-
-  // 行動版側欄
-  // --------------------------------------------------------------- //
-
   // 製作側欄選單遮罩
   _body.append('<div class="sidebarMask"></div>');
   const _sidebarMask = $('.sidebarMask');
 
-  // 找出_menu中有次選單的li
-  _menu.find('li').has('ul').addClass('hasChild').children('a').attr('role', 'button').attr('aria-expanded', false);
+  // 選單有子選單的加上 aria 屬性
+  _menu.find('li').has('ul').addClass('hasChild')
+    .children('a').attr('role', 'button').attr('aria-expanded', false);
 
-  // mobile 側欄「主選單」
-  // --------------------------------------------------------------- //
-  // --------------------------------------------------------------- //
-  _menu.clone().appendTo(_sidebar);  // 複製「主選單」到側欄給行動版用
-
+  // 複製主選單到側欄
+  _menu.clone().appendTo(_sidebar);
   const _sidebarMenu = _sidebar.find('.menu');
-  var _sbHasChildA = _sidebarMenu.find('.hasChild>a');
-  // mobile 側欄「主選單」開合
-  // --------------------------------------------------------------- //
-  _sbHasChildA.on( 'click',
-    function(e){
-      e.preventDefault();
+  const _sbHasChildA = _sidebarMenu.find('.hasChild > a');
 
-      let _this = $(this);
-      let _subMenu = _this.next('ul');
+  // 子選單開合
+  _sbHasChildA.on('click', function(e) {
+    e.preventDefault();
+    const _this = $(this);
+    const _subMenu = _this.next('ul');
 
-      if (_subMenu.is(':hidden')) {
-        _this.attr('aria-expanded', true);
-        _this.parent().addClass('closeIt').siblings().removeClass('closeIt').find('ul:visible').slideUp().find('.closeIt').removeClass('closeIt');
-        _subMenu.stop(true, false).slideDown();
-      } else {
-        _this.attr('aria-expanded', false).parent().removeClass('closeIt');
-        _subMenu.find('.closeIt').removeClass('closeIt');
-        _subMenu.stop(true, false).slideUp().find('ul:visible').stop(true, false).slideUp();
-      }
-    }
-  )
-
-  // 鍵盤操作
-  // --------------------------------------------------------------- //
-  var _sidebarA = _sidebar.find('a, button, input');
-  var _sidebarA_first = _sidebarA.eq(0); // 第一個可 focus 元件
-  var _sidebarA_last = _sidebarA.eq(_sidebarA.length - 1); // 最後一個可 focus 元件
-
-  // 離開最後一個可 focus 元件，焦點回到 _sidebarCtrl
-  _sidebarA_last.on('blur', function(){
-    _body.one('keyup', function(e){
-      if (!e.shiftKey) {
-        _sidebarCtrl.trigger('focus');
-      }
-    })
-  })
-
-  _sidebarA_first.on('blur', function(){
-    _body.one('keyup', function(e){
-      if (e.shiftKey) {
-        _sidebarCtrl.trigger('focus');
-      }
-    })
-  })
-
-  _sidebarCtrl.on('blur', function(){
-    if ($(this).hasClass('closeIt')) {
-      _sidebarA_first.trigger('focus');
-    }
-  })
-
-  // --------------------------------------------------------------- //
-
-
-
-  // 行動版側欄，顯示／隱藏
-  // ---------------------------------------------------- //
-  _sidebarCtrl.attr('aria-haspopup', true).attr('aria-expanded', false);
-
-  _sidebarCtrl.click(function(){
-    if (_sidebar.is(':visible')) {
-      _sidebar.removeClass('reveal');
-      _sidebarCtrl.removeClass('closeIt');
-      _sidebarMask.fadeOut(300, function(){
-        _sidebar.hide();
-        _sidebarCtrl.attr('aria-expanded', false);
-      });
-      _body.removeClass('noScroll');
+    if (_subMenu.is(':hidden')) {
+      _this.attr('aria-expanded', true);
+      _this.parent().addClass('closeIt').siblings().removeClass('closeIt').find('ul:visible').slideUp().find('.closeIt').removeClass('closeIt');
+      _subMenu.stop(true, false).slideDown();
     } else {
-      _sidebar.css('top', _siteHeader.innerHeight()).show(10, function(){
+      _this.attr('aria-expanded', false).parent().removeClass('closeIt');
+      _subMenu.find('.closeIt').removeClass('closeIt');
+      _subMenu.stop(true, false).slideUp().find('ul:visible').stop(true, false).slideUp();
+    }
+  });
+
+  // 顯示/隱藏側欄
+  _sidebarCtrl.attr('aria-haspopup', true).attr('aria-expanded', false);
+  _sidebarCtrl.click(function() {
+    if (_sidebar.is(':visible')) {
+      hideSidebar();
+    } else {
+      _sidebar.css('top', _siteHeader.innerHeight()).show(10, function() {
         _sidebar.addClass('reveal');
+        // _sidebar.find('a, button, input').filter(':visible').first().trigger('focus'); // ⬅ 打開後自動聚焦
       });
       _sidebarCtrl.addClass('closeIt').attr('aria-expanded', true);
       _sidebarMask.fadeIn(400);
       _body.addClass('noScroll');
     }
-  })
-  _sidebarMask.click(function(){
-    _sidebar.removeClass('reveal');
-    _sidebarCtrl.removeClass('closeIt');
-    _body.removeClass('noScroll');
-    _sidebarMask.fadeOut(400, function(){
-      _sidebar.hide();
-      _sidebarCtrl.attr('aria-expanded', false);
-    });
-  })
+  });
 
+  // 點擊遮罩關閉側欄
+  _sidebarMask.on('click', hideSidebar);
 
+  // ESC 鍵全域關閉
+  _window.on('keydown', function(e) {
+    if (e.key === 'Escape' && _sidebar.is(':visible')) {
+      hideSidebar();
+      _sidebarCtrl.trigger('focus');
+    }
+  });
 
-  // 側欄側欄開關鍵盤操作 --------------- //
-  // 側欄第一個 focusable 元件
-  // var _sidebarFA_first = _sidebarMenu.children('ul').children('li').first().children('a');
+  // 改善 Tab 鎖定焦點循環
+  _sidebar.on('keydown', function(e) {
+    if (e.key === 'Tab') {
+      const focusable = _sidebar.find('a, button, input').filter(':visible');
+      const first = focusable.first()[0];
+      const last = focusable.last()[0];
 
-  // _sidebarCtrl.on('keydown', function(e){
-  //   if( _sidebar.is(':visible') ){
-  //     if( e.code == 'Tab' && !e.shiftKey ) {
-  //       e.preventDefault();
-  //       _sidebarFA_first.trigger('focus');
-  //     }
-  //     if ( e.code == 'Tab' && e.shiftKey ) {
-  //       e.preventDefault();
-  //     }
-  //   }
-  // })
-  // // 側欄第一個 focusable 元件逆向 Tab（有按下 shift 鍵時）
-  // _sidebarFA_first.on('keydown', function(e){
-  //   if( e.code == 'Tab' && e.shiftKey ) {
-  //     e.preventDefault();
-  //     _sidebarCtrl.trigger('focus');
-  //   }
-  // })
-
-  // // 側欄最後一個 focusable 元件
-  // var _sidebarFA_last = _sidebar.find('a, input, button').last();
-  // _sidebarFA_last.on('keydown', function(e){
-  //   if ( e.code == 'Tab' && !e.shiftKey ) {
-  //     e.preventDefault();
-  //     _sidebarCtrl.trigger('focus');
-  //   }
-  // })
-
-  // 側欄鍵盤操作改善
-_sidebar.on('keydown', function(e) {
-  if (e.key === 'Tab') {
-    let focusable = _sidebar.find('a, button, input').filter(':visible');
-    let first = focusable.first()[0];
-    let last = focusable.last()[0];
-
-    if (e.shiftKey) {
-      // Shift + Tab：從第一個往回跳到 sidebarCtrl
-      if (document.activeElement === first) {
+      if (e.shiftKey && document.activeElement === first) {
         e.preventDefault();
         _sidebarCtrl.trigger('focus');
-      }
-    } else {
-      // Tab：從最後一個跳回 sidebarCtrl
-      if (document.activeElement === last) {
+      } else if (!e.shiftKey && document.activeElement === last) {
         e.preventDefault();
         _sidebarCtrl.trigger('focus');
       }
     }
-  }
-
-  // 按下 ESC 關閉側欄
-  if (e.key === 'Escape') {
-    hideSidebar();
-    _sidebarCtrl.trigger('focus');
-  }
-});
-
-  // 側欄鍵盤操作 end -------------- //
-
-  // 點擊遮罩，隱藏側欄
-  _sidebarMask.on( 'click', hideSidebar );
-
+  });
 
   // 隱藏側欄 function
-  function hideSidebar(){
+  function hideSidebar() {
     _sidebar.removeClass('reveal');
     _sidebarCtrl.removeClass('closeIt').attr('aria-expanded', false);
     _sidebarMenu.find('.closeIt').removeClass('closeIt').find('ul:visible').hide();
-    _sidebarMask.fadeOut(300, function(){
+    _sidebarMask.fadeOut(300, function() {
       _sidebar.removeAttr('style');
       _body.removeClass('noScroll');
     });
   }
+
 
   // --------------------------------------------------------------- //
   // --------------------------------------------------------------- //
