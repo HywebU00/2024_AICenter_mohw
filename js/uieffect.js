@@ -756,8 +756,11 @@ $(function(){
 
     ww < wwNormal ? drawerSpeed = 400 : drawerSpeed = 0;
 
+	_drawerTriggerBtn.attr('aria-selected',false);
+
     if (_thisTray.is(':hidden')) {
       _thisBtn.addClass('active');
+	  _thisBtn.attr('aria-selected',true);
       _thisTray.slideDown(drawerSpeed);
       _otherTray.slideUp(drawerSpeed, function(){
         _otherTray.find('.infoCard').removeAttr('style')
